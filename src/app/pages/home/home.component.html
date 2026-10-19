@@ -1,0 +1,1387 @@
+<div
+  class="min-h-screen bg-bg text-fg flex flex-col selection:bg-primary/20 selection:text-primary transition-colors duration-200">
+
+  <!-- ========================================================================= -->
+  <!-- 1. HEADER & BARRA DE NAVEGACIÓN SUPERIOR (MÁXIMO 4 OPCIONES)              -->
+  <!-- ========================================================================= -->
+  <header class="sticky top-0 z-40 w-full border-b border-border bg-surface/85 glass-header transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+
+      <!-- Logotipo de Marca -->
+      <a href="#" class="flex items-center gap-3 shrink-0 focus:outline-none">
+        <img src="logo.png" alt="BRUNEITOR.AI" class="lg:h-20 h-16 w-auto object-contain" />
+      </a>
+
+      <!-- Menú Desktop: Exactamente 4 Opciones de Menú -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-semibold text-muted">
+        <button type="button" (click)="scrollTo('beneficios')" class="hover:text-primary transition cursor-pointer">
+          Beneficios
+        </button>
+        <button type="button" (click)="scrollTo('como-funciona')" class="hover:text-primary transition cursor-pointer">
+          Cómo Funciona
+        </button>
+        <button type="button" (click)="scrollTo('plataforma')" class="hover:text-primary transition cursor-pointer">
+          Plataforma
+        </button>
+        <button type="button" (click)="scrollTo('preguntas-frecuentes')"
+          class="hover:text-primary transition cursor-pointer">
+          Preguntas Frecuentes
+        </button>
+      </nav>
+
+      <!-- Botones de Acción Derecha -->
+      <div class="flex items-center gap-2.5 shrink-0">
+        <!-- Switch Modo Oscuro / Claro -->
+        <button type="button" (click)="toggleDarkMode()" title="Cambiar tema de color"
+          class="w-9 h-9 rounded-xl border border-border bg-surface-2 hover:bg-surface-3 transition flex items-center justify-center text-muted hover:text-fg cursor-pointer">
+          @if (darkMode()) {
+          <!-- Sol (Modo Claro) -->
+          <svg class="w-4 h-4 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+            </path>
+          </svg>
+          } @else {
+          <!-- Luna (Modo Oscuro) -->
+          <svg class="w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+          }
+        </button>
+
+        <!-- CTA Principal del Header -->
+        <button type="button" (click)="openDemoModal()"
+          class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-white hover:opacity-95 transition text-xs font-bold shadow-xs cursor-pointer">
+          <span>Solicitar Demo</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
+
+        <!-- Botón Hamburguesa Móvil -->
+        <button type="button" (click)="mobileMenuOpen.set(!mobileMenuOpen())"
+          class="md:hidden w-9 h-9 rounded-xl border border-border bg-surface-2 flex items-center justify-center text-muted hover:text-fg cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            @if (mobileMenuOpen()) {
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            } @else {
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            }
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú Desplegable Móvil -->
+    @if (mobileMenuOpen()) {
+    <div class="md:hidden border-t border-border bg-surface px-4 py-4 space-y-3 shadow-lg">
+      <button type="button" (click)="scrollTo('beneficios')"
+        class="block w-full text-left py-2 text-xs font-bold text-fg hover:text-primary">
+        Beneficios
+      </button>
+      <button type="button" (click)="scrollTo('como-funciona')"
+        class="block w-full text-left py-2 text-xs font-bold text-fg hover:text-primary">
+        Cómo Funciona
+      </button>
+      <button type="button" (click)="scrollTo('plataforma')"
+        class="block w-full text-left py-2 text-xs font-bold text-fg hover:text-primary">
+        Plataforma
+      </button>
+      <button type="button" (click)="scrollTo('preguntas-frecuentes')"
+        class="block w-full text-left py-2 text-xs font-bold text-fg hover:text-primary">
+        Preguntas Frecuentes
+      </button>
+      <button type="button" (click)="openDemoModal(); mobileMenuOpen.set(false)"
+        class="w-full mt-2 py-2.5 px-4 rounded-xl bg-primary text-white text-xs font-bold text-center block shadow-xs">
+        Solicitar Demostración Guiada
+      </button>
+    </div>
+    }
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- 2. HERO SECTION CON ENFOQUE ANTI-BLOQUEOS Y SIMULACIÓN EN VIVO           -->
+  <!-- ========================================================================= -->
+  <section
+    class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28 border-b border-border bg-radial from-primary/5 via-transparent to-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+        <!-- Columna Izquierda: Copy de Alta Conversión -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+
+          <!-- Badge Anti-Bloqueos Oficial de Meta -->
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-success-bg border border-success/30 text-[11px] font-bold text-success shadow-xs">
+            <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+              </path>
+            </svg>
+            <span>API Oficial de Meta Cloud · Cero Riesgo de Bloqueos de Línea</span>
+          </div>
+
+          <!-- Titular Principal H1 -->
+          <h1
+            class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-fg leading-tight sm:leading-tight">
+            Convierte cada chat de WhatsApp en <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">ventas y citas
+              automáticas</span> 24/7.
+          </h1>
+
+          <!-- Párrafo Descriptivo -->
+          <p class="text-sm sm:text-base text-muted max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+            El SaaS omnicanal con Inteligencia Artificial que atiende dudas con tu catálogo oficial, califica prospectos
+            y agenda reuniones en tiempo real. Máxima seguridad bajo los estándares oficiales de Meta Business Platform.
+          </p>
+
+          <!-- Botones de Llamado a la Acción (CTAs) -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
+            <button type="button" (click)="openDemoModal()"
+              class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-primary text-white hover:opacity-95 transition text-xs sm:text-sm font-extrabold flex items-center justify-center gap-2 shadow-md hover:shadow-lg cursor-pointer">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122">
+                </path>
+              </svg>
+              <span>Solicitar Demostración Guiada</span>
+            </button>
+
+            <a [href]="getWhatsAppDirectUrl()" target="_blank" rel="noopener noreferrer"
+              class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-surface border border-border hover:bg-surface-2 transition text-xs sm:text-sm font-extrabold text-fg flex items-center justify-center gap-2 shadow-xs cursor-pointer">
+              <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.599 2.679-.702c.97.575 1.772.88 2.781.88 3.183 0 5.768-2.587 5.768-5.766.001-3.18-2.585-5.764-5.768-5.764zm3.377 8.21c-.14.394-.817.755-1.127.804-.29.047-.648.069-1.054-.061-.252-.08-.577-.187-.993-.367-1.749-.757-2.886-2.529-2.974-2.646-.087-.116-.708-.941-.708-1.796 0-.855.449-1.277.609-1.452.16-.175.349-.219.465-.219.116 0 .233.001.335.006.107.005.25-.041.391.298.146.35.495 1.211.539 1.299.044.088.073.19.015.306-.059.117-.088.19-.175.292-.088.102-.185.228-.264.306-.088.087-.179.182-.077.357.102.175.454.748.974 1.211.671.597 1.237.782 1.412.87.175.088.277.073.379-.044.103-.117.437-.51.554-.685.116-.175.233-.146.393-.088.16.059 1.019.48 1.194.568.175.088.291.131.335.204.043.073.043.423-.097.817z" />
+              </svg>
+              <span>Probar en WhatsApp Oficial</span>
+            </a>
+          </div>
+
+          <!-- Checkmarks de Confianza -->
+          <div class="pt-4 grid grid-cols-2 sm:grid-cols-3 gap-3 text-left">
+            <div class="flex items-center gap-2 text-xs text-muted">
+              <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Sin QR piratas</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-muted">
+              <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Meta Embedded Signup</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-muted">
+              <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Multi-operador humano</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Mockup Interactivo Fidedigno de WhatsApp IA -->
+        <div class="lg:col-span-5">
+          <div
+            class="relative mx-auto max-w-sm sm:max-w-md bg-surface border-2 border-border rounded-3xl shadow-2xl overflow-hidden">
+
+            <!-- Cabecera del Chat Mockup -->
+            <div class="bg-surface-2 p-4 border-b border-border flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div
+                  class="w-10 h-10 rounded-full bg-primary/20 text-primary flex items-center justify-center font-extrabold text-sm border border-primary/30">
+                  BA
+                </div>
+                <div>
+                  <div class="text-xs font-bold text-fg flex items-center gap-1.5">
+                    <span>Bruneitor Asesor IA</span>
+                    <svg class="w-3.5 h-3.5 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                      <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                    </svg>
+                  </div>
+                  <div class="text-[10px] text-success font-semibold flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-success animate-pulse"></span>
+                    <span>En línea · Cuenta Verificada</span>
+                  </div>
+                </div>
+              </div>
+
+              <span
+                class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-surface border border-border text-muted">
+                Ventana 24h: Activa
+              </span>
+            </div>
+
+            <!-- Cuerpo del Chat: Simulación de Venta y Agendamiento -->
+            <div class="p-4 space-y-3.5 bg-bg/50 text-xs leading-relaxed max-h-[380px] overflow-y-auto">
+
+              <!-- Mensaje del Prospecto -->
+              <div class="flex justify-end">
+                <div class="max-w-[85%] bg-primary text-white p-3 rounded-2xl rounded-tr-none shadow-xs">
+                  <p>Hola, buenas tardes. Necesito información sobre su servicio de Consultoría Integral y saber si
+                    podemos agendar una cita.</p>
+                  <span class="text-[9px] opacity-75 block text-right mt-1">10:14 a. m.</span>
+                </div>
+              </div>
+
+              <!-- Respuesta de la IA con Catálogo Real -->
+              <div class="flex justify-start">
+                <div
+                  class="max-w-[90%] bg-surface border border-border text-fg p-3 rounded-2xl rounded-tl-none shadow-xs space-y-2">
+                  <p>¡Hola! Qué gusto saludarte. En nuestro catálogo contamos con la <strong>Consultoría Integral para
+                      Empresas</strong> (S/ 250 · 45 min), orientada a optimizar procesos, diagnosticar contingencias y
+                    diseñar un plan a medida.</p>
+                  <p>Tengo disponibilidad en el calendario para mañana en estos horarios:</p>
+                  <div class="grid grid-cols-2 gap-1.5 pt-1">
+                    <span
+                      class="px-2.5 py-1.5 rounded-lg bg-surface-2 border border-border text-center font-mono font-bold text-[11px] text-primary">
+                      10:00 a. m.
+                    </span>
+                    <span
+                      class="px-2.5 py-1.5 rounded-lg bg-surface-2 border border-border text-center font-mono font-bold text-[11px] text-primary">
+                      04:00 p. m.
+                    </span>
+                  </div>
+                  <span class="text-[9px] text-muted block text-right">10:14 a. m. · Respondió en 1.4s</span>
+                </div>
+              </div>
+
+              <!-- Respuesta del Prospecto -->
+              <div class="flex justify-end">
+                <div class="max-w-[85%] bg-primary text-white p-3 rounded-2xl rounded-tr-none shadow-xs">
+                  <p>Perfecto, me queda excelente a las 10:00 a. m. Mi nombre es Carlos Morales de Constructora del Sur.
+                  </p>
+                  <span class="text-[9px] opacity-75 block text-right mt-1">10:15 a. m.</span>
+                </div>
+              </div>
+
+              <!-- Confirmación Automática de Cita y CRM -->
+              <div class="flex justify-start">
+                <div
+                  class="max-w-[90%] bg-surface border border-success/40 text-fg p-3 rounded-2xl rounded-tl-none shadow-xs space-y-1.5">
+                  <div class="flex items-center gap-1.5 text-success font-bold text-[11px]">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>Cita Confirmada en el Sistema</span>
+                  </div>
+                  <p class="text-[11px] text-muted">
+                    Listo, Carlos. Agendamos tu sesión para mañana a las <strong>10:00 a. m.</strong> con modalidad
+                    virtual. Te enviamos la invitación y el recordatorio por este mismo chat.
+                  </p>
+                  <div class="text-[10px] font-semibold text-primary pt-0.5">
+                    Lead guardado en etapa "Reunión Agendada" en tu CRM.
+                  </div>
+                  <span class="text-[9px] text-muted block text-right">10:15 a. m.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Barra Inferior de Entrada Simulada -->
+            <div class="p-3 bg-surface border-t border-border flex items-center gap-2">
+              <input type="text" readonly value="Escribe un mensaje..."
+                class="w-full bg-surface-2 border border-border rounded-xl px-3 py-1.5 text-xs text-muted focus:outline-none" />
+              <div class="w-8 h-8 rounded-xl bg-primary text-white flex items-center justify-center shrink-0">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3">
+                  </path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 3. FRANJA DE CONFIANZA Y SEGURIDAD (TRUST BADGES)                         -->
+  <!-- ========================================================================= -->
+  <section class="border-b border-border bg-surface-2/40 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+              </path>
+            </svg>
+          </div>
+          <div>
+            <div class="text-xs font-bold text-fg">API Oficial de Meta</div>
+            <div class="text-[11px] text-muted">WhatsApp Business Cloud API</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-success-bg text-success flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <div>
+            <div class="text-xs font-bold text-fg">Atención 24/7 Real</div>
+            <div class="text-[11px] text-muted">Respuestas en menos de 2s</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+              </path>
+            </svg>
+          </div>
+          <div>
+            <div class="text-xs font-bold text-fg">CRM y Equipo Multi-Agente</div>
+            <div class="text-[11px] text-muted">Operadores ilimitados</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-success-bg text-success flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+              </path>
+            </svg>
+          </div>
+          <div>
+            <div class="text-xs font-bold text-fg">Seguridad y Privacidad Total</div>
+            <div class="text-[11px] text-muted">Entorno privado y exclusivo por empresa</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 4. BENEFICIOS CLAVE DEL SISTEMA WEB                                       -->
+  <!-- ========================================================================= -->
+  <section id="beneficios" class="py-20 border-b border-border bg-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <span
+          class="text-[11px] font-extrabold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
+          ¿Por qué las empresas eligen BRUNEITOR.AI?
+        </span>
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-fg tracking-tight">
+          Diseñado para vender más, reducir costos y proteger la reputación de tu línea.
+        </h2>
+        <p class="text-xs sm:text-sm text-muted">
+          Elimina la pérdida de clientes por demoras en responder y automatiza tu flujo comercial con la tranquilidad de
+          estar respaldado por la infraestructura oficial de Meta.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Beneficio 1: Cero Bloqueos -->
+        <div
+          class="p-6 rounded-2xl bg-surface border border-border hover:border-primary/50 transition space-y-3 shadow-xs">
+          <div class="w-11 h-11 rounded-xl bg-success-bg text-success flex items-center justify-center font-bold">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+              </path>
+            </svg>
+          </div>
+          <h3 class="text-base font-bold text-fg">100% Libre de Bloqueos</h3>
+          <p class="text-xs text-muted leading-relaxed">
+            Nunca más perderás el número de tu negocio. Conexión formal mediante WhatsApp Business Cloud API autorizada
+            por Meta, sin emuladores ni scripts invasivos.
+          </p>
+        </div>
+
+        <!-- Beneficio 2: Catálogo Híbrido sin Alucinaciones -->
+        <div
+          class="p-6 rounded-2xl bg-surface border border-border hover:border-primary/50 transition space-y-3 shadow-xs">
+          <div class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+              </path>
+            </svg>
+          </div>
+          <h3 class="text-base font-bold text-fg">Catálogo Híbrido Oficial</h3>
+          <p class="text-xs text-muted leading-relaxed">
+            Carga tus productos y servicios con precios, stock, SKU y preguntas frecuentes. La IA únicamente responderá
+            sobre los ítems que tengas habilitados en tu panel.
+          </p>
+        </div>
+
+        <!-- Beneficio 3: Agenda de Citas en Tiempo Real -->
+        <div
+          class="p-6 rounded-2xl bg-surface border border-border hover:border-primary/50 transition space-y-3 shadow-xs">
+          <div class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-base font-bold text-fg">Agendamiento Automático</h3>
+          <p class="text-xs text-muted leading-relaxed">
+            El asistente consulta disponibilidad real, respeta descansos entre citas y feriados bloqueados, reservando
+            reuniones sin colisiones ni intervención manual.
+          </p>
+        </div>
+
+        <!-- Beneficio 4: Control de Ventana 24h & Ahorro -->
+        <div
+          class="p-6 rounded-2xl bg-surface border border-border hover:border-primary/50 transition space-y-3 shadow-xs">
+          <div class="w-11 h-11 rounded-xl bg-warning-bg text-warning flex items-center justify-center font-bold">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+              </path>
+            </svg>
+          </div>
+          <h3 class="text-base font-bold text-fg">Ahorro en Costos de Meta</h3>
+          <p class="text-xs text-muted leading-relaxed">
+            Monitoreo en tiempo real de la ventana de 24 horas. Avisa a tus operadores antes de que expire la sesión
+            gratuita para evitar pagar tarifas por nuevas conversaciones.
+          </p>
+        </div>
+
+        <!-- Beneficio 5: Transferencia Fluida a Humanos -->
+        <div
+          class="p-6 rounded-2xl bg-surface border border-border hover:border-primary/50 transition space-y-3 shadow-xs">
+          <div class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+              </path>
+            </svg>
+          </div>
+          <h3 class="text-base font-bold text-fg">Derivación con Resumen</h3>
+          <p class="text-xs text-muted leading-relaxed">
+            Cuando un cliente requiere un asesor humano, la IA pausa su respuesta y genera una nota interna con el
+            contexto del prospecto para que el operador continúe sin fricción.
+          </p>
+        </div>
+
+        <!-- Beneficio 6: Campañas Masivas con Plantillas Meta -->
+        <div
+          class="p-6 rounded-2xl bg-surface border border-border hover:border-primary/50 transition space-y-3 shadow-xs">
+          <div class="w-11 h-11 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z">
+              </path>
+            </svg>
+          </div>
+          <h3 class="text-base font-bold text-fg">Broadcasts Oficiales</h3>
+          <p class="text-xs text-muted leading-relaxed">
+            Envía mensajes masivos aprobados por Meta a clientes filtrados por su etapa en el CRM (ej. a todos los que
+            recibieron propuesta) procesados mediante colas BullMQ.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Tabla Comparativa: Piratas vs Meta Oficial -->
+      <div class="pt-8">
+        <div class="bg-surface border border-border rounded-2xl overflow-hidden shadow-xs">
+          <div class="p-5 sm:p-6 border-b border-border bg-surface-2/40">
+            <h3 class="text-base sm:text-lg font-extrabold text-fg">
+              Comparativa: Bots No Oficiales (QR/Web Scraping) vs BRUNEITOR.AI (API Oficial Meta)
+            </h3>
+            <p class="text-xs text-muted mt-1">
+              Conoce la diferencia técnica real entre arriesgar tu número comercial y construir sobre la infraestructura
+              autorizada por Meta.
+            </p>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-surface-2 text-fg border-b border-border">
+                <tr>
+                  <th class="p-3.5 sm:p-4 font-bold">Característica</th>
+                  <th class="p-3.5 sm:p-4 font-bold text-danger">Herramientas No Oficiales (QR)</th>
+                  <th class="p-3.5 sm:p-4 font-bold text-success">BRUNEITOR.AI (API Oficial Meta)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-border text-muted">
+                <tr class="hover:bg-surface-2/30 transition">
+                  <td class="p-3.5 sm:p-4 font-bold text-fg">Riesgo de Suspensión / Baneo</td>
+                  <td class="p-3.5 sm:p-4 text-danger font-semibold">Muy Alto (Meta detecta emulaciones)</td>
+                  <td class="p-3.5 sm:p-4 text-success font-bold flex items-center gap-1.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    0% Riesgo (Aprobado formalmente)
+                  </td>
+                </tr>
+                <tr class="hover:bg-surface-2/30 transition">
+                  <td class="p-3.5 sm:p-4 font-bold text-fg">Estabilidad y Uptime</td>
+                  <td class="p-3.5 sm:p-4">Se cae si se apaga el teléfono o pierde WiFi</td>
+                  <td class="p-3.5 sm:p-4 text-fg font-semibold">Servidores en la nube con 99.9% disponibilidad</td>
+                </tr>
+                <tr class="hover:bg-surface-2/30 transition">
+                  <td class="p-3.5 sm:p-4 font-bold text-fg">Campañas Masivas de Mensajes</td>
+                  <td class="p-3.5 sm:p-4 text-danger">Baneo casi inmediato por marcarse como SPAM</td>
+                  <td class="p-3.5 sm:p-4 text-fg font-semibold">Plantillas oficiales pre-aprobadas por Meta</td>
+                </tr>
+                <tr class="hover:bg-surface-2/30 transition">
+                  <td class="p-3.5 sm:p-4 font-bold text-fg">Verificación de Empresa</td>
+                  <td class="p-3.5 sm:p-4">No compatible con insignia verde de Meta</td>
+                  <td class="p-3.5 sm:p-4 text-fg font-semibold">Apto para obtener la insignia verde oficial</td>
+                </tr>
+                <tr class="hover:bg-surface-2/30 transition">
+                  <td class="p-3.5 sm:p-4 font-bold text-fg">Multi-Canalidad</td>
+                  <td class="p-3.5 sm:p-4">Solo WhatsApp local</td>
+                  <td class="p-3.5 sm:p-4 text-fg font-semibold">WhatsApp, Instagram Direct, Messenger y TikTok</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 5. CÓMO FUNCIONA EN 3 PASOS                                               -->
+  <!-- ========================================================================= -->
+  <section id="como-funciona" class="py-20 border-b border-border bg-surface-2/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <span
+          class="text-[11px] font-extrabold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
+          Implementación Simple
+        </span>
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-fg tracking-tight">
+          Pon en marcha tu asistente comercial en 3 sencillos pasos
+        </h2>
+        <p class="text-xs sm:text-sm text-muted">
+          Sin configuraciones técnicas complejas ni programación. Diseñado para que tu equipo empiece a operar el mismo
+          día.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+
+        <!-- Paso 1 -->
+        <div class="p-6 rounded-2xl bg-surface border border-border space-y-4 shadow-xs relative">
+          <div
+            class="w-10 h-10 rounded-xl bg-primary text-white font-extrabold text-sm flex items-center justify-center">
+            1
+          </div>
+          <h3 class="text-base font-bold text-fg">Conecta tu WhatsApp con 1 Clic</h3>
+          <p class="text-xs text-muted leading-relaxed">
+            Mediante la ventana oficial de <strong>Meta Embedded Signup</strong> vinculas tu número de teléfono y
+            catálogo comercial sin copiar tokens ni instalar programas en tu computadora.
+          </p>
+          <div class="pt-2 text-[11px] font-semibold text-primary">
+            ✓ Verificación de firma criptográfica HMAC
+          </div>
+        </div>
+
+        <!-- Paso 2 -->
+        <div class="p-6 rounded-2xl bg-surface border border-border space-y-4 shadow-xs relative">
+          <div
+            class="w-10 h-10 rounded-xl bg-primary text-white font-extrabold text-sm flex items-center justify-center">
+            2
+          </div>
+          <h3 class="text-base font-bold text-fg">Personaliza tu Identidad y Catálogo</h3>
+          <p class="text-xs text-muted leading-relaxed">
+            Elige una plantilla según tu rubro (Salud, Consultoría, E-commerce, Inmobiliaria), carga tus
+            productos/servicios y selecciona el estilo de respuesta (breve, moderado o detallado).
+          </p>
+          <div class="pt-2 text-[11px] font-semibold text-primary">
+            ✓ Cero jerga técnica ni prompts complicados
+          </div>
+        </div>
+
+        <!-- Paso 3 -->
+        <div class="p-6 rounded-2xl bg-surface border border-border space-y-4 shadow-xs relative">
+          <div
+            class="w-10 h-10 rounded-xl bg-primary text-white font-extrabold text-sm flex items-center justify-center">
+            3
+          </div>
+          <h3 class="text-base font-bold text-fg">Vende y Agenda 24/7 en Automático</h3>
+          <p class="text-xs text-muted leading-relaxed">
+            Tus clientes reciben atención instantánea las 24 horas, resuelven sus dudas de precios, eligen horarios en
+            tu calendario y tus asesores intervienen cuando sea necesario.
+          </p>
+          <div class="pt-2 text-[11px] font-semibold text-primary">
+            ✓ Sincronización en tiempo real con WebSockets
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 6. PLATAFORMA EN ACCIÓN (SHOWCASE INTERACTIVO DE 4 MÓDULOS)               -->
+  <!-- ========================================================================= -->
+  <section id="plataforma" class="py-20 border-b border-border bg-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <span
+          class="text-[11px] font-extrabold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
+          Explora la Interfaz Real
+        </span>
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-fg tracking-tight">
+          Una plataforma profesional construida para la velocidad de tu equipo
+        </h2>
+        <p class="text-xs sm:text-sm text-muted">
+          Haz clic en cada pestaña para previsualizar los módulos principales que operarán en el día a día de tu
+          negocio.
+        </p>
+      </div>
+
+      <!-- Selector de Pestañas del Showcase -->
+      <div class="flex justify-center">
+        <div class="inline-flex p-1.5 rounded-2xl bg-surface-2 border border-border overflow-x-auto max-w-full">
+          <button type="button" (click)="setActiveTab('inbox')" [class.bg-primary]="activeTab() === 'inbox'"
+            [class.text-white]="activeTab() === 'inbox'" [class.text-muted]="activeTab() !== 'inbox'"
+            class="px-4 py-2.5 rounded-xl text-xs font-bold transition shrink-0 cursor-pointer flex items-center gap-2">
+            <span>Bandeja Omnicanal</span>
+          </button>
+
+          <button type="button" (click)="setActiveTab('ai-config')" [class.bg-primary]="activeTab() === 'ai-config'"
+            [class.text-white]="activeTab() === 'ai-config'" [class.text-muted]="activeTab() !== 'ai-config'"
+            class="px-4 py-2.5 rounded-xl text-xs font-bold transition shrink-0 cursor-pointer flex items-center gap-2">
+            <span>Configuración IA Sin Código</span>
+          </button>
+
+          <button type="button" (click)="setActiveTab('calendar')" [class.bg-primary]="activeTab() === 'calendar'"
+            [class.text-white]="activeTab() === 'calendar'" [class.text-muted]="activeTab() !== 'calendar'"
+            class="px-4 py-2.5 rounded-xl text-xs font-bold transition shrink-0 cursor-pointer flex items-center gap-2">
+            <span>Agenda y Citas en Vivo</span>
+          </button>
+
+          <button type="button" (click)="setActiveTab('broadcasts')" [class.bg-primary]="activeTab() === 'broadcasts'"
+            [class.text-white]="activeTab() === 'broadcasts'" [class.text-muted]="activeTab() !== 'broadcasts'"
+            class="px-4 py-2.5 rounded-xl text-xs font-bold transition shrink-0 cursor-pointer flex items-center gap-2">
+            <span>Campañas Masivas Meta</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Visualizador del Módulo Activo -->
+      <div class="bg-surface border border-border rounded-3xl p-4 sm:p-8 shadow-xl">
+
+        <!-- TAB 1: BANDEJA OMNICANAL -->
+        @if (activeTab() === 'inbox') {
+        <div class="space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-border pb-4">
+            <div>
+              <h3 class="text-base font-extrabold text-fg flex items-center gap-2">
+                <span>Bandeja de Entrada Omnicanal & CRM 360°</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/10 text-primary">Tiempo Real</span>
+              </h3>
+              <p class="text-xs text-muted">WhatsApp, Instagram y Messenger en un entorno multi-operador con alertas de
+                ventana 24h y notas internas.</p>
+            </div>
+            <span class="text-xs font-bold text-success flex items-center gap-1.5 self-start sm:self-auto">
+              <span class="w-2 h-2 rounded-full bg-success"></span>
+              Socket Conectado
+            </span>
+          </div>
+
+          <!-- Mockup Visual de la Bandeja Omnicanal -->
+          <div
+            class="grid grid-cols-1 lg:grid-cols-12 gap-4 rounded-2xl border border-border bg-surface-2/30 p-3 overflow-hidden text-xs">
+
+            <!-- Lista Lateral de Chats -->
+            <div class="lg:col-span-4 bg-surface rounded-xl border border-border p-3 space-y-2">
+              <div class="flex items-center justify-between pb-2 border-b border-border">
+                <span class="font-bold text-fg">Conversaciones (14)</span>
+                <span class="text-[10px] text-primary font-bold">Todas</span>
+              </div>
+              <div class="space-y-1.5">
+                <div class="p-2.5 rounded-lg bg-surface-2 border border-primary/30 flex items-start justify-between">
+                  <div>
+                    <div class="font-bold text-fg">Carlos Morales</div>
+                    <div class="text-[11px] text-muted truncate">Cita agendada para mañana 10am</div>
+                  </div>
+                  <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-600 text-white font-bold">WA</span>
+                </div>
+                <div
+                  class="p-2.5 rounded-lg bg-surface border border-border flex items-start justify-between opacity-80">
+                  <div>
+                    <div class="font-bold text-fg">Dra. María Elena</div>
+                    <div class="text-[11px] text-muted truncate">Consulta de tarifario de auditoría</div>
+                  </div>
+                  <span class="text-[9px] px-1.5 py-0.5 rounded bg-purple-600 text-white font-bold">IG</span>
+                </div>
+                <div
+                  class="p-2.5 rounded-lg bg-surface border border-border flex items-start justify-between opacity-80">
+                  <div>
+                    <div class="font-bold text-fg">Inversiones Andinas</div>
+                    <div class="text-[11px] text-muted truncate">Requiere atención humana urgente</div>
+                  </div>
+                  <span class="text-[9px] px-1.5 py-0.5 rounded bg-blue-600 text-white font-bold">FB</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mensajes Centrales -->
+            <div
+              class="lg:col-span-5 bg-surface rounded-xl border border-border p-3.5 flex flex-col justify-between space-y-3">
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between border-b border-border pb-2">
+                  <span class="font-bold text-fg">Chat con Carlos Morales (+51 987 654 321)</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded-full bg-success-bg text-success font-bold">Ventana Libre
+                    23h 48m</span>
+                </div>
+                <div class="p-2 rounded-lg bg-note border border-note-border text-note-text text-[11px]">
+                  <strong>Nota Interna del Asistente IA:</strong> El cliente busca constituir una empresa constructora.
+                  Se le agendó reunión virtual para el diagnóstico.
+                </div>
+                <div class="bg-surface-2 p-2.5 rounded-xl text-fg text-[11px]">
+                  ¿Deseas que reservemos un turno para mañana a las 10:00 a. m.?
+                </div>
+                <div class="bg-primary text-white p-2.5 rounded-xl text-[11px] ml-auto max-w-[80%]">
+                  Sí, confirmado por favor.
+                </div>
+              </div>
+              <div class="pt-2 border-t border-border flex items-center gap-2">
+                <input type="text" readonly value="Escribe una respuesta o nota interna..."
+                  class="w-full bg-surface-2 border border-border rounded-lg px-2.5 py-1.5 text-xs text-muted" />
+                <button type="button"
+                  class="px-3 py-1.5 rounded-lg bg-primary text-white font-bold text-xs">Enviar</button>
+              </div>
+            </div>
+
+            <!-- Sidebar CRM 360° -->
+            <div class="lg:col-span-3 bg-surface rounded-xl border border-border p-3 space-y-3">
+              <div class="font-bold text-fg border-b border-border pb-2">Detalles del Contacto / CRM</div>
+              <div class="space-y-1.5 text-[11px]">
+                <div><strong class="text-muted">Empresa:</strong> Constructora del Sur S.A.</div>
+                <div><strong class="text-muted">Etapa CRM:</strong> <span class="text-primary font-bold">Reunión
+                    Agendada</span></div>
+                <div><strong class="text-muted">Mensajes totales:</strong> 8 intercambiados</div>
+                <div><strong class="text-muted">Asignado a:</strong> Asesor Senior</div>
+              </div>
+              <div class="pt-2 border-t border-border">
+                <button type="button"
+                  class="w-full py-1.5 rounded-lg bg-surface-2 border border-border text-primary font-bold text-xs text-center">
+                  Ver Historial Completo
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        }
+
+        <!-- TAB 2: CONFIGURACIÓN IA SIN CÓDIGO -->
+        @if (activeTab() === 'ai-config') {
+        <div class="space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-border pb-4">
+            <div>
+              <h3 class="text-base font-extrabold text-fg flex items-center gap-2">
+                <span>Asistente Guiado Sin Código en 5 Pasos</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/10 text-primary">Zero-Code</span>
+              </h3>
+              <p class="text-xs text-muted">Elimina la jerga técnica. Ajusta identidad, longitud de respuesta y catálogo
+                con un solo clic.</p>
+            </div>
+            <span class="text-xs font-bold text-primary">Plantillas Activas</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-4 rounded-xl border-2 border-primary bg-surface-2/60 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-fg">Moderado y Conversacional</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-primary text-white">Recomendado</span>
+              </div>
+              <p class="text-[11px] text-muted">Explicaciones de 2 a 4 oraciones con calidez y empatía. Balance perfecto
+                para WhatsApp.</p>
+            </div>
+
+            <div class="p-4 rounded-xl border border-border bg-surface space-y-2 opacity-80">
+              <span class="text-xs font-bold text-fg">Breve y al Grano</span>
+              <p class="text-[11px] text-muted">Respuestas directas de 1 a 2 oraciones para mensajería ultrarrápida y
+                confirmaciones.</p>
+            </div>
+
+            <div class="p-4 rounded-xl border border-border bg-surface space-y-2 opacity-80">
+              <span class="text-xs font-bold text-fg">Detallado y Persuasivo</span>
+              <p class="text-[11px] text-muted">Respuestas enriquecidas con viñetas y beneficios para asesorías
+                consultivas complejas.</p>
+            </div>
+          </div>
+
+          <div
+            class="p-4 rounded-xl bg-surface-2 border border-border flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+            <div class="space-y-0.5">
+              <div class="font-bold text-fg">Control de Conocimiento por Ítem de Catálogo</div>
+              <div class="text-muted text-[11px]">Puedes apagar el interruptor de cualquier producto o servicio para que
+                el bot no lo ofrezca sin eliminarlo.</div>
+            </div>
+            <span
+              class="px-3 py-1 rounded-full bg-success-bg text-success font-bold text-[11px] self-start sm:self-auto shrink-0">
+              9 de 9 Ítems Autorizados para IA
+            </span>
+          </div>
+        </div>
+        }
+
+        <!-- TAB 3: AGENDA Y CITAS -->
+        @if (activeTab() === 'calendar') {
+        <div class="space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-border pb-4">
+            <div>
+              <h3 class="text-base font-extrabold text-fg flex items-center gap-2">
+                <span>Calendario de Citas & Sincronización Automática</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-success-bg text-success">Cero
+                  Solapamientos</span>
+              </h3>
+              <p class="text-xs text-muted">Manejo de turnos de 45 min, descansos de 15 min y bloqueo automático de
+                feriados.</p>
+            </div>
+            <div class="text-xs font-bold text-primary">3 Citas Agendadas Hoy</div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <div class="p-4 rounded-xl bg-surface-2 border border-border space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-bold text-fg">10:00 a. m. - 10:45 a. m.</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-success-bg text-success">CONFIRMADA</span>
+              </div>
+              <div class="font-bold text-fg">Carlos Morales · Constructora del Sur</div>
+              <div class="text-[11px] text-muted">Modalidad: Virtual (Google Meet)</div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-surface-2 border border-border space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-bold text-fg">11:30 a. m. - 12:15 p. m.</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/10 text-primary">PROGRAMADA</span>
+              </div>
+              <div class="font-bold text-fg">Dra. María Elena · Clínica Dental</div>
+              <div class="text-[11px] text-muted">Modalidad: Presencial en Oficina</div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-surface-2 border border-border space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-bold text-fg">04:00 p. m. - 04:45 p. m.</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-success-bg text-success">CONFIRMADA</span>
+              </div>
+              <div class="font-bold text-fg">Gerente de Logística · Retail Express</div>
+              <div class="text-[11px] text-muted">Modalidad: Virtual (Zoom)</div>
+            </div>
+          </div>
+        </div>
+        }
+
+        <!-- TAB 4: CAMPAÑAS MASIVAS META -->
+        @if (activeTab() === 'broadcasts') {
+        <div class="space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-border pb-4">
+            <div>
+              <h3 class="text-base font-extrabold text-fg flex items-center gap-2">
+                <span>Campañas Masivas con Plantillas Oficiales de Meta</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-success-bg text-success">Anti-Spam
+                  BullMQ</span>
+              </h3>
+              <p class="text-xs text-muted">Envío masivo seguro filtrado por etapa del CRM con plantillas pre-aprobadas.
+              </p>
+            </div>
+            <div class="text-xs font-bold text-fg">100% Entregabilidad</div>
+          </div>
+
+          <div class="p-4 rounded-xl bg-surface-2 border border-border grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <div class="space-y-1">
+              <span class="text-muted block text-[11px]">Segmentación de Audiencia</span>
+              <span class="font-bold text-fg text-sm">Etapa: "Propuesta Enviada"</span>
+              <span class="text-[11px] text-primary block">48 contactos seleccionados</span>
+            </div>
+            <div class="space-y-1">
+              <span class="text-muted block text-[11px]">Plantilla Oficial de Meta</span>
+              <span class="font-bold text-fg text-sm">seguimiento_propuesta_mes</span>
+              <span class="text-[11px] text-success block">Aprobada por Meta for Developers</span>
+            </div>
+            <div class="space-y-1">
+              <span class="text-muted block text-[11px]">Despacho en Segundo Plano</span>
+              <span class="font-bold text-fg text-sm">Envío progresivo inteligente</span>
+              <span class="text-[11px] text-muted block">Intervalo de seguridad entre envíos</span>
+            </div>
+          </div>
+        </div>
+        }
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 7. PREGUNTAS CLAVE (FAQ ACCORDION)                                        -->
+  <!-- ========================================================================= -->
+  <section id="preguntas-frecuentes" class="py-20 border-b border-border bg-surface-2/30">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+
+      <div class="text-center space-y-3">
+        <span
+          class="text-[11px] font-extrabold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
+          Respuestas Claras y Transparentes
+        </span>
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-fg tracking-tight">
+          Preguntas Frecuentes
+        </h2>
+        <p class="text-xs sm:text-sm text-muted">
+          Todo lo que necesitas saber sobre la seguridad oficial de Meta, la integración y el funcionamiento de
+          BRUNEITOR.AI.
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        @for (faq of faqs; track $index) {
+        <div class="border border-border rounded-2xl bg-surface overflow-hidden transition shadow-xs">
+          <button type="button" (click)="toggleFaq($index)"
+            class="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-surface-2/50 transition">
+            <span class="text-xs sm:text-sm font-extrabold text-fg">
+              {{ faq.question }}
+            </span>
+            <div [class.rotate-180]="openFaqIndex() === $index"
+              class="w-7 h-7 rounded-lg bg-surface-2 flex items-center justify-center shrink-0 transition-transform duration-200">
+              <svg class="w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </div>
+          </button>
+
+          @if (openFaqIndex() === $index) {
+          <div
+            class="px-4 pb-4 sm:px-5 sm:pb-5 pt-1 text-xs text-muted leading-relaxed border-t border-border/60 bg-surface-2/20">
+            {{ faq.answer }}
+          </div>
+          }
+        </div>
+        }
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 8. SECCIÓN FINAL DE CONVERSIÓN & CIERRE                                   -->
+  <!-- ========================================================================= -->
+  <section class="py-20 bg-gradient-to-b from-bg to-surface-2 border-b border-border relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+
+      <div
+        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold">
+        <span>Garantía de Satisfacción & Soporte Especializado</span>
+      </div>
+
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-fg tracking-tight max-w-3xl mx-auto">
+        Empieza a captar clientes y agendar reuniones hoy mismo con <span class="text-primary">BRUNEITOR.AI</span>
+      </h2>
+
+      <p class="text-xs sm:text-sm text-muted max-w-2xl mx-auto leading-relaxed">
+        Agenda una demostración guiada de 20 minutos con uno de nuestros especialistas. Configuraremos tu cuenta en vivo
+        y verás cómo responde el bot con los datos reales de tu propia empresa.
+      </p>
+
+      <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <button type="button" (click)="openDemoModal()"
+          class="w-full sm:w-auto px-8 py-4 rounded-xl bg-primary text-white hover:opacity-95 transition text-xs sm:text-sm font-extrabold shadow-lg hover:shadow-xl cursor-pointer">
+          Solicitar Demostración Guiada
+        </button>
+
+        <a [href]="getWhatsAppDirectUrl()" target="_blank" rel="noopener noreferrer"
+          class="w-full sm:w-auto px-8 py-4 rounded-xl bg-surface border border-border hover:bg-surface-2 transition text-xs sm:text-sm font-extrabold text-fg flex items-center justify-center gap-2 shadow-xs cursor-pointer">
+          <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.599 2.679-.702c.97.575 1.772.88 2.781.88 3.183 0 5.768-2.587 5.768-5.766.001-3.18-2.585-5.764-5.768-5.764zm3.377 8.21c-.14.394-.817.755-1.127.804-.29.047-.648.069-1.054-.061-.252-.08-.577-.187-.993-.367-1.749-.757-2.886-2.529-2.974-2.646-.087-.116-.708-.941-.708-1.796 0-.855.449-1.277.609-1.452.16-.175.349-.219.465-.219.116 0 .233.001.335.006.107.005.25-.041.391.298.146.35.495 1.211.539 1.299.044.088.073.19.015.306-.059.117-.088.19-.175.292-.088.102-.185.228-.264.306-.088.087-.179.182-.077.357.102.175.454.748.974 1.211.671.597 1.237.782 1.412.87.175.088.277.073.379-.044.103-.117.437-.51.554-.685.116-.175.233-.146.393-.088.16.059 1.019.48 1.194.568.175.088.291.131.335.204.043.073.043.423-.097.817z" />
+          </svg>
+          <span>Escribir por WhatsApp</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 9. FOOTER CORPORATIVO CON ENLACES LEGALES & DATOS FISCALES (META VERIFIED)-->
+  <!-- ========================================================================= -->
+  <footer class="bg-surface border-t border-border py-12 text-xs text-muted">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <!-- Columna 1: Marca y RUC Oficial -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-2">
+            <img src="logo.png" alt="BRUNEITOR.AI" class="h-10 w-auto object-contain" />
+            <span class="text-sm font-extrabold text-fg tracking-tight">BRUNEITOR<span
+                class="text-primary">.AI</span></span>
+          </div>
+          <p class="text-[11px] leading-relaxed">
+            Plataforma SaaS omnicanal con Inteligencia Artificial y API Oficial de Meta Cloud. Atención automática,
+            agenda y CRM sin riesgo de bloqueos.
+          </p>
+          <div class="pt-1 space-y-1 text-[11px] border-t border-border/60">
+            <div><strong class="text-fg">RUC:</strong> <span class="font-mono text-primary font-extrabold">{{ legalTaxId
+                }}</span></div>
+            <div><strong class="text-fg">Titular:</strong> {{ legalBusinessName }}</div>
+            <div><strong class="text-fg">Domicilio Fiscal:</strong> {{ fiscalAddress }}</div>
+          </div>
+        </div>
+
+        <!-- Columna 2: Navegación -->
+        <div class="space-y-2.5">
+          <div class="font-bold text-fg uppercase tracking-wider text-[11px]">Navegación</div>
+          <ul class="space-y-1.5 text-[11px]">
+            <li><button type="button" (click)="scrollTo('beneficios')"
+                class="hover:text-primary transition cursor-pointer">Beneficios</button></li>
+            <li><button type="button" (click)="scrollTo('como-funciona')"
+                class="hover:text-primary transition cursor-pointer">Cómo Funciona</button></li>
+            <li><button type="button" (click)="scrollTo('plataforma')"
+                class="hover:text-primary transition cursor-pointer">Plataforma</button></li>
+            <li><button type="button" (click)="scrollTo('preguntas-frecuentes')"
+                class="hover:text-primary transition cursor-pointer">Preguntas Frecuentes</button></li>
+          </ul>
+        </div>
+
+        <!-- Columna 3: Cumplimiento y Legal (Meta Requirements) -->
+        <div class="space-y-2.5">
+          <div class="font-bold text-fg uppercase tracking-wider text-[11px]">Seguridad & Legal</div>
+          <ul class="space-y-1.5 text-[11px]">
+            <li><a routerLink="/privacidad" class="hover:text-primary transition">Políticas de Privacidad</a></li>
+            <li><a routerLink="/terminos" class="hover:text-primary transition">Términos y Condiciones</a></li>
+            <li><a routerLink="/eliminacion-datos" class="hover:text-primary transition">Eliminación de Datos (Meta)</a>
+            </li>
+            <li><span class="text-fg">Meta Business Partner Cloud</span></li>
+            <li><span class="text-fg">Cumplimiento Ley N° 29733 / GDPR</span></li>
+          </ul>
+        </div>
+
+        <!-- Columna 4: Contacto Oficial & Soporte -->
+        <div class="space-y-2.5">
+          <div class="font-bold text-fg uppercase tracking-wider text-[11px]">Contacto Comercial & Soporte</div>
+          <p class="text-[11px]">Canales oficiales de verificación y atención:</p>
+          <div class="space-y-1 text-[11px]">
+            <div>
+              <strong class="text-fg">WhatsApp Oficial:</strong>
+              <a [href]="getWhatsAppDirectUrl()" target="_blank" rel="noopener noreferrer"
+                class="text-primary font-bold hover:underline block">
+                {{ officialPhoneDisplay }}
+              </a>
+            </div>
+            <div>
+              <strong class="text-fg">Email Comercial:</strong>
+              <a [href]="'mailto:' + contactEmail" class="text-primary hover:underline block">
+                {{ contactEmail }}
+              </a>
+            </div>
+            <div>
+              <strong class="text-fg">Soporte Técnico:</strong>
+              <a [href]="'mailto:' + supportEmail" class="text-primary hover:underline block">
+                {{ supportEmail }}
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px]">
+        <div>
+          &copy; {{ currentYear }} BRUNEITOR.AI · RUC: <span class="font-mono font-bold">{{ legalTaxId }}</span> · {{
+          fiscalAddress }}. Todos los derechos reservados.
+        </div>
+        <div class="flex flex-wrap items-center gap-3">
+          <a routerLink="/privacidad" class="hover:text-primary transition">Privacidad</a>
+          <span>·</span>
+          <a routerLink="/terminos" class="hover:text-primary transition">Términos</a>
+          <span>·</span>
+          <a routerLink="/eliminacion-datos" class="hover:text-primary transition">Eliminación de Datos</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- 10. MODAL INTERACTIVO: SOLICITAR DEMO                                     -->
+  <!-- ========================================================================= -->
+  @if (isDemoModalOpen()) {
+  <div class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
+    <div
+      class="bg-surface border border-border rounded-3xl max-w-lg w-full p-6 sm:p-7 shadow-2xl space-y-5 animate-in fade-in zoom-in-95">
+
+      <div class="flex items-center justify-between border-b border-border pb-3">
+        <div>
+          <span
+            class="text-[10px] font-extrabold uppercase tracking-wider text-primary bg-primary/10 px-2.5 py-0.5 rounded-full">
+            Demostración Personalizada
+          </span>
+          <h3 class="text-lg font-extrabold text-fg mt-1">
+            Solicitar Demo Guiada de BRUNEITOR.AI
+          </h3>
+        </div>
+        <button type="button" (click)="closeDemoModal()"
+          class="w-8 h-8 rounded-lg bg-surface-2 text-muted hover:text-fg flex items-center justify-center font-bold cursor-pointer">
+          ✕
+        </button>
+      </div>
+
+      @if (demoSubmitted()) {
+      <div class="p-5 rounded-2xl bg-success-bg border border-success/30 text-center space-y-3">
+        <div class="w-12 h-12 rounded-full bg-success text-white flex items-center justify-center mx-auto">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+        <h4 class="text-base font-extrabold text-fg">¡Solicitud recibida con éxito!</h4>
+        <p class="text-xs text-muted">
+          Nos pondremos en contacto contigo por WhatsApp al número <strong>{{ demoForm.whatsapp }}</strong> para
+          coordinar la demostración con los datos de tu empresa.
+        </p>
+        <div class="pt-2">
+          <a [href]="getWhatsAppDirectUrl('Hola, acabo de solicitar una demo en la web para ' + demoForm.company + ' y me gustaría coordinar los detalles ahora.')"
+            target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 text-white font-bold text-xs shadow-xs hover:bg-emerald-700 transition">
+            <span>Continuar por WhatsApp ahora</span>
+          </a>
+        </div>
+      </div>
+      } @else {
+      <form (ngSubmit)="submitDemoForm()" class="space-y-3.5 text-xs">
+        <div>
+          <label class="block font-bold text-fg mb-1">Nombre Completo *</label>
+          <input type="text" required [(ngModel)]="demoForm.name" name="name" placeholder="Ej. Carlos Morales"
+            class="w-full bg-surface-2 border border-border rounded-xl px-3.5 py-2 text-xs text-fg focus:outline-none focus:ring-2 focus:ring-primary" />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-fg mb-1">Empresa / Negocio *</label>
+            <input type="text" required [(ngModel)]="demoForm.company" name="company"
+              placeholder="Ej. Constructora del Sur"
+              class="w-full bg-surface-2 border border-border rounded-xl px-3.5 py-2 text-xs text-fg focus:outline-none focus:ring-2 focus:ring-primary" />
+          </div>
+
+          <div>
+            <label class="block font-bold text-fg mb-1">WhatsApp de Contacto *</label>
+            <input type="tel" required [(ngModel)]="demoForm.whatsapp" name="whatsapp" placeholder="Ej. +51 987 654 321"
+              class="w-full bg-surface-2 border border-border rounded-xl px-3.5 py-2 text-xs text-fg focus:outline-none focus:ring-2 focus:ring-primary" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-bold text-fg mb-1">Correo Corporativo</label>
+            <input type="email" [(ngModel)]="demoForm.email" name="email" placeholder="carlos@empresa.com"
+              class="w-full bg-surface-2 border border-border rounded-xl px-3.5 py-2 text-xs text-fg focus:outline-none focus:ring-2 focus:ring-primary" />
+          </div>
+
+          <div>
+            <label class="block font-bold text-fg mb-1">Giro / Rubro</label>
+            <select [(ngModel)]="demoForm.industry" name="industry"
+              class="w-full bg-surface-2 border border-border rounded-xl px-3.5 py-2 text-xs text-fg focus:outline-none focus:ring-2 focus:ring-primary">
+              <option value="Servicios Profesionales / Consultoría">Servicios Profesionales / Consultoría</option>
+              <option value="Salud / Clínica Médica">Salud / Clínica Médica</option>
+              <option value="E-commerce / Retail">E-commerce / Retail</option>
+              <option value="Inmobiliaria / Proyectos">Inmobiliaria / Proyectos</option>
+              <option value="Educación / Cursos">Educación / Cursos</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+        </div>
+
+        <p class="text-[10px] text-muted leading-relaxed pt-1">
+          Al enviar este formulario aceptas ser contactado para la demostración guiada bajo nuestras políticas de
+          privacidad.
+        </p>
+
+        <div class="flex items-center justify-end gap-2.5 pt-2 border-t border-border">
+          <button type="button" (click)="closeDemoModal()"
+            class="px-4 py-2 rounded-xl bg-surface-2 border border-border font-bold text-xs text-fg cursor-pointer">
+            Cancelar
+          </button>
+          <button type="submit" [disabled]="isSubmittingDemo() || !demoForm.name.trim() || !demoForm.whatsapp.trim()"
+            class="px-5 py-2 rounded-xl bg-primary text-white hover:opacity-95 disabled:opacity-50 font-bold text-xs cursor-pointer shadow-xs">
+            {{ isSubmittingDemo() ? 'Enviando...' : 'Confirmar Solicitud' }}
+          </button>
+        </div>
+      </form>
+      }
+    </div>
+  </div>
+  }
+
+  <!-- ========================================================================= -->
+  <!-- 11. BANNER FLOTANTE DE CONSENTIMIENTO DE COOKIES                          -->
+  <!-- ========================================================================= -->
+  @if (showCookieBanner()) {
+  <div
+    class="fixed bottom-4 left-4 z-50 max-w-sm sm:max-w-md w-[calc(100%-2rem)] bg-surface border border-border rounded-2xl p-4 shadow-2xl space-y-3 animate-in fade-in slide-in-from-bottom-4">
+    <div class="flex items-start justify-between gap-2">
+      <div class="flex items-center gap-2 text-xs font-extrabold text-fg">
+        <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+          </path>
+        </svg>
+        <span>Aviso de Privacidad y Cookies</span>
+      </div>
+      <button type="button" (click)="rejectCookies()"
+        class="text-muted hover:text-fg text-xs font-bold p-0.5 cursor-pointer">
+        ✕
+      </button>
+    </div>
+
+    <p class="text-[11px] text-muted leading-relaxed">
+      Utilizamos cookies técnicas y de rendimiento para optimizar tu experiencia y analizar el tráfico de navegación
+      conforme a nuestra política de protección de datos.
+    </p>
+
+    <div class="flex flex-wrap items-center gap-2 pt-1 text-[11px]">
+      <button type="button" (click)="acceptAllCookies()"
+        class="px-3 py-1.5 rounded-lg bg-primary text-white font-bold hover:opacity-95 transition cursor-pointer">
+        Aceptar Todas
+      </button>
+      <button type="button" (click)="acceptEssentialCookies()"
+        class="px-3 py-1.5 rounded-lg bg-surface-2 border border-border text-fg font-semibold hover:bg-surface-3 transition cursor-pointer">
+        Solo Necesarias
+      </button>
+      <a routerLink="/privacidad" class="text-primary hover:underline font-semibold ml-auto cursor-pointer">
+        Leer Políticas
+      </a>
+    </div>
+  </div>
+  }
+
+  <!-- ========================================================================= -->
+  <!-- 12. MODALES LEGALES: PRIVACIDAD, TÉRMINOS & ELIMINACIÓN DE DATOS (META)  -->
+  <!-- ========================================================================= -->
+  @if (activeLegalModal()) {
+  <div class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
+    <div
+      class="bg-surface border border-border rounded-3xl max-w-2xl w-full p-6 sm:p-7 shadow-2xl space-y-4 max-h-[85vh] overflow-y-auto animate-in fade-in zoom-in-95">
+
+      <div class="flex items-center justify-between border-b border-border pb-3">
+        <div>
+          <span
+            class="text-[10px] font-extrabold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+            Documento Legal Oficial
+          </span>
+          <h3 class="text-base font-extrabold text-fg mt-1">
+            @if (activeLegalModal() === 'privacy') {
+            Políticas de Privacidad y Protección de Datos
+            } @else if (activeLegalModal() === 'terms') {
+            Términos y Condiciones del Servicio
+            } @else {
+            Instrucciones para la Eliminación de Datos de Usuario (Meta Data Deletion)
+            }
+          </h3>
+        </div>
+        <button type="button" (click)="closeLegalModal()"
+          class="w-8 h-8 rounded-lg bg-surface-2 text-muted hover:text-fg flex items-center justify-center font-bold cursor-pointer">
+          ✕
+        </button>
+      </div>
+
+      <!-- CASO 1: POLÍTICAS DE PRIVACIDAD -->
+      @if (activeLegalModal() === 'privacy') {
+      <div class="text-xs text-muted space-y-3 leading-relaxed">
+        <p><strong>1. Identificación del Responsable:</strong> BRUNEITOR.AI es una solución tecnológica operada bajo el
+          Registro Único de Contribuyentes <strong>RUC N° {{ legalTaxId }}</strong>, con domicilio legal en {{
+          fiscalAddress }}. Correo de contacto legal y protección de datos: <span
+            class="font-mono text-primary font-semibold">{{ supportEmail }}</span>.</p>
+        <p><strong>2. Marco Legal Aplicable:</strong> El tratamiento de datos personales se rige por la Ley N° 29733
+          (Ley de Protección de Datos Personales del Perú), su Reglamento (D.S. 003-2013-JUS) y los estándares
+          internacionales de privacidad (GDPR / CCPA).</p>
+        <p><strong>3. Uso de la API Oficial de Meta Cloud:</strong> BRUNEITOR.AI interactúa exclusivamente con los
+          endpoints autorizados de Meta Business Platform (WhatsApp Business Cloud API). Las conversaciones, números
+          telefónicos e identidades intercambiadas son tratadas con fines estrictos de atención al cliente y nunca son
+          cedidas, vendidas ni transferidas a terceros con fines publicitarios.</p>
+        <p><strong>4. Seguridad y Cifrado de Información:</strong> Todos los paquetes de datos y eventos de Webhook son
+          transmitidos mediante túneles seguros TLS 1.3 y validados mediante firmas criptográficas
+          <strong>HMAC-SHA256</strong> (cabecera X-Hub-Signature-256). Cada tenant opera en una partición de base de
+          datos aislada con control de acceso por roles.
+        </p>
+        <p><strong>5. Derechos ARCO y Portabilidad:</strong> Cualquier usuario o cliente final puede solicitar el
+          Acceso, Rectificación, Cancelación u Oposición de sus datos escribiendo a <span
+            class="font-mono text-primary">{{ supportEmail }}</span> o a nuestro canal de WhatsApp (+51 923 637 205).
+        </p>
+      </div>
+      }
+
+      <!-- CASO 2: TÉRMINOS Y CONDICIONES -->
+      @if (activeLegalModal() === 'terms') {
+      <div class="text-xs text-muted space-y-3 leading-relaxed">
+        <p><strong>1. Identificación y Alcance:</strong> Los presentes Términos regulan el acceso y uso de la plataforma
+          SaaS BRUNEITOR.AI, operada bajo <strong>RUC N° {{ legalTaxId }}</strong> con domicilio en {{ fiscalAddress }}.
+        </p>
+        <p><strong>2. Condiciones del Servicio:</strong> BRUNEITOR.AI provee infraestructura en la nube para la gestión
+          de mensajería omnicanal, agentes de Inteligencia Artificial para atención y agendamiento automático de citas
+          en WhatsApp, Instagram, Messenger y TikTok.</p>
+        <p><strong>3. Cumplimiento de Políticas de Meta:</strong> El usuario y cliente corporativo se compromete a
+          respetar las Políticas Comerciales y Técnicas de Meta for Developers. Está estrictamente prohibido el envío de
+          SPAM, contenido no solicitado, esquemas piramidales o violaciones de propiedad intelectual.</p>
+        <p><strong>4. Nivel de Servicio (SLA) y Disponibilidad:</strong> La plataforma apunta a una disponibilidad del
+          99.9% de uptime para el despacho y recepción de mensajes, respaldada por la infraestructura oficial de Meta y
+          colas escalonadas BullMQ.</p>
+        <p><strong>5. Propiedad de Datos:</strong> El cliente es el único propietario de sus bases de datos de
+          prospectos, clientes, historiales de conversación y configuraciones de catálogo.</p>
+      </div>
+      }
+
+      <!-- CASO 3: INSTRUCCIONES DE ELIMINACIÓN DE DATOS (REQUERIDO POR META) -->
+      @if (activeLegalModal() === 'data-deletion') {
+      <div class="text-xs text-muted space-y-3 leading-relaxed">
+        <div class="p-3 bg-surface-2 rounded-xl border border-border text-[11px] font-semibold text-fg">
+          Instrucciones conformes a los Términos de la Plataforma de Meta for Developers (User Data Deletion Callback &
+          Instructions).
+        </div>
+        <p>En cumplimiento con las normativas de Meta y las directrices de privacidad de la Plataforma de WhatsApp
+          Business, cualquier usuario o prospecto que haya interactuado con los canales automatizados de BRUNEITOR.AI
+          (<strong>RUC: {{ legalTaxId }}</strong>) puede solicitar la eliminación total e irrevocable de sus datos
+          personales e historiales de chat siguiendo cualquiera de estos métodos:</p>
+        <ul class="list-disc pl-5 space-y-1.5 text-[11px]">
+          <li><strong>Método 1 (Vía Correo Electrónico):</strong> Envía un correo a <span
+              class="font-mono text-primary font-bold">{{ supportEmail }}</span> con el asunto <em>"Eliminación de Datos
+              de Usuario - Meta"</em>, indicando tu número de WhatsApp y nombre registrado.</li>
+          <li><strong>Método 2 (Vía WhatsApp Automático):</strong> Escribe directamente a nuestra línea oficial de
+            atención (<span class="font-mono text-primary font-bold">{{ officialPhoneDisplay }}</span>) enviando el
+            mensaje <em>"ELIMINAR MI HISTORIAL Y DATOS"</em>.</li>
+        </ul>
+        <p><strong>Plazo de Respuesta:</strong> El equipo técnico procesará la purga permanente de los registros en un
+          plazo máximo de <strong>48 horas laborables</strong> y te enviará un código de confirmación de eliminación.
+        </p>
+      </div>
+      }
+
+      <div class="pt-3 border-t border-border flex justify-end">
+        <button type="button" (click)="closeLegalModal()"
+          class="px-5 py-2 rounded-xl bg-primary text-white font-bold text-xs cursor-pointer">
+          Cerrar
+        </button>
+      </div>
+
+    </div>
+  </div>
+  }
+
+  <!-- ========================================================================= -->
+  <!-- 13. BOTÓN FLOTANTE PERSISTENTE DE WHATSAPP OFICIAL                        -->
+  <!-- ========================================================================= -->
+  <a [href]="getWhatsAppDirectUrl()" target="_blank" rel="noopener noreferrer"
+    title="Chatear con el WhatsApp Oficial de BRUNEITOR.AI"
+    class="fixed bottom-5 right-5 z-40 w-14 h-14 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-2xl flex items-center justify-center transition-transform hover:scale-110 cursor-pointer">
+    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+      <path
+        d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.599 2.679-.702c.97.575 1.772.88 2.781.88 3.183 0 5.768-2.587 5.768-5.766.001-3.18-2.585-5.764-5.768-5.764zm3.377 8.21c-.14.394-.817.755-1.127.804-.29.047-.648.069-1.054-.061-.252-.08-.577-.187-.993-.367-1.749-.757-2.886-2.529-2.974-2.646-.087-.116-.708-.941-.708-1.796 0-.855.449-1.277.609-1.452.16-.175.349-.219.465-.219.116 0 .233.001.335.006.107.005.25-.041.391.298.146.35.495 1.211.539 1.299.044.088.073.19.015.306-.059.117-.088.19-.175.292-.088.102-.185.228-.264.306-.088.087-.179.182-.077.357.102.175.454.748.974 1.211.671.597 1.237.782 1.412.87.175.088.277.073.379-.044.103-.117.437-.51.554-.685.116-.175.233-.146.393-.088.16.059 1.019.48 1.194.568.175.088.291.131.335.204.043.073.043.423-.097.817z" />
+    </svg>
+  </a>
+
+</div>

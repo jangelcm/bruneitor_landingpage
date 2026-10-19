@@ -1,0 +1,123 @@
+<div class="min-h-screen bg-bg text-fg flex flex-col font-sans selection:bg-primary/20 selection:text-primary">
+
+  <!-- Header Simplificado de Navegación -->
+  <header class="sticky top-0 z-40 w-full border-b border-border bg-surface/90 glass-header">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <a routerLink="/" class="flex items-center gap-2.5">
+        <img src="logo.png" alt="BRUNEITOR.AI" class="h-8 w-auto object-contain" />
+        <span class="text-sm font-extrabold text-fg tracking-tight">BRUNEITOR<span class="text-primary">.AI</span></span>
+      </a>
+
+      <a routerLink="/" class="px-3.5 py-1.5 rounded-xl bg-surface-2 border border-border hover:bg-surface-3 transition text-xs font-bold text-fg flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+        <span>Volver al Inicio</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Contenido Legal Formal -->
+  <main class="flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6 py-10 sm:py-14 space-y-8 text-xs sm:text-sm text-muted leading-relaxed">
+
+    <!-- Encabezado del Documento -->
+    <div class="space-y-3 border-b border-border pb-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold">
+        <span>Términos y Condiciones del Servicio SaaS</span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-fg tracking-tight">
+        Condiciones Generales del Servicio
+      </h1>
+      <p class="text-xs text-muted">
+        Última actualización: <strong>{{ lastUpdated }}</strong> · Vigente para el uso de la plataforma BRUNEITOR.AI.
+      </p>
+
+      <!-- Ficha de Identificación Fiscal para Meta -->
+      <div class="mt-4 p-4 rounded-2xl bg-surface border border-border grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+        <div><strong class="text-fg">Razón Social / Operador:</strong> {{ legalBusinessName }}</div>
+        <div><strong class="text-fg">RUC Oficial:</strong> <span class="font-mono text-primary font-bold">{{ legalTaxId }}</span></div>
+        <div><strong class="text-fg">Domicilio Fiscal:</strong> {{ fiscalAddress }}</div>
+        <div><strong class="text-fg">Contacto Legal:</strong> <a [href]="'mailto:' + contactEmail" class="text-primary underline">{{ contactEmail }}</a></div>
+        <div><strong class="text-fg">Teléfono Oficial:</strong> {{ officialPhone }}</div>
+        <div><strong class="text-fg">Jurisdicción:</strong> República del Perú</div>
+      </div>
+    </div>
+
+    <section class="space-y-4">
+      <h2 class="text-base font-bold text-fg">1. Objeto del Contrato</h2>
+      <p>
+        El presente documento regula el acceso y la utilización del software como servicio (SaaS) proveído por <strong>{{ legalBusinessName }}</strong>, bajo el nombre comercial <strong>BRUNEITOR.AI</strong>.
+      </p>
+      <p>
+        BRUNEITOR.AI brinda herramientas tecnológicas en la nube para la gestión de mensajería omnicanal, agentes conversacionales con Inteligencia Artificial, agendamiento de citas y CRM para WhatsApp, Instagram, Messenger y TikTok.
+      </p>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-base font-bold text-fg">2. Cumplimiento de Políticas de la Plataforma de Meta</h2>
+      <p>
+        El cliente y sus usuarios autorizados se comprometen a utilizar la plataforma en estricta observancia de las <strong>Políticas Comerciales de WhatsApp</strong> y los <strong>Términos de la Plataforma de Meta for Developers</strong>.
+      </p>
+      <p>Queda expresamente prohibido:</p>
+      <ul class="list-disc pl-5 space-y-1.5">
+        <li>El envío de mensajes masivos no solicitados (SPAM) o que violen las normas comunitarias de Meta.</li>
+        <li>La difusión de esquemas piramidales, contenidos difamatorios, fraudulentos o que infrinjan derechos de terceros.</li>
+        <li>El uso de bots o scripts que intenten eludir las restricciones de seguridad de Meta Cloud API.</li>
+      </ul>
+      <p>
+        BRUNEITOR.AI se reserva el derecho de suspender preventivamente la cuenta de cualquier cliente que incurra en prácticas que pongan en riesgo la reputación de los números o la infraestructura del servicio.
+      </p>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-base font-bold text-fg">3. Propiedad Intelectual y Titularidad de Datos</h2>
+      <p>
+        <strong>De BRUNEITOR.AI:</strong> Todos los derechos de propiedad intelectual sobre el código fuente, algoritmos de orquestación de IA, interfaces de usuario y marcas comerciales pertenecen exclusivamente a {{ legalBusinessName }}.
+      </p>
+      <p>
+        <strong>Del Cliente:</strong> El cliente es el único y exclusivo propietario de sus bases de datos de prospectos, contactos, historiales de mensajes, tarifas y catálogo de productos cargados en su panel. BRUNEITOR.AI actúa únicamente como encargado del tratamiento.
+      </p>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-base font-bold text-fg">4. Nivel de Servicio (SLA) y Disponibilidad</h2>
+      <p>
+        BRUNEITOR.AI implementa una arquitectura redundante en la nube con un objetivo de disponibilidad del <strong>99.9%</strong>. Las tareas de mantenimiento programado serán notificadas con antelación razonable a través de nuestros canales de soporte.
+      </p>
+      <p>
+        La disponibilidad de los servicios de mensajería instantánea depende adicionalmente de los tiempos de respuesta y estabilidad de la infraestructura de Meta Cloud API (WhatsApp/Instagram/Messenger).
+      </p>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-base font-bold text-fg">5. Limitación de Responsabilidad</h2>
+      <p>
+        BRUNEITOR.AI no se hace responsable por interrupciones atribuibles a fallas generales de internet del usuario, suspensiones aplicadas por Meta debido al incumplimiento de sus políticas de contenido por parte del cliente, o fuerza mayor debidamente comprobada.
+      </p>
+    </section>
+
+    <section class="space-y-4">
+      <h2 class="text-base font-bold text-fg">6. Jurisdicción y Ley Aplicable</h2>
+      <p>
+        Las presentes condiciones se rigen e interpretan de acuerdo con las leyes de la <strong>República del Perú</strong>. Para cualquier controversia que no pueda resolverse de mutuo acuerdo, las partes se someten a la competencia de los jueces y tribunales del Distrito Judicial de Lima, Perú.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Footer Simplificado -->
+  <footer class="border-t border-border bg-surface py-6 text-xs text-muted text-center">
+    <div class="max-w-4xl mx-auto px-4 space-y-1">
+      <div>&copy; 2026 BRUNEITOR.AI · RUC: {{ legalTaxId }} · {{ fiscalAddress }}. Todos los derechos reservados.</div>
+      <div class="flex items-center justify-center gap-3 pt-1 text-[11px]">
+        <a routerLink="/privacidad" class="hover:text-fg">Privacidad</a>
+        <span>·</span>
+        <a routerLink="/terminos" class="text-primary font-bold">Términos</a>
+        <span>·</span>
+        <a routerLink="/eliminacion-datos" class="hover:text-fg">Eliminación de Datos</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
