@@ -86,10 +86,7 @@
           class="block w-full py-2 text-xs font-bold text-muted hover:text-fg">
           Iniciar Sesión (app.bruneitor.com)
         </a>
-        <button type="button" (click)="openDemoModal(); mobileMenuOpen.set(false)"
-          class="w-full py-2.5 px-4 rounded-xl bg-primary text-white text-xs font-bold text-center block shadow-xs cursor-pointer">
-          Solicitar Demo
-        </button>
+
       </div>
     </div>
     }
@@ -104,11 +101,12 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 
         <!-- Columna Izquierda: Copy de Alta Conversión (Pantalla completa en móvil) -->
-        <div class="lg:col-span-7 flex flex-col justify-center min-h-[calc(100svh-5rem)] lg:min-h-0 space-y-6 sm:space-y-7 text-center lg:text-left py-4 sm:py-8 lg:py-0">
+        <div
+          class="lg:col-span-7 flex flex-col justify-center min-h-[calc(100svh-5rem)] lg:min-h-0 space-y-6 sm:space-y-7 text-center lg:text-left py-4 sm:py-8 lg:py-0">
 
           <!-- Badge Anti-Bloqueos Oficial de Meta -->
           <div
-            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-success-bg border border-success/30 text-[11px] font-bold text-success shadow-xs mx-auto lg:mx-0">
+            class="w-fit inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-success-bg border border-success/30 text-[11px] font-bold text-success shadow-xs mx-auto lg:mx-0">
             <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                 d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
@@ -158,7 +156,8 @@
               </svg>
               <span>Multi-operador humano</span>
             </div>
-            <div class="flex items-center gap-2 text-xs text-muted col-span-2 sm:col-span-1 justify-center sm:justify-start">
+            <div
+              class="flex items-center gap-2 text-xs text-muted col-span-2 sm:col-span-1 justify-center sm:justify-start">
               <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
               </svg>
@@ -170,7 +169,8 @@
           <div class="lg:hidden pt-4 flex flex-col items-center justify-center gap-1 text-muted/70 animate-pulse">
             <span class="text-[10px] font-bold tracking-wider uppercase">Ver simulación en vivo abajo</span>
             <svg class="w-4 h-4 text-primary animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3">
+              </path>
             </svg>
           </div>
 
@@ -180,7 +180,8 @@
         <div class="lg:col-span-5 pt-10 lg:pt-0">
           <!-- Título introductorio solo para móvil al scrollear -->
           <div class="lg:hidden text-center mb-4">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-2 border border-border text-[11px] font-bold text-fg shadow-xs">
+            <span
+              class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-2 border border-border text-[11px] font-bold text-fg shadow-xs">
               <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
               Demostración interactiva en WhatsApp
             </span>
@@ -1031,7 +1032,7 @@
           <div class="pt-1 space-y-1 text-[11px] border-t border-border/60">
             <div><strong class="text-fg">RUC:</strong> <span class="font-mono text-primary font-extrabold">{{ legalTaxId
                 }}</span></div>
-            <div><strong class="text-fg">Titular:</strong> {{ legalBusinessName }}</div>
+            <div><strong class="text-fg">Nombre Comercial:</strong> {{ legalBusinessName }}</div>
             <div><strong class="text-fg">Domicilio Fiscal:</strong> {{ fiscalAddress }}</div>
           </div>
         </div>
@@ -1089,7 +1090,7 @@
 
       <div class="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px]">
         <div>
-          &copy; {{ currentYear }} BRUNEITOR.AI · RUC: <span class="font-mono font-bold">{{ legalTaxId }}</span> · {{
+          &copy; {{ currentYear }} BRUNEITOR.AI · {{
           fiscalAddress }}. Todos los derechos reservados.
         </div>
         <div class="flex flex-wrap items-center gap-3">
