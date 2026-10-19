@@ -44,9 +44,7 @@
         <button type="button" (click)="openDemoModal()"
           class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-white hover:opacity-95 transition text-xs font-bold shadow-xs cursor-pointer">
           <span>Solicitar Demo</span>
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-          </svg>
+
         </button>
 
         <!-- Botón Hamburguesa Móvil -->
@@ -101,27 +99,27 @@
   <!-- 2. HERO SECTION CON ENFOQUE ANTI-BLOQUEOS Y SIMULACIÓN EN VIVO           -->
   <!-- ========================================================================= -->
   <section
-    class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28 border-b border-border bg-radial from-primary/5 via-transparent to-transparent">
+    class="relative overflow-hidden pt-4 pb-16 lg:pt-20 lg:pb-28 border-b border-border bg-radial from-primary/5 via-transparent to-transparent">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 
-        <!-- Columna Izquierda: Copy de Alta Conversión -->
-        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+        <!-- Columna Izquierda: Copy de Alta Conversión (Pantalla completa en móvil) -->
+        <div class="lg:col-span-7 flex flex-col justify-center min-h-[calc(100svh-5rem)] lg:min-h-0 space-y-6 sm:space-y-7 text-center lg:text-left py-4 sm:py-8 lg:py-0">
 
           <!-- Badge Anti-Bloqueos Oficial de Meta -->
           <div
-            class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-success-bg border border-success/30 text-[11px] font-bold text-success shadow-xs">
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-success-bg border border-success/30 text-[11px] font-bold text-success shadow-xs mx-auto lg:mx-0">
             <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                 d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
               </path>
             </svg>
-            <span>API Oficial de Meta Cloud · Cero Riesgo de Bloqueos de Línea</span>
+            <span>API Oficial de Meta Cloud · Cero Riesgo de Bloqueos</span>
           </div>
 
           <!-- Titular Principal H1 -->
           <h1
-            class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-fg leading-tight sm:leading-tight">
+            class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-fg leading-[1.2] sm:leading-tight">
             Convierte cada chat de WhatsApp en <span
               class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">ventas y citas
               automáticas</span> 24/7.
@@ -134,9 +132,9 @@
           </p>
 
           <!-- Botones de Llamado a la Acción (CTAs) -->
-          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-1">
             <button type="button" (click)="openDemoModal()"
-              class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-primary text-white hover:opacity-95 transition text-xs sm:text-sm font-extrabold flex items-center justify-center gap-2 shadow-md hover:shadow-lg cursor-pointer">
+              class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-primary text-white hover:opacity-95 transition text-xs sm:text-sm font-extrabold flex items-center justify-center gap-2 shadow-md hover:shadow-lg cursor-pointer">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122">
@@ -144,12 +142,10 @@
               </svg>
               <span>Solicitar Demostración Guiada</span>
             </button>
-
-
           </div>
 
-          <!-- Checkmarks de Confianza -->
-          <div class="pt-4 grid grid-cols-2 sm:grid-cols-3 gap-3 text-left">
+          <!-- Checkmarks de Confianza Centrados en Móvil -->
+          <div class="pt-2 grid grid-cols-2 sm:grid-cols-3 gap-3 text-left max-w-md mx-auto lg:mx-0">
             <div class="flex items-center gap-2 text-xs text-muted">
               <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
@@ -162,18 +158,34 @@
               </svg>
               <span>Multi-operador humano</span>
             </div>
-            <div class="flex items-center gap-2 text-xs text-muted">
+            <div class="flex items-center gap-2 text-xs text-muted col-span-2 sm:col-span-1 justify-center sm:justify-start">
               <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
               </svg>
               <span>Activación en un clic</span>
-
             </div>
           </div>
+
+          <!-- Indicador visual sutil en móvil para invitar a hacer scroll hacia la simulación -->
+          <div class="lg:hidden pt-4 flex flex-col items-center justify-center gap-1 text-muted/70 animate-pulse">
+            <span class="text-[10px] font-bold tracking-wider uppercase">Ver simulación en vivo abajo</span>
+            <svg class="w-4 h-4 text-primary animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+          </div>
+
         </div>
 
         <!-- Columna Derecha: Mockup Interactivo Fidedigno de WhatsApp IA -->
-        <div class="lg:col-span-5">
+        <div class="lg:col-span-5 pt-10 lg:pt-0">
+          <!-- Título introductorio solo para móvil al scrollear -->
+          <div class="lg:hidden text-center mb-4">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-2 border border-border text-[11px] font-bold text-fg shadow-xs">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              Demostración interactiva en WhatsApp
+            </span>
+          </div>
+
           <div
             class="relative mx-auto max-w-sm sm:max-w-md bg-surface border-2 border-border rounded-3xl shadow-2xl overflow-hidden">
 
@@ -1125,7 +1137,8 @@
         <div>
           <h4 class="text-base font-extrabold text-fg">¡Solicitud de Demo Registrada!</h4>
           <p class="text-xs text-muted mt-1 leading-relaxed">
-            Tu cuenta y entorno de prueba para <strong>{{ demoForm.company || 'tu empresa' }}</strong> han sido preparados.
+            Tu cuenta y entorno de prueba para <strong>{{ demoForm.company || 'tu empresa' }}</strong> han sido
+            preparados.
           </p>
         </div>
 
