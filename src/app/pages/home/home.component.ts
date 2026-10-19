@@ -47,8 +47,8 @@ export class HomeComponent implements OnInit {
   // Datos Comerciales y Fiscales Oficiales (Requeridos para Verificación de Meta)
   readonly legalTaxId = '10743714330';
   readonly legalBusinessName = 'BRUNEITOR.AI (RUC: 10743714330)';
-  readonly contactEmail = 'contacto@bruneitor.ai';
-  readonly supportEmail = 'soporte@bruneitor.ai';
+  readonly contactEmail = 'contacto@bruneitor.com';
+  readonly supportEmail = 'contacto@bruneitor.com';
   readonly officialWhatsAppNumber = '51923637205';
   readonly officialPhoneDisplay = '+51 923 637 205';
   readonly fiscalAddress = 'Lima, Perú';

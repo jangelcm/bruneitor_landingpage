@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bruneitor.ai/sitemap.xml
-
+Sitemap: https://bruneitor.com/sitemap.xml

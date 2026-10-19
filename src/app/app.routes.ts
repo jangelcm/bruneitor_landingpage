@@ -8,7 +8,7 @@ export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    title: 'BRUNEITOR.AI - CRM Omnicanal & Asistente IA Oficial de Meta para Empresas',
+    title: 'BRUNEITOR.AI | Asistente IA para WhatsApp y Ventas 24/7',
   },
   {
     path: 'privacidad',

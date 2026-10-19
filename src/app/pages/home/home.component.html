@@ -4,8 +4,9 @@
   <!-- ========================================================================= -->
   <!-- 1. HEADER & BARRA DE NAVEGACIÓN SUPERIOR (MÁXIMO 4 OPCIONES)              -->
   <!-- ========================================================================= -->
-  <header class="sticky top-0 z-40 w-full border-b border-border bg-surface/85 glass-header transition-colors">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+  <header
+    class="sticky top-0 z-40  w-full border-b border-border bg-surface/85 bg-white glass-header transition-colors">
+    <div class="max-w-7xl mx-auto  px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
 
       <!-- Logotipo de Marca -->
       <a href="#" class="flex items-center gap-3 shrink-0 focus:outline-none">
@@ -31,28 +32,17 @@
 
       <!-- Botones de Acción Derecha -->
       <div class="flex items-center gap-2.5 shrink-0">
-        <!-- Switch Modo Oscuro / Claro -->
-        <button type="button" (click)="toggleDarkMode()" title="Cambiar tema de color"
-          class="w-9 h-9 rounded-xl border border-border bg-surface-2 hover:bg-surface-3 transition flex items-center justify-center text-muted hover:text-fg cursor-pointer">
-          @if (darkMode()) {
-          <!-- Sol (Modo Claro) -->
-          <svg class="w-4 h-4 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
-            </path>
-          </svg>
-          } @else {
-          <!-- Luna (Modo Oscuro) -->
-          <svg class="w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
-          </svg>
-          }
-        </button>
 
-        <!-- CTA Principal del Header -->
+        <!-- Enlace Iniciar Sesión hacia app.bruneitor.com -->
+        <a href="https://app.bruneitor.com" target="_blank" rel="noopener noreferrer"
+          title="Acceder a la plataforma de gestión"
+          class="hidden sm:inline-flex items-center px-3.5 py-2 rounded-xl text-xs font-bold text-muted hover:text-fg hover:bg-surface-2 transition">
+          Iniciar Sesión
+        </a>
+
+        <!-- CTA Principal del Header: Solicitar Demo -->
         <button type="button" (click)="openDemoModal()"
-          class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-white hover:opacity-95 transition text-xs font-bold shadow-xs cursor-pointer">
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-white hover:opacity-95 transition text-xs font-bold shadow-xs cursor-pointer">
           <span>Solicitar Demo</span>
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -92,10 +82,17 @@
         class="block w-full text-left py-2 text-xs font-bold text-fg hover:text-primary">
         Preguntas Frecuentes
       </button>
-      <button type="button" (click)="openDemoModal(); mobileMenuOpen.set(false)"
-        class="w-full mt-2 py-2.5 px-4 rounded-xl bg-primary text-white text-xs font-bold text-center block shadow-xs">
-        Solicitar Demostración Guiada
-      </button>
+
+      <div class="pt-2 border-t border-border space-y-2">
+        <a href="https://app.bruneitor.com" target="_blank" rel="noopener noreferrer"
+          class="block w-full py-2 text-xs font-bold text-muted hover:text-fg">
+          Iniciar Sesión (app.bruneitor.com)
+        </a>
+        <button type="button" (click)="openDemoModal(); mobileMenuOpen.set(false)"
+          class="w-full py-2.5 px-4 rounded-xl bg-primary text-white text-xs font-bold text-center block shadow-xs cursor-pointer">
+          Solicitar Demo
+        </button>
+      </div>
     </div>
     }
   </header>
@@ -130,10 +127,10 @@
               automáticas</span> 24/7.
           </h1>
 
-          <!-- Párrafo Descriptivo -->
+          <!-- Párrafo Descriptivo Estratégico -->
           <p class="text-sm sm:text-base text-muted max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-            El SaaS omnicanal con Inteligencia Artificial que atiende dudas con tu catálogo oficial, califica prospectos
-            y agenda reuniones en tiempo real. Máxima seguridad bajo los estándares oficiales de Meta Business Platform.
+            El asistente con Inteligencia Artificial que responde en segundos usando el catálogo y las políticas de tu
+            negocio, califica prospectos listos para comprar y agenda citas en tu calendario automáticamente.
           </p>
 
           <!-- Botones de Llamado a la Acción (CTAs) -->
@@ -148,14 +145,7 @@
               <span>Solicitar Demostración Guiada</span>
             </button>
 
-            <a [href]="getWhatsAppDirectUrl()" target="_blank" rel="noopener noreferrer"
-              class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-surface border border-border hover:bg-surface-2 transition text-xs sm:text-sm font-extrabold text-fg flex items-center justify-center gap-2 shadow-xs cursor-pointer">
-              <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.599 2.679-.702c.97.575 1.772.88 2.781.88 3.183 0 5.768-2.587 5.768-5.766.001-3.18-2.585-5.764-5.768-5.764zm3.377 8.21c-.14.394-.817.755-1.127.804-.29.047-.648.069-1.054-.061-.252-.08-.577-.187-.993-.367-1.749-.757-2.886-2.529-2.974-2.646-.087-.116-.708-.941-.708-1.796 0-.855.449-1.277.609-1.452.16-.175.349-.219.465-.219.116 0 .233.001.335.006.107.005.25-.041.391.298.146.35.495 1.211.539 1.299.044.088.073.19.015.306-.059.117-.088.19-.175.292-.088.102-.185.228-.264.306-.088.087-.179.182-.077.357.102.175.454.748.974 1.211.671.597 1.237.782 1.412.87.175.088.277.073.379-.044.103-.117.437-.51.554-.685.116-.175.233-.146.393-.088.16.059 1.019.48 1.194.568.175.088.291.131.335.204.043.073.043.423-.097.817z" />
-              </svg>
-              <span>Probar en WhatsApp Oficial</span>
-            </a>
+
           </div>
 
           <!-- Checkmarks de Confianza -->
@@ -170,13 +160,14 @@
               <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
               </svg>
-              <span>Meta Embedded Signup</span>
+              <span>Multi-operador humano</span>
             </div>
             <div class="flex items-center gap-2 text-xs text-muted">
               <svg class="w-4 h-4 text-primary shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
               </svg>
-              <span>Multi-operador humano</span>
+              <span>Activación en un clic</span>
+
             </div>
           </div>
         </div>
@@ -999,10 +990,7 @@
 
         <a [href]="getWhatsAppDirectUrl()" target="_blank" rel="noopener noreferrer"
           class="w-full sm:w-auto px-8 py-4 rounded-xl bg-surface border border-border hover:bg-surface-2 transition text-xs sm:text-sm font-extrabold text-fg flex items-center justify-center gap-2 shadow-xs cursor-pointer">
-          <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 24 24">
-            <path
-              d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.599 2.679-.702c.97.575 1.772.88 2.781.88 3.183 0 5.768-2.587 5.768-5.766.001-3.18-2.585-5.764-5.768-5.764zm3.377 8.21c-.14.394-.817.755-1.127.804-.29.047-.648.069-1.054-.061-.252-.08-.577-.187-.993-.367-1.749-.757-2.886-2.529-2.974-2.646-.087-.116-.708-.941-.708-1.796 0-.855.449-1.277.609-1.452.16-.175.349-.219.465-.219.116 0 .233.001.335.006.107.005.25-.041.391.298.146.35.495 1.211.539 1.299.044.088.073.19.015.306-.059.117-.088.19-.175.292-.088.102-.185.228-.264.306-.088.087-.179.182-.077.357.102.175.454.748.974 1.211.671.597 1.237.782 1.412.87.175.088.277.073.379-.044.103-.117.437-.51.554-.685.116-.175.233-.146.393-.088.16.059 1.019.48 1.194.568.175.088.291.131.335.204.043.073.043.423-.097.817z" />
-          </svg>
+          <img src="icon_wssp.png" alt="WhatsApp" class="w-5 h-5 object-contain" />
           <span>Escribir por WhatsApp</span>
         </a>
       </div>
@@ -1066,8 +1054,8 @@
 
         <!-- Columna 4: Contacto Oficial & Soporte -->
         <div class="space-y-2.5">
-          <div class="font-bold text-fg uppercase tracking-wider text-[11px]">Contacto Comercial & Soporte</div>
-          <p class="text-[11px]">Canales oficiales de verificación y atención:</p>
+          <div class="font-bold text-fg uppercase tracking-wider text-[11px]">Contacto Oficial</div>
+          <p class="text-[11px]">Canales oficiales de atención y verificación:</p>
           <div class="space-y-1 text-[11px]">
             <div>
               <strong class="text-fg">WhatsApp Oficial:</strong>
@@ -1077,15 +1065,9 @@
               </a>
             </div>
             <div>
-              <strong class="text-fg">Email Comercial:</strong>
+              <strong class="text-fg">Correo Oficial:</strong>
               <a [href]="'mailto:' + contactEmail" class="text-primary hover:underline block">
                 {{ contactEmail }}
-              </a>
-            </div>
-            <div>
-              <strong class="text-fg">Soporte Técnico:</strong>
-              <a [href]="'mailto:' + supportEmail" class="text-primary hover:underline block">
-                {{ supportEmail }}
               </a>
             </div>
           </div>
@@ -1134,22 +1116,48 @@
       </div>
 
       @if (demoSubmitted()) {
-      <div class="p-5 rounded-2xl bg-success-bg border border-success/30 text-center space-y-3">
-        <div class="w-12 h-12 rounded-full bg-success text-white flex items-center justify-center mx-auto">
+      <div class="p-6 rounded-2xl bg-success-bg border border-success/30 text-center space-y-4">
+        <div class="w-12 h-12 rounded-full bg-success text-white flex items-center justify-center mx-auto shadow-xs">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
           </svg>
         </div>
-        <h4 class="text-base font-extrabold text-fg">¡Solicitud recibida con éxito!</h4>
-        <p class="text-xs text-muted">
-          Nos pondremos en contacto contigo por WhatsApp al número <strong>{{ demoForm.whatsapp }}</strong> para
-          coordinar la demostración con los datos de tu empresa.
-        </p>
-        <div class="pt-2">
-          <a [href]="getWhatsAppDirectUrl('Hola, acabo de solicitar una demo en la web para ' + demoForm.company + ' y me gustaría coordinar los detalles ahora.')"
+        <div>
+          <h4 class="text-base font-extrabold text-fg">¡Solicitud de Demo Registrada!</h4>
+          <p class="text-xs text-muted mt-1 leading-relaxed">
+            Tu cuenta y entorno de prueba para <strong>{{ demoForm.company || 'tu empresa' }}</strong> han sido preparados.
+          </p>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-surface border border-border text-left space-y-1.5 text-xs">
+          <div class="flex items-center justify-between text-muted text-[11px]">
+            <span>Canal asignado:</span>
+            <span class="font-bold text-fg">WhatsApp Cloud API Oficial</span>
+          </div>
+          <div class="flex items-center justify-between text-muted text-[11px]">
+            <span>WhatsApp registrado:</span>
+            <span class="font-mono font-bold text-primary">{{ demoForm.whatsapp }}</span>
+          </div>
+        </div>
+
+        <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-2.5">
+          <a [href]="getWhatsAppDirectUrl('Hola BRUNEITOR.AI, acabo de registrar mi solicitud de demo para ' + demoForm.company + ' y me gustaría coordinar los detalles ahora.')"
             target="_blank" rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 text-white font-bold text-xs shadow-xs hover:bg-emerald-700 transition">
-            <span>Continuar por WhatsApp ahora</span>
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs transition">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.599 2.679-.702c.97.575 1.772.88 2.781.88 3.183 0 5.768-2.587 5.768-5.766.001-3.18-2.585-5.764-5.768-5.764zm3.377 8.21c-.14.394-.817.755-1.127.804-.29.047-.648.069-1.054-.061-.252-.08-.577-.187-.993-.367-1.749-.757-2.886-2.529-2.974-2.646-.087-.116-.708-.941-.708-1.796 0-.855.449-1.277.609-1.452.16-.175.349-.219.465-.219.116 0 .233.001.335.006.107.005.25-.041.391.298.146.35.495 1.211.539 1.299.044.088.073.19.015.306-.059.117-.088.19-.175.292-.088.102-.185.228-.264.306-.088.087-.179.182-.077.357.102.175.454.748.974 1.211.671.597 1.237.782 1.412.87.175.088.277.073.379-.044.103-.117.437-.51.554-.685.116-.175.233-.146.393-.088.16.059 1.019.48 1.194.568.175.088.291.131.335.204.043.073.043.423-.097.817z" />
+            </svg>
+            <span>Activar por WhatsApp ahora</span>
+          </a>
+
+          <a href="https://app.bruneitor.com" target="_blank" rel="noopener noreferrer"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-surface-2 border border-border text-fg hover:bg-surface-3 font-bold text-xs transition">
+            <span>Acceder a app.bruneitor.com</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
           </a>
         </div>
       </div>
@@ -1377,11 +1385,8 @@
   <!-- ========================================================================= -->
   <a [href]="getWhatsAppDirectUrl()" target="_blank" rel="noopener noreferrer"
     title="Chatear con el WhatsApp Oficial de BRUNEITOR.AI"
-    class="fixed bottom-5 right-5 z-40 w-14 h-14 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-2xl flex items-center justify-center transition-transform hover:scale-110 cursor-pointer">
-    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
-      <path
-        d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.599 2.679-.702c.97.575 1.772.88 2.781.88 3.183 0 5.768-2.587 5.768-5.766.001-3.18-2.585-5.764-5.768-5.764zm3.377 8.21c-.14.394-.817.755-1.127.804-.29.047-.648.069-1.054-.061-.252-.08-.577-.187-.993-.367-1.749-.757-2.886-2.529-2.974-2.646-.087-.116-.708-.941-.708-1.796 0-.855.449-1.277.609-1.452.16-.175.349-.219.465-.219.116 0 .233.001.335.006.107.005.25-.041.391.298.146.35.495 1.211.539 1.299.044.088.073.19.015.306-.059.117-.088.19-.175.292-.088.102-.185.228-.264.306-.088.087-.179.182-.077.357.102.175.454.748.974 1.211.671.597 1.237.782 1.412.87.175.088.277.073.379-.044.103-.117.437-.51.554-.685.116-.175.233-.146.393-.088.16.059 1.019.48 1.194.568.175.088.291.131.335.204.043.073.043.423-.097.817z" />
-    </svg>
+    class="fixed bottom-5 right-5 z-40 w-12 h-12 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white shadow-2xl flex items-center justify-center transition-transform hover:scale-110 cursor-pointer">
+    <img src="icon_wssp.png" alt="WhatsApp" class="w-7 h-7 object-contain" />
   </a>
 
 </div>
