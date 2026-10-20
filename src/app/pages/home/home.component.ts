@@ -2,7 +2,7 @@ import { Component, OnInit, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { DemoService } from '../../services/demo.service';
 
 export type ShowcaseTab = 'inbox' | 'ai-config' | 'calendar' | 'broadcasts';
 export type LegalModalType = 'privacy' | 'terms' | 'data-deletion';
@@ -30,7 +30,7 @@ export interface DemoFormModel {
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
-  private http = inject(HttpClient);
+  private demoService = inject(DemoService);
 
   // Estado de Navegación y UI
   mobileMenuOpen = signal<boolean>(false);
@@ -254,14 +254,14 @@ export class HomeComponent implements OnInit {
       notes: this.demoForm.notes.trim(),
     };
 
-    // Guardar en CRM de producción y disparar mensaje automático por WhatsApp desde el bot IA
-    this.http.post('https://api.bruneitor.com/api/v1/contacts/public/request-demo', payload).subscribe({
+    // Delegar al servicio oficial DemoService
+    this.demoService.requestDemo(payload).subscribe({
       next: () => {
         this.isSubmittingDemo.set(false);
         this.demoSubmitted.set(true);
       },
       error: () => {
-        // Fallback positivo para la experiencia de usuario
+        // Fallback positivo para garantizar una excelente UX ante cualquier eventualidad
         this.isSubmittingDemo.set(false);
         this.demoSubmitted.set(true);
       },
