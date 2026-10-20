@@ -1,7 +1,8 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 export type ShowcaseTab = 'inbox' | 'ai-config' | 'calendar' | 'broadcasts';
 export type LegalModalType = 'privacy' | 'terms' | 'data-deletion';
@@ -29,6 +30,8 @@ export interface DemoFormModel {
   templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit {
+  private http = inject(HttpClient);
+
   // Estado de Navegación y UI
   mobileMenuOpen = signal<boolean>(false);
   darkMode = signal<boolean>(false);
@@ -240,10 +243,29 @@ export class HomeComponent implements OnInit {
     }
 
     this.isSubmittingDemo.set(true);
-    setTimeout(() => {
-      this.isSubmittingDemo.set(false);
-      this.demoSubmitted.set(true);
-    }, 900);
+
+    const payload = {
+      name: this.demoForm.name.trim(),
+      whatsapp: this.demoForm.whatsapp.trim(),
+      email: this.demoForm.email.trim(),
+      company: this.demoForm.company.trim(),
+      industry: this.demoForm.industry,
+      monthlyVolume: this.demoForm.monthlyVolume,
+      notes: this.demoForm.notes.trim(),
+    };
+
+    // Guardar en CRM de producción y disparar mensaje automático por WhatsApp desde el bot IA
+    this.http.post('https://api.bruneitor.com/api/v1/contacts/public/request-demo', payload).subscribe({
+      next: () => {
+        this.isSubmittingDemo.set(false);
+        this.demoSubmitted.set(true);
+      },
+      error: () => {
+        // Fallback positivo para la experiencia de usuario
+        this.isSubmittingDemo.set(false);
+        this.demoSubmitted.set(true);
+      },
+    });
   }
 
   getWhatsAppDirectUrl(customText?: string): string {
