@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit {
   isDemoModalOpen = signal<boolean>(false);
   isSubmittingDemo = signal<boolean>(false);
   demoSubmitted = signal<boolean>(false);
+  demoErrorMessage = signal<string | null>(null);
   activeLegalModal = signal<LegalModalType | null>(null);
 
   // Legal & Cookies
@@ -229,6 +230,7 @@ export class HomeComponent implements OnInit {
     if (prefilledIndustry) {
       this.demoForm.industry = prefilledIndustry;
     }
+    this.demoErrorMessage.set(null);
     this.demoSubmitted.set(false);
     this.isDemoModalOpen.set(true);
   }
@@ -237,8 +239,58 @@ export class HomeComponent implements OnInit {
     this.isDemoModalOpen.set(false);
   }
 
+  private validateWhatsAppNumber(rawPhone: string): { valid: boolean; normalized: string; error?: string } {
+    let cleanPhone = rawPhone.replace(/\D/g, '');
+    if (cleanPhone.startsWith('00')) {
+      cleanPhone = cleanPhone.substring(2);
+    } else if (cleanPhone.startsWith('0')) {
+      cleanPhone = cleanPhone.substring(1);
+    }
+
+    // Normalizar celular de Perú de 9 dígitos (empieza con 9)
+    if (cleanPhone.length === 9 && cleanPhone.startsWith('9')) {
+      cleanPhone = `51${cleanPhone}`;
+    }
+
+    if (cleanPhone.length < 10 || cleanPhone.length > 15) {
+      return {
+        valid: false,
+        normalized: cleanPhone,
+        error: 'El número de WhatsApp es inválido. Ingresa un celular de 9 dígitos (ej. 987 654 321) o incluye tu código de país (ej. +51 987 654 321).',
+      };
+    }
+
+    if (cleanPhone.startsWith('51') && (cleanPhone.length !== 11 || cleanPhone[2] !== '9')) {
+      return {
+        valid: false,
+        normalized: cleanPhone,
+        error: 'Para Perú (+51), el número móvil debe tener 9 dígitos y empezar con el dígito 9 (ej. +51 987 654 321).',
+      };
+    }
+
+    const subscriberPart = cleanPhone.slice(-9);
+    if (/^(\d)\1{7,}$/.test(subscriberPart) || subscriberPart === '987654321' || subscriberPart === '912345678' || subscriberPart === '123456789') {
+      return {
+        valid: false,
+        normalized: cleanPhone,
+        error: 'Por favor ingresa un número de WhatsApp real y activo para poder enviarte el acceso a la demostración.',
+      };
+    }
+
+    return { valid: true, normalized: cleanPhone };
+  }
+
   submitDemoForm() {
+    this.demoErrorMessage.set(null);
+
     if (!this.demoForm.name.trim() || !this.demoForm.whatsapp.trim()) {
+      this.demoErrorMessage.set('Por favor completa tu nombre y número de WhatsApp.');
+      return;
+    }
+
+    const phoneValidation = this.validateWhatsAppNumber(this.demoForm.whatsapp.trim());
+    if (!phoneValidation.valid) {
+      this.demoErrorMessage.set(phoneValidation.error || 'Número de WhatsApp inválido.');
       return;
     }
 
@@ -246,7 +298,7 @@ export class HomeComponent implements OnInit {
 
     const payload = {
       name: this.demoForm.name.trim(),
-      whatsapp: this.demoForm.whatsapp.trim(),
+      whatsapp: phoneValidation.normalized,
       email: this.demoForm.email.trim(),
       company: this.demoForm.company.trim(),
       industry: this.demoForm.industry,
@@ -258,12 +310,17 @@ export class HomeComponent implements OnInit {
     this.demoService.requestDemo(payload).subscribe({
       next: () => {
         this.isSubmittingDemo.set(false);
+        this.demoErrorMessage.set(null);
         this.demoSubmitted.set(true);
       },
-      error: () => {
-        // Fallback positivo para garantizar una excelente UX ante cualquier eventualidad
+      error: (err) => {
         this.isSubmittingDemo.set(false);
-        this.demoSubmitted.set(true);
+        const backendMsg = err?.error?.message;
+        this.demoErrorMessage.set(
+          typeof backendMsg === 'string'
+            ? backendMsg
+            : 'No pudimos validar tu número o registrar la solicitud. Verifica tu número de WhatsApp e inténtalo nuevamente.'
+        );
       },
     });
   }

@@ -652,54 +652,48 @@
       <!-- Selector de Pestañas del Showcase: Cuadrícula 2x2 en móvil, 4 en desktop -->
       <div class="max-w-4xl mx-auto">
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 p-1.5 rounded-2xl bg-surface-2 border border-border">
-          <button type="button" (click)="setActiveTab('inbox')"
-            [class.bg-primary]="activeTab() === 'inbox'"
-            [class.text-white]="activeTab() === 'inbox'"
-            [class.shadow-sm]="activeTab() === 'inbox'"
-            [class.text-muted]="activeTab() !== 'inbox'"
-            [class.hover:text-fg]="activeTab() !== 'inbox'"
+          <button type="button" (click)="setActiveTab('inbox')" [class.bg-primary]="activeTab() === 'inbox'"
+            [class.text-white]="activeTab() === 'inbox'" [class.shadow-sm]="activeTab() === 'inbox'"
+            [class.text-muted]="activeTab() !== 'inbox'" [class.hover:text-fg]="activeTab() !== 'inbox'"
             class="px-3.5 py-3 rounded-xl text-xs font-bold transition cursor-pointer flex items-center justify-center gap-2">
             <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
+              </path>
             </svg>
             <span class="truncate">Bandeja CRM</span>
           </button>
 
-          <button type="button" (click)="setActiveTab('ai-config')"
-            [class.bg-primary]="activeTab() === 'ai-config'"
-            [class.text-white]="activeTab() === 'ai-config'"
-            [class.shadow-sm]="activeTab() === 'ai-config'"
-            [class.text-muted]="activeTab() !== 'ai-config'"
-            [class.hover:text-fg]="activeTab() !== 'ai-config'"
+          <button type="button" (click)="setActiveTab('ai-config')" [class.bg-primary]="activeTab() === 'ai-config'"
+            [class.text-white]="activeTab() === 'ai-config'" [class.shadow-sm]="activeTab() === 'ai-config'"
+            [class.text-muted]="activeTab() !== 'ai-config'" [class.hover:text-fg]="activeTab() !== 'ai-config'"
             class="px-3.5 py-3 rounded-xl text-xs font-bold transition cursor-pointer flex items-center justify-center gap-2">
             <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z">
+              </path>
             </svg>
             <span class="truncate">Configuración IA</span>
           </button>
 
-          <button type="button" (click)="setActiveTab('calendar')"
-            [class.bg-primary]="activeTab() === 'calendar'"
-            [class.text-white]="activeTab() === 'calendar'"
-            [class.shadow-sm]="activeTab() === 'calendar'"
-            [class.text-muted]="activeTab() !== 'calendar'"
-            [class.hover:text-fg]="activeTab() !== 'calendar'"
+          <button type="button" (click)="setActiveTab('calendar')" [class.bg-primary]="activeTab() === 'calendar'"
+            [class.text-white]="activeTab() === 'calendar'" [class.shadow-sm]="activeTab() === 'calendar'"
+            [class.text-muted]="activeTab() !== 'calendar'" [class.hover:text-fg]="activeTab() !== 'calendar'"
             class="px-3.5 py-3 rounded-xl text-xs font-bold transition cursor-pointer flex items-center justify-center gap-2">
             <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
             </svg>
             <span class="truncate">Agenda Citas</span>
           </button>
 
-          <button type="button" (click)="setActiveTab('broadcasts')"
-            [class.bg-primary]="activeTab() === 'broadcasts'"
-            [class.text-white]="activeTab() === 'broadcasts'"
-            [class.shadow-sm]="activeTab() === 'broadcasts'"
-            [class.text-muted]="activeTab() !== 'broadcasts'"
-            [class.hover:text-fg]="activeTab() !== 'broadcasts'"
+          <button type="button" (click)="setActiveTab('broadcasts')" [class.bg-primary]="activeTab() === 'broadcasts'"
+            [class.text-white]="activeTab() === 'broadcasts'" [class.shadow-sm]="activeTab() === 'broadcasts'"
+            [class.text-muted]="activeTab() !== 'broadcasts'" [class.hover:text-fg]="activeTab() !== 'broadcasts'"
             class="px-3.5 py-3 rounded-xl text-xs font-bold transition cursor-pointer flex items-center justify-center gap-2">
             <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z">
+              </path>
             </svg>
             <span class="truncate">Campañas Meta</span>
           </button>
@@ -724,7 +718,8 @@
           </div>
 
           <div class="flex items-center gap-2">
-            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-success-bg border border-success/30 text-[10px] font-bold text-success">
+            <span
+              class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-success-bg border border-success/30 text-[10px] font-bold text-success">
               <span class="w-1.5 h-1.5 rounded-full bg-success animate-pulse"></span>
               Plataforma en Tiempo Real
             </span>
@@ -741,7 +736,8 @@
                 <h3 class="text-sm sm:text-base font-extrabold text-fg flex items-center gap-2">
                   <span>Bandeja de Entrada Omnicanal & CRM 360°</span>
                 </h3>
-                <p class="text-xs text-muted">WhatsApp, Instagram y Messenger en un solo lugar con alertas de ventana 24h.</p>
+                <p class="text-xs text-muted">WhatsApp, Instagram y Messenger en un solo lugar con alertas de ventana
+                  24h.</p>
               </div>
               <span class="text-[11px] font-bold text-success flex items-center gap-1.5 self-start sm:self-auto">
                 <span class="w-2 h-2 rounded-full bg-success"></span>
@@ -755,7 +751,8 @@
               <div class="bg-surface-2/60 rounded-2xl border border-border p-4 space-y-3">
                 <div class="flex items-center justify-between border-b border-border pb-2">
                   <div class="flex items-center gap-2">
-                    <div class="w-8 h-8 rounded-full bg-primary/20 text-primary font-bold flex items-center justify-center text-xs">
+                    <div
+                      class="w-8 h-8 rounded-full bg-primary/20 text-primary font-bold flex items-center justify-center text-xs">
                       CM
                     </div>
                     <div>
@@ -772,11 +769,13 @@
                 <div class="p-2.5 rounded-xl bg-note border border-note-border text-note-text text-[11px] space-y-0.5">
                   <div class="font-bold flex items-center gap-1.5">
                     <svg class="w-3.5 h-3.5 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                     <span>Nota Automática de la IA:</span>
                   </div>
-                  <p>Cliente calificado para constitución de empresa. Reunión virtual agendada para mañana 10:00 a. m.</p>
+                  <p>Cliente calificado para constitución de empresa. Reunión virtual agendada para mañana 10:00 a. m.
+                  </p>
                 </div>
 
                 <!-- Diálogo Conversacional -->
@@ -808,7 +807,8 @@
                   <div class="text-[11px] text-primary font-bold">Etapa: Reunión Agendada</div>
                 </div>
                 <div class="text-right">
-                  <span class="text-[10px] px-2.5 py-1 rounded-full bg-surface-2 border border-border font-bold text-fg">
+                  <span
+                    class="text-[10px] px-2.5 py-1 rounded-full bg-surface-2 border border-border font-bold text-fg">
                     8 chats · Asesor Senior
                   </span>
                 </div>
@@ -816,7 +816,8 @@
             </div>
 
             <!-- VISTA ESCRITORIO (Full 3 Columnas) -->
-            <div class="hidden lg:grid grid-cols-12 gap-4 rounded-2xl border border-border bg-surface-2/30 p-3 overflow-hidden text-xs">
+            <div
+              class="hidden lg:grid grid-cols-12 gap-4 rounded-2xl border border-border bg-surface-2/30 p-3 overflow-hidden text-xs">
               <!-- Lista Lateral de Chats -->
               <div class="col-span-4 bg-surface rounded-xl border border-border p-3 space-y-2">
                 <div class="flex items-center justify-between pb-2 border-b border-border">
@@ -831,14 +832,16 @@
                     </div>
                     <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-600 text-white font-bold">WA</span>
                   </div>
-                  <div class="p-2.5 rounded-lg bg-surface border border-border flex items-start justify-between opacity-80">
+                  <div
+                    class="p-2.5 rounded-lg bg-surface border border-border flex items-start justify-between opacity-80">
                     <div>
                       <div class="font-bold text-fg">Dra. María Elena</div>
                       <div class="text-[11px] text-muted truncate">Consulta de tarifario de auditoría</div>
                     </div>
                     <span class="text-[9px] px-1.5 py-0.5 rounded bg-purple-600 text-white font-bold">IG</span>
                   </div>
-                  <div class="p-2.5 rounded-lg bg-surface border border-border flex items-start justify-between opacity-80">
+                  <div
+                    class="p-2.5 rounded-lg bg-surface border border-border flex items-start justify-between opacity-80">
                     <div>
                       <div class="font-bold text-fg">Inversiones Andinas</div>
                       <div class="text-[11px] text-muted truncate">Requiere atención humana urgente</div>
@@ -849,14 +852,17 @@
               </div>
 
               <!-- Mensajes Centrales -->
-              <div class="col-span-5 bg-surface rounded-xl border border-border p-3.5 flex flex-col justify-between space-y-3">
+              <div
+                class="col-span-5 bg-surface rounded-xl border border-border p-3.5 flex flex-col justify-between space-y-3">
                 <div class="space-y-2.5">
                   <div class="flex items-center justify-between border-b border-border pb-2">
                     <span class="font-bold text-fg">Carlos Morales (+51 987 654 321)</span>
-                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-success-bg text-success font-bold">Ventana Libre 23h 48m</span>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-success-bg text-success font-bold">Ventana
+                      Libre 23h 48m</span>
                   </div>
                   <div class="p-2 rounded-lg bg-note border border-note-border text-note-text text-[11px]">
-                    <strong>Nota Interna del Asistente IA:</strong> El cliente busca constituir una empresa constructora. Se le agendó reunión virtual para el diagnóstico.
+                    <strong>Nota Interna del Asistente IA:</strong> El cliente busca constituir una empresa
+                    constructora. Se le agendó reunión virtual para el diagnóstico.
                   </div>
                   <div class="bg-surface-2 p-2.5 rounded-xl text-fg text-[11px]">
                     ¿Deseas que reservemos un turno para mañana a las 10:00 a. m.?
@@ -868,7 +874,8 @@
                 <div class="pt-2 border-t border-border flex items-center gap-2">
                   <input type="text" readonly value="Escribe una respuesta o nota interna..."
                     class="w-full bg-surface-2 border border-border rounded-lg px-2.5 py-1.5 text-xs text-muted" />
-                  <button type="button" class="px-3 py-1.5 rounded-lg bg-primary text-white font-bold text-xs">Enviar</button>
+                  <button type="button"
+                    class="px-3 py-1.5 rounded-lg bg-primary text-white font-bold text-xs">Enviar</button>
                 </div>
               </div>
 
@@ -877,12 +884,14 @@
                 <div class="font-bold text-fg border-b border-border pb-2">Detalles del Contacto / CRM</div>
                 <div class="space-y-1.5 text-[11px]">
                   <div><strong class="text-muted">Empresa:</strong> Constructora del Sur S.A.</div>
-                  <div><strong class="text-muted">Etapa CRM:</strong> <span class="text-primary font-bold">Reunión Agendada</span></div>
+                  <div><strong class="text-muted">Etapa CRM:</strong> <span class="text-primary font-bold">Reunión
+                      Agendada</span></div>
                   <div><strong class="text-muted">Mensajes totales:</strong> 8 intercambiados</div>
                   <div><strong class="text-muted">Asignado a:</strong> Asesor Senior</div>
                 </div>
                 <div class="pt-2 border-t border-border">
-                  <button type="button" class="w-full py-1.5 rounded-lg bg-surface-2 border border-border text-primary font-bold text-xs text-center">
+                  <button type="button"
+                    class="w-full py-1.5 rounded-lg bg-surface-2 border border-border text-primary font-bold text-xs text-center">
                     Ver Historial Completo
                   </button>
                 </div>
@@ -911,26 +920,32 @@
                   <span class="text-xs font-extrabold text-fg">Moderado y Conversacional</span>
                   <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-primary text-white">Recomendado</span>
                 </div>
-                <p class="text-xs text-muted leading-relaxed">Explicaciones de 2 a 4 oraciones con calidez y empatía. El balance perfecto para WhatsApp.</p>
+                <p class="text-xs text-muted leading-relaxed">Explicaciones de 2 a 4 oraciones con calidez y empatía. El
+                  balance perfecto para WhatsApp.</p>
               </div>
 
               <div class="p-4 rounded-2xl border border-border bg-surface-2/40 space-y-2 opacity-85">
                 <span class="text-xs font-bold text-fg">Breve y al Grano</span>
-                <p class="text-xs text-muted leading-relaxed">Respuestas directas de 1 a 2 oraciones para mensajería rápida y confirmaciones.</p>
+                <p class="text-xs text-muted leading-relaxed">Respuestas directas de 1 a 2 oraciones para mensajería
+                  rápida y confirmaciones.</p>
               </div>
 
               <div class="p-4 rounded-2xl border border-border bg-surface-2/40 space-y-2 opacity-85">
                 <span class="text-xs font-bold text-fg">Detallado y Persuasivo</span>
-                <p class="text-xs text-muted leading-relaxed">Respuestas enriquecidas con viñetas y beneficios para asesorías consultivas.</p>
+                <p class="text-xs text-muted leading-relaxed">Respuestas enriquecidas con viñetas y beneficios para
+                  asesorías consultivas.</p>
               </div>
             </div>
 
-            <div class="p-4 rounded-2xl bg-surface-2 border border-border flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+            <div
+              class="p-4 rounded-2xl bg-surface-2 border border-border flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
               <div class="space-y-0.5">
                 <div class="font-bold text-fg">Control de Conocimiento por Ítem de Catálogo</div>
-                <div class="text-muted text-[11px]">Puedes activar o pausar cualquier servicio para que la IA solo recomiende lo disponible.</div>
+                <div class="text-muted text-[11px]">Puedes activar o pausar cualquier servicio para que la IA solo
+                  recomiende lo disponible.</div>
               </div>
-              <span class="px-3 py-1 rounded-full bg-success-bg text-success font-bold text-[11px] self-start sm:self-auto shrink-0">
+              <span
+                class="px-3 py-1 rounded-full bg-success-bg text-success font-bold text-[11px] self-start sm:self-auto shrink-0">
                 9 de 9 Ítems Autorizados para IA
               </span>
             </div>
@@ -944,9 +959,11 @@
               <div>
                 <h3 class="text-sm sm:text-base font-extrabold text-fg flex items-center gap-2">
                   <span>Calendario de Citas & Sincronización Automática</span>
-                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-success-bg text-success">Cero Solapamientos</span>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-success-bg text-success">Cero
+                    Solapamientos</span>
                 </h3>
-                <p class="text-xs text-muted">Gestión de turnos de 45 min, descansos de 15 min y bloqueo de feriados.</p>
+                <p class="text-xs text-muted">Gestión de turnos de 45 min, descansos de 15 min y bloqueo de feriados.
+                </p>
               </div>
               <div class="text-xs font-bold text-primary">3 Citas Agendadas Hoy</div>
             </div>
@@ -955,7 +972,8 @@
               <div class="p-4 rounded-2xl bg-surface-2 border border-border space-y-2.5">
                 <div class="flex items-center justify-between">
                   <span class="font-mono font-bold text-fg text-xs">10:00 - 10:45 AM</span>
-                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-success-bg text-success">CONFIRMADA</span>
+                  <span
+                    class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-success-bg text-success">CONFIRMADA</span>
                 </div>
                 <div class="font-bold text-fg">Carlos Morales · Constructora del Sur</div>
                 <div class="text-[11px] text-muted flex items-center gap-1.5">
@@ -967,7 +985,8 @@
               <div class="p-4 rounded-2xl bg-surface-2 border border-border space-y-2.5">
                 <div class="flex items-center justify-between">
                   <span class="font-mono font-bold text-fg text-xs">11:30 - 12:15 PM</span>
-                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-primary/10 text-primary">PROGRAMADA</span>
+                  <span
+                    class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-primary/10 text-primary">PROGRAMADA</span>
                 </div>
                 <div class="font-bold text-fg">Dra. María Elena · Clínica Dental</div>
                 <div class="text-[11px] text-muted flex items-center gap-1.5">
@@ -979,7 +998,8 @@
               <div class="p-4 rounded-2xl bg-surface-2 border border-border space-y-2.5">
                 <div class="flex items-center justify-between">
                   <span class="font-mono font-bold text-fg text-xs">04:00 - 04:45 PM</span>
-                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-success-bg text-success">CONFIRMADA</span>
+                  <span
+                    class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-success-bg text-success">CONFIRMADA</span>
                 </div>
                 <div class="font-bold text-fg">Gerente de Logística · Retail Express</div>
                 <div class="text-[11px] text-muted flex items-center gap-1.5">
@@ -1000,12 +1020,14 @@
                   <span>Campañas Masivas con Plantillas Oficiales de Meta</span>
                   <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-success-bg text-success">Anti-Spam</span>
                 </h3>
-                <p class="text-xs text-muted">Envío masivo seguro filtrado por etapa del CRM con plantillas pre-aprobadas.</p>
+                <p class="text-xs text-muted">Envío masivo seguro filtrado por etapa del CRM con plantillas
+                  pre-aprobadas.</p>
               </div>
               <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400">100% Entregabilidad</div>
             </div>
 
-            <div class="p-4 sm:p-5 rounded-2xl bg-surface-2 border border-border grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            <div
+              class="p-4 sm:p-5 rounded-2xl bg-surface-2 border border-border grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
               <div class="space-y-1">
                 <span class="text-muted block text-[11px]">Segmentación de Audiencia</span>
                 <span class="font-bold text-fg text-sm">Etapa: "Propuesta Enviada"</span>
@@ -1281,6 +1303,15 @@
       </div>
       } @else {
       <form (ngSubmit)="submitDemoForm()" class="space-y-3.5 text-xs">
+        @if (demoErrorMessage()) {
+        <div class="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-500 text-xs flex items-start gap-2.5 animate-in fade-in">
+          <svg class="w-4 h-4 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span class="font-semibold leading-relaxed">{{ demoErrorMessage() }}</span>
+        </div>
+        }
         <div>
           <label class="block font-bold text-fg mb-1">Nombre Completo *</label>
           <input type="text" required [(ngModel)]="demoForm.name" name="name" placeholder="Ej. Carlos Morales"
@@ -1297,7 +1328,7 @@
 
           <div>
             <label class="block font-bold text-fg mb-1">WhatsApp de Contacto *</label>
-            <input type="tel" required [(ngModel)]="demoForm.whatsapp" name="whatsapp" placeholder="Ej. +51 987 654 321"
+            <input type="tel" required [(ngModel)]="demoForm.whatsapp" (ngModelChange)="demoErrorMessage.set(null)" name="whatsapp" placeholder="Ej. +51 987 123 456"
               class="w-full bg-surface-2 border border-border rounded-xl px-3.5 py-2 text-xs text-fg focus:outline-none focus:ring-2 focus:ring-primary" />
           </div>
         </div>
