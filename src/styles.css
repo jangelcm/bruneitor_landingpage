@@ -123,8 +123,44 @@ body {
     -webkit-backdrop-filter: blur(12px);
 }
 
-/* Glassmorphism sutil */
-.glass-header {
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+/* ==========================================================================
+   ANIMACIONES GPU-ACCELERATED (ESTILO MANYCHAT / EDITORIAL SAAS)
+   Usa únicamente transform y opacity para 60fps estables y 0 CLS.
+   ========================================================================== */
+@keyframes bubblePopIn {
+    0% {
+        opacity: 0;
+        transform: translateY(18px) scale(0.92);
+    }
+    70% {
+        opacity: 1;
+        transform: translateY(-2px) scale(1.01);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes floatSubtle {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+.animate-bubble-pop {
+    animation: bubblePopIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    will-change: transform, opacity;
+}
+
+.animate-float-subtle {
+    animation: floatSubtle 5s ease-in-out infinite;
+    will-change: transform;
+}
+
+.hero-text-shadow {
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
 }

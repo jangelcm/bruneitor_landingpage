@@ -1,4 +1,4 @@
-import { Component, OnInit, signal, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, signal, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -6,6 +6,21 @@ import { DemoService } from '../../services/demo.service';
 
 export type ShowcaseTab = 'inbox' | 'ai-config' | 'calendar' | 'broadcasts';
 export type LegalModalType = 'privacy' | 'terms' | 'data-deletion';
+
+export interface HeroChatScenario {
+  id: string;
+  label: string;
+  channel: string;
+  customerName: string;
+  customerInitials: string;
+  customerCompany: string;
+  msg1Customer: string;
+  msg2AiIntro: string;
+  msg2AiCtaLabel: string;
+  msg2AiPriceTag: string;
+  msg3CustomerReply: string;
+  msg4SystemToast: string;
+}
 
 export interface FaqItem {
   question: string;
@@ -29,14 +44,68 @@ export interface DemoFormModel {
   imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './home.component.html',
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   private demoService = inject(DemoService);
+  private chatTimers: Array<ReturnType<typeof setTimeout>> = [];
 
   // Estado de Navegación y UI
   mobileMenuOpen = signal<boolean>(false);
   darkMode = signal<boolean>(false);
   activeTab = signal<ShowcaseTab>('inbox');
   openFaqIndex = signal<number | null>(0);
+
+  // Motor de Animación Secuencial de Burbujas en el Hero (Estilo Manychat)
+  activeScenarioIndex = signal<number>(0);
+  heroChatStep = signal<number>(1); // 1: msg cliente | 2: typing IA | 3: respuesta IA + botón | 4: confirmación + CRM toast
+
+  readonly heroScenarios: HeroChatScenario[] = [
+    {
+      id: 'consultoria',
+      label: 'Consultoría & B2B',
+      channel: 'WhatsApp Oficial',
+      customerName: 'Carlos Morales',
+      customerInitials: 'CM',
+      customerCompany: 'Constructora del Sur',
+      msg1Customer: '¡Hola! 👋 ¿Tienen disponibilidad mañana para una Asesoría Corporativa y cuál es el costo?',
+      msg2AiIntro: '¡Hola Carlos! Claro que sí. Nuestra Consultoría Integral dura 45 min e incluye diagnóstico completo:',
+      msg2AiCtaLabel: '📅 Reservar Mañana 10:00 AM',
+      msg2AiPriceTag: 'S/ 250 · Cupo libre',
+      msg3CustomerReply: 'Excelente, confirmo mañana a las 10:00 AM por favor.',
+      msg4SystemToast: 'Cita agendada en Calendario + Lead en "Reunión Agendada"',
+    },
+    {
+      id: 'salud',
+      label: 'Clínicas & Salud',
+      channel: 'WhatsApp Oficial',
+      customerName: 'Valeria Paredes',
+      customerInitials: 'VP',
+      customerCompany: 'Paciente Particular',
+      msg1Customer: 'Buenas tardes, quisiera saber el precio del Diseño de Sonrisa y si atienden este jueves.',
+      msg2AiIntro: '¡Hola Valeria! 🦷 La Evaluación + Diseño Digital tiene un valor de S/ 180. Tengo estos turnos el jueves:',
+      msg2AiCtaLabel: '✨ Confirmar Jueves 04:30 PM',
+      msg2AiPriceTag: 'S/ 180 · Sede Miraflores',
+      msg3CustomerReply: '¡Me queda genial el jueves a las 4:30 PM! Ahí estaré.',
+      msg4SystemToast: 'Turno reservado sin solapamiento + Recordatorio 24h activado',
+    },
+    {
+      id: 'ecommerce',
+      label: 'Catálogo & Ventas',
+      channel: 'WhatsApp Oficial',
+      customerName: 'Diego Vargas',
+      customerInitials: 'DV',
+      customerCompany: 'Pedido Express',
+      msg1Customer: 'Hola, ¿tienen en stock la Silla Ergonómica Pro y hacen envíos hoy mismo a San Isidro?',
+      msg2AiIntro: '¡Hola Diego! 🚀 Sí, nos quedan 4 unidades en stock con entrega hoy mismo en San Isidro:',
+      msg2AiCtaLabel: '🛒 Separar Pedido + Envío Hoy',
+      msg2AiPriceTag: 'S/ 690 · Stock verificado',
+      msg3CustomerReply: '¡Listo! Ya realicé el pago, les envío el comprobante.',
+      msg4SystemToast: 'Stock actualizado + Transferido a asesor con resumen IA',
+    },
+  ];
+
+  currentHeroScenario = computed<HeroChatScenario>(
+    () => this.heroScenarios[this.activeScenarioIndex()] || this.heroScenarios[0],
+  );
 
   // Modales
   isDemoModalOpen = signal<boolean>(false);
@@ -114,6 +183,57 @@ export class HomeComponent implements OnInit {
     this.initDarkMode();
     this.checkCookieConsent();
     this.checkDirectHashRouting();
+    this.startHeroChatSequence();
+  }
+
+  ngOnDestroy() {
+    this.clearHeroTimers();
+  }
+
+  selectHeroScenario(index: number) {
+    this.activeScenarioIndex.set(index);
+    this.startHeroChatSequence();
+  }
+
+  private clearHeroTimers() {
+    this.chatTimers.forEach((t) => clearTimeout(t));
+    this.chatTimers = [];
+  }
+
+  private startHeroChatSequence() {
+    if (typeof window === 'undefined') return;
+    this.clearHeroTimers();
+    this.heroChatStep.set(1);
+
+    // Paso 2 (900ms): Indicador de escritura IA
+    this.chatTimers.push(
+      setTimeout(() => {
+        this.heroChatStep.set(2);
+      }, 900),
+    );
+
+    // Paso 3 (1900ms): Respuesta enriquecida de IA + botón interactivo
+    this.chatTimers.push(
+      setTimeout(() => {
+        this.heroChatStep.set(3);
+      }, 1900),
+    );
+
+    // Paso 4 (3600ms): Respuesta del cliente + Toast de sincronización CRM y Agenda
+    this.chatTimers.push(
+      setTimeout(() => {
+        this.heroChatStep.set(4);
+      }, 3600),
+    );
+
+    // Auto-ciclo al siguiente rubro a los 9.5 segundos
+    this.chatTimers.push(
+      setTimeout(() => {
+        const nextIdx = (this.activeScenarioIndex() + 1) % this.heroScenarios.length;
+        this.activeScenarioIndex.set(nextIdx);
+        this.startHeroChatSequence();
+      }, 9500),
+    );
   }
 
   // --- COMPATIBILIDAD CON URLs DIRECTAS CON HASH ---
