@@ -139,17 +139,35 @@ export class HomeComponent implements OnInit {
     window.addEventListener('hashchange', handleHash);
   }
 
-  // --- MODO OSCURO / CLARO ---
+  // --- MODO OSCURO / CLARO (DETECCIÓN AUTOMÁTICA DEL SISTEMA OPERATIVO) ---
   private initDarkMode() {
     if (typeof window === 'undefined') return;
+    const mediaQuery = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
     const savedTheme = localStorage.getItem('bruneitor_theme');
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      this.darkMode.set(true);
-      document.documentElement.classList.add('dark');
-    } else {
-      this.darkMode.set(false);
-      document.documentElement.classList.remove('dark');
+
+    const applyOsOrSavedTheme = (prefersDark: boolean) => {
+      const isDark = savedTheme ? savedTheme === 'dark' : prefersDark;
+      this.darkMode.set(isDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    };
+
+    applyOsOrSavedTheme(mediaQuery ? mediaQuery.matches : false);
+
+    // Escuchar cambios en vivo del tema del Sistema Operativo (sin requerir toggle manual)
+    if (mediaQuery?.addEventListener) {
+      mediaQuery.addEventListener('change', (e) => {
+        localStorage.removeItem('bruneitor_theme');
+        this.darkMode.set(e.matches);
+        if (e.matches) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      });
     }
   }
 

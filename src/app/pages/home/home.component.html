@@ -4,13 +4,12 @@
   <!-- ========================================================================= -->
   <!-- 1. HEADER & BARRA DE NAVEGACIÓN SUPERIOR (MÁXIMO 4 OPCIONES)              -->
   <!-- ========================================================================= -->
-  <header
-    class="sticky top-0 z-40  w-full border-b border-border bg-surface/85 bg-white glass-header transition-colors">
+  <header class="sticky top-0 z-40  w-full border-b border-border bg-surface/85 glass-header transition-colors">
     <div class="max-w-7xl mx-auto  px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
 
       <!-- Logotipo de Marca -->
       <a href="#" class="flex items-center gap-3 shrink-0 focus:outline-none">
-        <img src="logo.png" alt="BRUNEITOR.AI" class="lg:h-20 h-16 w-auto object-contain" />
+        <img [src]="darkMode() ? '/logo_dark.png' : '/logo.png'" alt="BRUNEITOR.AI" style="height: 36px; width: auto; object-fit: contain;" class="h-9 w-auto object-contain select-none" />
       </a>
 
       <!-- Menú Desktop: Exactamente 4 Opciones de Menú -->
@@ -49,7 +48,7 @@
 
         <!-- Botón Hamburguesa Móvil -->
         <button type="button" (click)="mobileMenuOpen.set(!mobileMenuOpen())"
-          class="md:hidden w-9 h-9 rounded-xl border border-border bg-surface-2 flex items-center justify-center text-muted hover:text-fg cursor-pointer">
+          class="md:hidden w-9 h-9 rounded-xl flex items-center justify-center text-muted hover:text-fg cursor-pointer">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             @if (mobileMenuOpen()) {
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -1147,7 +1146,7 @@
         <!-- Columna 1: Marca y RUC Oficial -->
         <div class="space-y-3">
           <div class="flex items-center gap-2">
-            <img src="logo.png" alt="BRUNEITOR.AI" class="h-10 w-auto object-contain" />
+            <img [src]="darkMode() ? '/logo_dark.png' : '/logo.png'" alt="BRUNEITOR.AI" style="height: 32px; width: auto; object-fit: contain;" class="h-8 w-auto object-contain select-none" />
             <span class="text-sm font-extrabold text-fg tracking-tight">BRUNEITOR<span
                 class="text-primary">.AI</span></span>
           </div>
@@ -1304,7 +1303,8 @@
       } @else {
       <form (ngSubmit)="submitDemoForm()" class="space-y-3.5 text-xs">
         @if (demoErrorMessage()) {
-        <div class="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-500 text-xs flex items-start gap-2.5 animate-in fade-in">
+        <div
+          class="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-500 text-xs flex items-start gap-2.5 animate-in fade-in">
           <svg class="w-4 h-4 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -1328,7 +1328,8 @@
 
           <div>
             <label class="block font-bold text-fg mb-1">WhatsApp de Contacto *</label>
-            <input type="tel" required [(ngModel)]="demoForm.whatsapp" (ngModelChange)="demoErrorMessage.set(null)" name="whatsapp" placeholder="Ej. +51 987 123 456"
+            <input type="tel" required [(ngModel)]="demoForm.whatsapp" (ngModelChange)="demoErrorMessage.set(null)"
+              name="whatsapp" placeholder="Ej. +51 987 123 456"
               class="w-full bg-surface-2 border border-border rounded-xl px-3.5 py-2 text-xs text-fg focus:outline-none focus:ring-2 focus:ring-primary" />
           </div>
         </div>
