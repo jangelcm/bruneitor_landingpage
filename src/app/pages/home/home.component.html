@@ -226,28 +226,47 @@
     <!-- ========================================================================= -->
     <!-- 4. ARQUITECTURA BENTO DE BENEFICIOS CLAVE                                 -->
     <!-- ========================================================================= -->
-    <section id="beneficios" aria-labelledby="beneficios-heading" class="py-20 border-b border-border bg-bg">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <section id="beneficios" aria-labelledby="beneficios-heading"
+      class="relative scroll-mt-20 py-20 sm:py-28 border-b border-border bg-bg overflow-hidden">
 
-        <div class="text-center max-w-3xl mx-auto space-y-3">
-          <span
-            class="text-[11px] font-extrabold uppercase tracking-wider text-primary bg-primary/10 px-3.5 py-1 rounded-full border border-primary/20">
-            ¿Por qué las empresas migran a BRUNEITOR.AI?
-          </span>
-          <h2 id="beneficios-heading" class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-fg tracking-tight">
-            Diseñado para multiplicar tus cierres, automatizar tu agenda y blindar tu línea comercial.
+      <!-- Resplandor sutil superior para conectar la transición desde el Hero oscuro -->
+      <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-[40rem] h-48 bg-gradient-to-b from-cyan-500/10 via-blue-500/5 to-transparent blur-3xl pointer-events-none">
+      </div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14 sm:space-y-16">
+
+        <!-- ================================================================= -->
+        <!-- CABECERA EDITORIAL DE SECCIÓN                                     -->
+        <!-- ================================================================= -->
+        <div class="text-center max-w-3xl mx-auto space-y-4">
+          <div
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 text-[11px] font-extrabold uppercase tracking-wider shadow-xs">
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></span>
+            <span>¿Por qué las empresas migran a BRUNEITOR.AI?</span>
+          </div>
+
+          <h2 id="beneficios-heading"
+            class="text-2xl sm:text-4xl lg:text-[2.65rem] font-extrabold text-fg tracking-tight leading-[1.15]">
+            Diseñado para multiplicar tus cierres,
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-blue-500 to-emerald-500">
+              automatizar tu agenda y blindar
+            </span>
+            tu línea comercial.
           </h2>
-          <p class="text-xs sm:text-sm text-muted">
+
+          <p class="text-xs sm:text-base text-muted max-w-2xl mx-auto leading-relaxed">
             Elimina la fuga de prospectos por demoras en responder y centraliza todo tu flujo comercial sobre la
             infraestructura oficial de Meta Business Cloud.
           </p>
         </div>
 
+        <!-- ================================================================= -->
+        <!-- GRID PRINCIPAL: BENTO BENEFICIOS (7) + SIMULADOR EN VIVO (5)       -->
+        <!-- ================================================================= -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-12 items-start">
 
-          <!-- ================================================================= -->
-          <!-- COLUMNA IZQUIERDA: BENTO GRID DE BENEFICIOS (7 Columnas en LG)    -->
-          <!-- ================================================================= -->
+          <!-- COLUMNA IZQUIERDA: BENTO GRID DE BENEFICIOS (7 Columnas en LG) -->
           <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
 
             <!-- Beneficio 1: Cero Bloqueos -->
@@ -462,9 +481,7 @@
 
           </div>
 
-          <!-- ================================================================= -->
-          <!-- COLUMNA DERECHA: SIMULADOR INTERACTIVO (5 Columnas + Sticky)      -->
-          <!-- ================================================================= -->
+          <!-- COLUMNA DERECHA: SIMULADOR INTERACTIVO (5 Columnas + Sticky) -->
           <div class="lg:col-span-5 lg:sticky lg:top-24 relative flex flex-col items-center w-full">
 
             <!-- Glow Ambiental de Fondo -->
@@ -474,13 +491,13 @@
 
             <!-- Selector Interactivo de Rubro (Segmented Pill) -->
             <div role="tablist" aria-label="Seleccionar escenario de demostración"
-              class="mb-4 inline-flex flex-wrap items-center justify-center gap-1.5 p-1.5 rounded-full bg-slate-950/90 backdrop-blur-md border border-white/10 shadow-xl">
+              class="mb-4 inline-flex flex-wrap items-center justify-center gap-1.5 p-1.5 rounded-full bg-[#070B14]/95 backdrop-blur-md border border-white/10 shadow-xl">
               @for (scenario of heroScenarios; track scenario.id; let idx = $index) {
               <button type="button" role="tab" [attr.aria-selected]="activeScenarioIndex() === idx"
                 (click)="selectHeroScenario(idx)"
                 [class]="activeScenarioIndex() === idx
-            ? 'px-3.5 py-1.5 rounded-full text-[11px] font-extrabold bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 shadow-md shadow-cyan-500/25 transition-all cursor-pointer'
-            : 'px-3.5 py-1.5 rounded-full text-[11px] font-semibold text-slate-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer'">
+                ? 'px-3.5 py-1.5 rounded-full text-[11px] font-extrabold bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 shadow-md shadow-cyan-500/25 transition-all cursor-pointer'
+                : 'px-3.5 py-1.5 rounded-full text-[11px] font-semibold text-slate-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer'">
                 {{ scenario.label }}
               </button>
               }
@@ -489,7 +506,7 @@
             <!-- Marco del Simulador (Mockup de Consola WhatsApp Cloud) -->
             @if (currentHeroScenario(); as scene) {
             <div
-              class="w-full max-w-md rounded-3xl bg-slate-950/95 backdrop-blur-xl border border-white/10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] overflow-hidden flex flex-col">
+              class="w-full max-w-md rounded-3xl bg-[#070B14]/95 backdrop-blur-xl border border-white/10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] overflow-hidden flex flex-col">
 
               <!-- Cabecera de la Ventana del Simulador -->
               <div class="px-4 py-3 bg-slate-900/90 border-b border-white/10 flex items-center justify-between gap-2">
@@ -643,140 +660,348 @@
 
         </div>
 
-        <!-- Tabla Comparativa: Piratas vs Meta Oficial -->
-        <div class="pt-8">
-          <div class="bg-surface border border-border rounded-2xl overflow-hidden shadow-xs">
-            <div class="p-5 sm:p-6 border-b border-border bg-surface-2/40">
-              <h3 class="text-base sm:text-lg font-extrabold text-fg">
-                Comparativa: Bots No Oficiales (QR/Web Scraping) vs BRUNEITOR.AI (API Oficial Meta)
-              </h3>
-              <p class="text-xs text-muted mt-1">
-                Conoce la diferencia técnica real entre arriesgar tu número comercial y construir sobre la
-                infraestructura
-                autorizada por Meta.
-              </p>
+        <!-- ================================================================= -->
+        <!-- TABLA COMPARATIVA REDISEÑADA: BOTS NO OFICIALES VS META CLOUD API -->
+        <!-- ================================================================= -->
+        <div class="pt-4">
+          <div
+            class="relative rounded-3xl bg-surface/90 backdrop-blur-sm border border-border overflow-hidden shadow-lg">
+
+            <!-- Cabecera de la Tarjeta Comparativa -->
+            <div
+              class="p-6 sm:p-8 border-b border-border bg-surface-2/40 flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div class="space-y-1.5">
+                <div
+                  class="inline-flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-wider text-amber-500">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                    </path>
+                  </svg>
+                  <span>Seguridad de Infraestructura Comercial</span>
+                </div>
+                <h3 class="text-lg sm:text-xl font-extrabold text-fg tracking-tight">
+                  Comparativa: Bots No Oficiales (QR / Scraping) vs BRUNEITOR.AI
+                </h3>
+                <p class="text-xs sm:text-sm text-muted">
+                  Conoce la diferencia técnica real entre arriesgar tu número comercial y operar sobre la nube
+                  autorizada de Meta.
+                </p>
+              </div>
+
+              <span
+                class="self-start md:self-center shrink-0 inline-flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-xs font-extrabold">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                  </path>
+                </svg>
+                Embedded Signup Oficial
+              </span>
             </div>
 
+            <!-- Tabla Responsiva -->
             <div class="overflow-x-auto">
-              <table class="w-full text-left text-xs">
-                <thead class="bg-surface-2 text-fg border-b border-border">
-                  <tr>
-                    <th class="p-3.5 sm:p-4 font-bold">Característica</th>
-                    <th class="p-3.5 sm:p-4 font-bold text-danger">Herramientas No Oficiales (QR)</th>
-                    <th class="p-3.5 sm:p-4 font-bold text-success">BRUNEITOR.AI (API Oficial Meta)</th>
+              <table class="w-full text-left text-xs sm:text-[13px] border-collapse">
+                <thead>
+                  <tr class="border-b border-border bg-surface-2/70 text-fg">
+                    <th class="py-4 px-4 sm:px-6 font-extrabold w-1/3 min-w-[180px]">Criterio Técnico</th>
+                    <th class="py-4 px-4 sm:px-6 font-extrabold text-rose-500 w-1/3 min-w-[230px]">
+                      <div class="flex items-center gap-2">
+                        <span
+                          class="w-5 h-5 rounded-full bg-rose-500/15 flex items-center justify-center text-[11px]">✕</span>
+                        <span>Bots No Oficiales (QR)</span>
+                      </div>
+                    </th>
+                    <th
+                      class="py-4 px-4 sm:px-6 font-extrabold text-emerald-500 bg-emerald-500/[0.06] border-l border-emerald-500/20 w-1/3 min-w-[250px]">
+                      <div class="flex items-center gap-2">
+                        <span
+                          class="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-[11px]">✓</span>
+                        <span>BRUNEITOR.AI (API Oficial Meta)</span>
+                      </div>
+                    </th>
                   </tr>
                 </thead>
+
                 <tbody class="divide-y divide-border text-muted">
-                  <tr class="hover:bg-surface-2/30 transition">
-                    <td class="p-3.5 sm:p-4 font-bold text-fg">Riesgo de Suspensión / Baneo</td>
-                    <td class="p-3.5 sm:p-4 text-danger font-semibold">Muy Alto (Meta detecta emulaciones)</td>
-                    <td class="p-3.5 sm:p-4 text-success font-bold flex items-center gap-1.5">
-                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7">
-                        </path>
-                      </svg>
-                      0% Riesgo (Aprobado formalmente)
+                  <!-- Fila 1 -->
+                  <tr class="hover:bg-surface-2/30 transition-colors">
+                    <td class="py-4 px-4 sm:px-6 font-bold text-fg">Riesgo de Suspensión / Baneo</td>
+                    <td class="py-4 px-4 sm:px-6">
+                      <span class="inline-flex items-center gap-1.5 font-semibold text-rose-500">
+                        <span class="w-1.5 h-1.5 rounded-full bg-rose-500 shrink-0"></span>
+                        Muy Alto (Meta detecta emulaciones)
+                      </span>
+                    </td>
+                    <td
+                      class="py-4 px-4 sm:px-6 bg-emerald-500/[0.04] border-l border-emerald-500/20 font-bold text-emerald-500">
+                      <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7">
+                          </path>
+                        </svg>
+                        <span>0% Riesgo (Aprobado formalmente)</span>
+                      </div>
                     </td>
                   </tr>
-                  <tr class="hover:bg-surface-2/30 transition">
-                    <td class="p-3.5 sm:p-4 font-bold text-fg">Estabilidad y Uptime</td>
-                    <td class="p-3.5 sm:p-4">Se cae si se apaga el teléfono o pierde WiFi</td>
-                    <td class="p-3.5 sm:p-4 text-fg font-semibold">Servidores en la nube con 99.9% disponibilidad</td>
+
+                  <!-- Fila 2 -->
+                  <tr class="hover:bg-surface-2/30 transition-colors">
+                    <td class="py-4 px-4 sm:px-6 font-bold text-fg">Estabilidad y Uptime</td>
+                    <td class="py-4 px-4 sm:px-6">Se cae si se apaga el celular o pierde WiFi</td>
+                    <td
+                      class="py-4 px-4 sm:px-6 bg-emerald-500/[0.04] border-l border-emerald-500/20 font-semibold text-fg">
+                      <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor"
+                          viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7">
+                          </path>
+                        </svg>
+                        <span>Servidores Cloud con 99.9% disponibilidad</span>
+                      </div>
+                    </td>
                   </tr>
-                  <tr class="hover:bg-surface-2/30 transition">
-                    <td class="p-3.5 sm:p-4 font-bold text-fg">Campañas Masivas de Mensajes</td>
-                    <td class="p-3.5 sm:p-4 text-danger">Baneo casi inmediato por marcarse como SPAM</td>
-                    <td class="p-3.5 sm:p-4 text-fg font-semibold">Plantillas oficiales pre-aprobadas por Meta</td>
+
+                  <!-- Fila 3 -->
+                  <tr class="hover:bg-surface-2/30 transition-colors">
+                    <td class="py-4 px-4 sm:px-6 font-bold text-fg">Campañas Masivas (Broadcasts)</td>
+                    <td class="py-4 px-4 sm:px-6 text-rose-500/90 font-medium">Baneo inmediato al marcarse como SPAM
+                    </td>
+                    <td
+                      class="py-4 px-4 sm:px-6 bg-emerald-500/[0.04] border-l border-emerald-500/20 font-semibold text-fg">
+                      <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor"
+                          viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7">
+                          </path>
+                        </svg>
+                        <span>Plantillas oficiales pre-aprobadas por Meta</span>
+                      </div>
+                    </td>
                   </tr>
-                  <tr class="hover:bg-surface-2/30 transition">
-                    <td class="p-3.5 sm:p-4 font-bold text-fg">Verificación de Empresa</td>
-                    <td class="p-3.5 sm:p-4">No compatible con insignia verde de Meta</td>
-                    <td class="p-3.5 sm:p-4 text-fg font-semibold">Apto para obtener la insignia verde oficial</td>
+
+                  <!-- Fila 4 -->
+                  <tr class="hover:bg-surface-2/30 transition-colors">
+                    <td class="py-4 px-4 sm:px-6 font-bold text-fg">Verificación de Empresa</td>
+                    <td class="py-4 px-4 sm:px-6">Incompatible con insignia oficial de Meta</td>
+                    <td
+                      class="py-4 px-4 sm:px-6 bg-emerald-500/[0.04] border-l border-emerald-500/20 font-semibold text-fg">
+                      <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor"
+                          viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7">
+                          </path>
+                        </svg>
+                        <span>Apto para insignia oficial de cuenta verificada</span>
+                      </div>
+                    </td>
                   </tr>
-                  <tr class="hover:bg-surface-2/30 transition">
-                    <td class="p-3.5 sm:p-4 font-bold text-fg">Multi-Canalidad</td>
-                    <td class="p-3.5 sm:p-4">Solo WhatsApp local</td>
-                    <td class="p-3.5 sm:p-4 text-fg font-semibold">WhatsApp, Instagram Direct, Messenger y TikTok</td>
+
+                  <!-- Fila 5 -->
+                  <tr class="hover:bg-surface-2/30 transition-colors">
+                    <td class="py-4 px-4 sm:px-6 font-bold text-fg">Multi-Canalidad Centralizada</td>
+                    <td class="py-4 px-4 sm:px-6">Solo WhatsApp local dependiente del teléfono</td>
+                    <td
+                      class="py-4 px-4 sm:px-6 bg-emerald-500/[0.04] border-l border-emerald-500/20 font-semibold text-fg">
+                      <div class="flex items-center gap-2">
+                        <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor"
+                          viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7">
+                          </path>
+                        </svg>
+                        <span>WhatsApp, Instagram Direct, Messenger y TikTok</span>
+                      </div>
+                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
+
+            <!-- Barra Inferior de Conversión dentro de la Comparativa -->
+            <div
+              class="px-6 py-4 bg-surface-2/50 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
+              <p class="text-xs text-muted text-center sm:text-left">
+                ¿Actualmente usas un bot con código QR? Migra tu número a la API Oficial en menos de 10 minutos sin
+                perder tu historial.
+              </p>
+              <button type="button" (click)="openDemoModal()"
+                class="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-slate-950 font-extrabold text-xs shadow-md shadow-cyan-500/20 transition-all hover:-translate-y-0.5 cursor-pointer">
+                <span>Blindar mi número ahora</span>
+                <svg class="w-3.5 h-3.5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+              </button>
+            </div>
+
           </div>
         </div>
 
       </div>
     </section>
-
     <!-- ========================================================================= -->
     <!-- 5. CÓMO FUNCIONA EN 3 PASOS                                               -->
     <!-- ========================================================================= -->
-    <section id="como-funciona" class="py-20 border-b border-border bg-surface-2/30">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    <section id="como-funciona" aria-labelledby="como-funciona-heading"
+      class="relative scroll-mt-20 py-20 sm:py-28 border-b border-border bg-surface-2/30 overflow-hidden">
 
-        <div class="text-center max-w-3xl mx-auto space-y-3">
-          <span
-            class="text-[11px] font-extrabold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
-            Implementación Simple
-          </span>
-          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-fg tracking-tight">
-            Pon en marcha tu asistente comercial en 3 sencillos pasos
+      <!-- Resplandor ambiental decorativo de fondo -->
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[35rem] h-64 bg-gradient-to-r from-cyan-500/10 via-violet-500/10 to-emerald-500/10 blur-[100px] pointer-events-none">
+      </div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+        <!-- ================================================================= -->
+        <!-- CABECERA EDITORIAL DE SECCIÓN                                     -->
+        <!-- ================================================================= -->
+        <div class="text-center max-w-3xl mx-auto space-y-4">
+          <div
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 text-[11px] font-extrabold uppercase tracking-wider shadow-xs">
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></span>
+            <span>Implementación Simple</span>
+          </div>
+
+          <h2 id="como-funciona-heading"
+            class="text-2xl sm:text-4xl lg:text-[2.65rem] font-extrabold text-fg tracking-tight leading-[1.15]">
+            Pon en marcha tu asistente comercial en
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-blue-500 to-emerald-500">
+              3 sencillos pasos
+            </span>
           </h2>
-          <p class="text-xs sm:text-sm text-muted">
+
+          <p class="text-xs sm:text-base text-muted max-w-2xl mx-auto leading-relaxed">
             Sin configuraciones técnicas complejas ni programación. Diseñado para que tu equipo empiece a operar el
-            mismo
-            día.
+            mismo día.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+        <!-- ================================================================= -->
+        <!-- GRID DE 3 PASOS CON LÍNEA CONECTORA EN DESKTOP                    -->
+        <!-- ================================================================= -->
+        <div class="relative grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
 
-          <!-- Paso 1 -->
-          <div class="p-6 rounded-2xl bg-surface border border-border space-y-4 shadow-xs relative">
-            <div
-              class="w-10 h-10 rounded-xl bg-primary text-white font-extrabold text-sm flex items-center justify-center">
-              1
-            </div>
-            <h3 class="text-base font-bold text-fg">Conecta tu WhatsApp con 1 Clic</h3>
-            <p class="text-xs text-muted leading-relaxed">
-              Mediante la ventana oficial de <strong>Meta Embedded Signup</strong> vinculas tu número de teléfono y
-              catálogo comercial sin copiar tokens ni instalar programas en tu computadora.
-            </p>
-            <div class="pt-2 text-[11px] font-semibold text-primary">
-              ✓ Verificación de firma criptográfica HMAC
-            </div>
+          <!-- Línea Conectora de Fondo (Solo visible en Desktop md+) -->
+          <div
+            class="hidden md:block absolute top-1/3 left-12 right-12 h-0.5 bg-gradient-to-r from-cyan-500/30 via-violet-500/30 to-emerald-500/30 -z-0 pointer-events-none">
           </div>
 
-          <!-- Paso 2 -->
-          <div class="p-6 rounded-2xl bg-surface border border-border space-y-4 shadow-xs relative">
+          <!-- PASO 1: Conexión Meta (Cyan) -->
+          <article
+            class="group relative flex flex-col justify-between p-7 rounded-3xl bg-surface/90 backdrop-blur-sm border border-border hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-15px_rgba(6,182,212,0.18)] overflow-hidden z-10">
             <div
-              class="w-10 h-10 rounded-xl bg-primary text-white font-extrabold text-sm flex items-center justify-center">
-              2
+              class="absolute -right-12 -top-12 w-36 h-36 bg-cyan-500/5 rounded-full blur-2xl group-hover:bg-cyan-500/15 transition-all duration-500 pointer-events-none">
             </div>
-            <h3 class="text-base font-bold text-fg">Personaliza tu Identidad y Catálogo</h3>
-            <p class="text-xs text-muted leading-relaxed">
-              Elige una plantilla según tu rubro (Salud, Consultoría, E-commerce, Inmobiliaria), carga tus
-              productos/servicios y selecciona el estilo de respuesta (breve, moderado o detallado).
-            </p>
-            <div class="pt-2 text-[11px] font-semibold text-primary">
-              ✓ Cero jerga técnica ni prompts complicados
-            </div>
-          </div>
 
-          <!-- Paso 3 -->
-          <div class="p-6 rounded-2xl bg-surface border border-border space-y-4 shadow-xs relative">
+            <div class="space-y-5 relative z-10">
+              <div class="flex items-center justify-between">
+                <div
+                  class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-500 font-black text-base flex items-center justify-center border border-cyan-500/25 group-hover:scale-110 group-hover:bg-cyan-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">
+                  01
+                </div>
+                <span
+                  class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-500 border border-cyan-500/20">
+                  Embedded Signup
+                </span>
+              </div>
+
+              <div class="space-y-2.5">
+                <h3 class="text-lg font-extrabold text-fg group-hover:text-cyan-500 transition-colors">
+                  Conecta tu WhatsApp con 1 Clic
+                </h3>
+                <p class="text-xs sm:text-[13px] text-muted leading-relaxed">
+                  Mediante la ventana oficial de <strong>Meta Embedded Signup</strong> vinculas tu número de teléfono y
+                  catálogo comercial sin copiar tokens ni instalar programas en tu computadora.
+                </p>
+              </div>
+            </div>
+
             <div
-              class="w-10 h-10 rounded-xl bg-primary text-white font-extrabold text-sm flex items-center justify-center">
-              3
+              class="pt-5 mt-5 border-t border-border/60 flex items-center gap-2 text-[11px] font-bold text-cyan-600 dark:text-cyan-400">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Verificación de firma criptográfica HMAC</span>
             </div>
-            <h3 class="text-base font-bold text-fg">Vende y Agenda 24/7 en Automático</h3>
-            <p class="text-xs text-muted leading-relaxed">
-              Tus clientes reciben atención instantánea las 24 horas, resuelven sus dudas de precios, eligen horarios en
-              tu calendario y tus asesores intervienen cuando sea necesario.
-            </p>
-            <div class="pt-2 text-[11px] font-semibold text-primary">
-              ✓ Sincronización en tiempo real con WebSockets
+          </article>
+
+          <!-- PASO 2: Personalización de Catálogo (Violeta) -->
+          <article
+            class="group relative flex flex-col justify-between p-7 rounded-3xl bg-surface/90 backdrop-blur-sm border border-border hover:border-violet-500/50 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-15px_rgba(139,92,246,0.18)] overflow-hidden z-10">
+            <div
+              class="absolute -right-12 -top-12 w-36 h-36 bg-violet-500/5 rounded-full blur-2xl group-hover:bg-violet-500/15 transition-all duration-500 pointer-events-none">
             </div>
-          </div>
+
+            <div class="space-y-5 relative z-10">
+              <div class="flex items-center justify-between">
+                <div
+                  class="w-12 h-12 rounded-2xl bg-violet-500/10 text-violet-500 font-black text-base flex items-center justify-center border border-violet-500/25 group-hover:scale-110 group-hover:bg-violet-500 group-hover:text-white transition-all duration-300 shadow-sm">
+                  02
+                </div>
+                <span
+                  class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-violet-500/10 text-violet-500 border border-violet-500/20">
+                  Catálogo e Identidad
+                </span>
+              </div>
+
+              <div class="space-y-2.5">
+                <h3 class="text-lg font-extrabold text-fg group-hover:text-violet-500 transition-colors">
+                  Personaliza tu Identidad y Catálogo
+                </h3>
+                <p class="text-xs sm:text-[13px] text-muted leading-relaxed">
+                  Elige una plantilla según tu rubro (Salud, Consultoría, E-commerce, Inmobiliaria), carga tus
+                  productos/servicios y selecciona el estilo de respuesta (breve, moderado o detallado).
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="pt-5 mt-5 border-t border-border/60 flex items-center gap-2 text-[11px] font-bold text-violet-600 dark:text-violet-400">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Cero jerga técnica ni prompts complicados</span>
+            </div>
+          </article>
+
+          <!-- PASO 3: Automatización 24/7 (Esmeralda) -->
+          <article
+            class="group relative flex flex-col justify-between p-7 rounded-3xl bg-surface/90 backdrop-blur-sm border border-border hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_40px_-15px_rgba(16,185,129,0.18)] overflow-hidden z-10">
+            <div
+              class="absolute -right-12 -top-12 w-36 h-36 bg-emerald-500/5 rounded-full blur-2xl group-hover:bg-emerald-500/15 transition-all duration-500 pointer-events-none">
+            </div>
+
+            <div class="space-y-5 relative z-10">
+              <div class="flex items-center justify-between">
+                <div
+                  class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-500 font-black text-base flex items-center justify-center border border-emerald-500/25 group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-slate-950 transition-all duration-300 shadow-sm">
+                  03
+                </div>
+                <span
+                  class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+                  Operación 24/7
+                </span>
+              </div>
+
+              <div class="space-y-2.5">
+                <h3 class="text-lg font-extrabold text-fg group-hover:text-emerald-500 transition-colors">
+                  Vende y Agenda 24/7 en Automático
+                </h3>
+                <p class="text-xs sm:text-[13px] text-muted leading-relaxed">
+                  Tus clientes reciben atención instantánea las 24 horas, resuelven sus dudas de precios, eligen
+                  horarios en tu calendario y tus asesores intervienen cuando sea necesario.
+                </p>
+              </div>
+            </div>
+
+            <div
+              class="pt-5 mt-5 border-t border-border/60 flex items-center gap-2 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Sincronización en tiempo real con WebSockets</span>
+            </div>
+          </article>
 
         </div>
 
@@ -786,30 +1011,53 @@
     <!-- ========================================================================= -->
     <!-- 6. PLATAFORMA EN ACCIÓN (SHOWCASE INTERACTIVO DE 4 MÓDULOS)               -->
     <!-- ========================================================================= -->
-    <section id="plataforma" class="py-20 border-b border-border bg-bg">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+    <section id="plataforma" aria-labelledby="plataforma-heading"
+      class="relative scroll-mt-20 py-20 sm:py-28 border-b border-border bg-bg overflow-hidden">
 
-        <div class="text-center max-w-3xl mx-auto space-y-3">
-          <span
-            class="text-[11px] font-extrabold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
-            Explora la Interfaz Real
-          </span>
-          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-fg tracking-tight">
-            Una plataforma profesional construida para la velocidad de tu equipo
+      <!-- Resplandor decorativo de fondo -->
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-72 bg-gradient-to-tr from-cyan-500/10 via-blue-500/10 to-emerald-500/10 blur-[120px] pointer-events-none">
+      </div>
+
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-14">
+
+        <!-- ================================================================= -->
+        <!-- CABECERA EDITORIAL DE SECCIÓN                                     -->
+        <!-- ================================================================= -->
+        <div class="text-center max-w-3xl mx-auto space-y-4">
+          <div
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 text-[11px] font-extrabold uppercase tracking-wider shadow-xs">
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></span>
+            <span>Explora las secciones de Bruneitor.AI</span>
+          </div>
+
+          <h2 id="plataforma-heading"
+            class="text-2xl sm:text-4xl lg:text-[2.65rem] font-extrabold text-fg tracking-tight leading-[1.15]">
+            Una plataforma profesional construida para
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-blue-500 to-emerald-500">
+              la velocidad de tu equipo
+            </span>
           </h2>
-          <p class="text-xs sm:text-sm text-muted">
+
+          <p class="text-xs sm:text-base text-muted max-w-2xl mx-auto leading-relaxed">
             Haz clic en cada pestaña para previsualizar los módulos principales que operarán en el día a día de tu
             negocio.
           </p>
         </div>
 
-        <!-- Selector de Pestañas del Showcase: Cuadrícula 2x2 en móvil, 4 en desktop -->
+        <!-- ================================================================= -->
+        <!-- SELECTOR DE PESTAÑAS DEL SHOWCASE (Segmented Control Pill)        -->
+        <!-- ================================================================= -->
         <div class="max-w-4xl mx-auto">
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 p-1.5 rounded-2xl bg-surface-2 border border-border">
-            <button type="button" (click)="setActiveTab('inbox')" [class.bg-primary]="activeTab() === 'inbox'"
-              [class.text-white]="activeTab() === 'inbox'" [class.shadow-sm]="activeTab() === 'inbox'"
-              [class.text-muted]="activeTab() !== 'inbox'" [class.hover:text-fg]="activeTab() !== 'inbox'"
-              class="px-3.5 py-3 rounded-xl text-xs font-bold transition cursor-pointer flex items-center justify-center gap-2">
+          <div role="tablist" aria-label="Módulos de la plataforma"
+            class="grid grid-cols-2 sm:grid-cols-4 gap-2 p-1.5 rounded-2xl bg-surface-2/80 backdrop-blur-md border border-border shadow-md">
+
+            <!-- Tab 1: Bandeja CRM -->
+            <button type="button" role="tab" [attr.aria-selected]="activeTab() === 'inbox'"
+              (click)="setActiveTab('inbox')"
+              [class]="activeTab() === 'inbox'
+            ? 'px-3.5 py-3 rounded-xl text-xs font-extrabold bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md shadow-cyan-500/25 transition-all cursor-pointer flex items-center justify-center gap-2'
+            : 'px-3.5 py-3 rounded-xl text-xs font-semibold text-muted hover:text-fg hover:bg-surface/50 transition-all cursor-pointer flex items-center justify-center gap-2'">
               <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
@@ -818,10 +1066,12 @@
               <span class="truncate">Bandeja CRM</span>
             </button>
 
-            <button type="button" (click)="setActiveTab('ai-config')" [class.bg-primary]="activeTab() === 'ai-config'"
-              [class.text-white]="activeTab() === 'ai-config'" [class.shadow-sm]="activeTab() === 'ai-config'"
-              [class.text-muted]="activeTab() !== 'ai-config'" [class.hover:text-fg]="activeTab() !== 'ai-config'"
-              class="px-3.5 py-3 rounded-xl text-xs font-bold transition cursor-pointer flex items-center justify-center gap-2">
+            <!-- Tab 2: Configuración IA -->
+            <button type="button" role="tab" [attr.aria-selected]="activeTab() === 'ai-config'"
+              (click)="setActiveTab('ai-config')"
+              [class]="activeTab() === 'ai-config'
+            ? 'px-3.5 py-3 rounded-xl text-xs font-extrabold bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md shadow-cyan-500/25 transition-all cursor-pointer flex items-center justify-center gap-2'
+            : 'px-3.5 py-3 rounded-xl text-xs font-semibold text-muted hover:text-fg hover:bg-surface/50 transition-all cursor-pointer flex items-center justify-center gap-2'">
               <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z">
                 </path>
@@ -829,10 +1079,12 @@
               <span class="truncate">Configuración IA</span>
             </button>
 
-            <button type="button" (click)="setActiveTab('calendar')" [class.bg-primary]="activeTab() === 'calendar'"
-              [class.text-white]="activeTab() === 'calendar'" [class.shadow-sm]="activeTab() === 'calendar'"
-              [class.text-muted]="activeTab() !== 'calendar'" [class.hover:text-fg]="activeTab() !== 'calendar'"
-              class="px-3.5 py-3 rounded-xl text-xs font-bold transition cursor-pointer flex items-center justify-center gap-2">
+            <!-- Tab 3: Agenda Citas -->
+            <button type="button" role="tab" [attr.aria-selected]="activeTab() === 'calendar'"
+              (click)="setActiveTab('calendar')"
+              [class]="activeTab() === 'calendar'
+            ? 'px-3.5 py-3 rounded-xl text-xs font-extrabold bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md shadow-cyan-500/25 transition-all cursor-pointer flex items-center justify-center gap-2'
+            : 'px-3.5 py-3 rounded-xl text-xs font-semibold text-muted hover:text-fg hover:bg-surface/50 transition-all cursor-pointer flex items-center justify-center gap-2'">
               <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
@@ -840,10 +1092,12 @@
               <span class="truncate">Agenda Citas</span>
             </button>
 
-            <button type="button" (click)="setActiveTab('broadcasts')" [class.bg-primary]="activeTab() === 'broadcasts'"
-              [class.text-white]="activeTab() === 'broadcasts'" [class.shadow-sm]="activeTab() === 'broadcasts'"
-              [class.text-muted]="activeTab() !== 'broadcasts'" [class.hover:text-fg]="activeTab() !== 'broadcasts'"
-              class="px-3.5 py-3 rounded-xl text-xs font-bold transition cursor-pointer flex items-center justify-center gap-2">
+            <!-- Tab 4: Campañas Meta -->
+            <button type="button" role="tab" [attr.aria-selected]="activeTab() === 'broadcasts'"
+              (click)="setActiveTab('broadcasts')"
+              [class]="activeTab() === 'broadcasts'
+            ? 'px-3.5 py-3 rounded-xl text-xs font-extrabold bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md shadow-cyan-500/25 transition-all cursor-pointer flex items-center justify-center gap-2'
+            : 'px-3.5 py-3 rounded-xl text-xs font-semibold text-muted hover:text-fg hover:bg-surface/50 transition-all cursor-pointer flex items-center justify-center gap-2'">
               <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z">
@@ -851,19 +1105,28 @@
               </svg>
               <span class="truncate">Campañas Meta</span>
             </button>
+
           </div>
         </div>
 
-        <!-- Marco de Ventana SaaS Profesional (Browser Mockup Frame) -->
-        <div class="bg-surface border-2 border-border rounded-3xl shadow-2xl overflow-hidden max-w-6xl mx-auto">
+        <!-- ================================================================= -->
+        <!-- MARCO DE VENTANA SAAS PROFESIONAL (Browser Mockup Frame)          -->
+        <!-- ================================================================= -->
+        <div
+          class="relative max-w-6xl mx-auto rounded-3xl bg-surface border border-border shadow-[0_25px_60px_-15px_rgba(0,0,0,0.3)] overflow-hidden">
 
-          <!-- Barra Superior de la Aplicación -->
-          <div class="px-4 py-3 bg-surface-2/80 border-b border-border flex items-center justify-between gap-3 text-xs">
+          <!-- Glow sutil superior en la consola -->
+          <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent">
+          </div>
+
+          <!-- Barra Superior de la Aplicación (Browser Header) -->
+          <div
+            class="px-4 py-3.5 bg-surface-2/80 border-b border-border flex items-center justify-between gap-3 text-xs">
             <div class="flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-              <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-              <span class="hidden sm:inline-block text-[11px] font-mono text-muted pl-2">
+              <span class="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+              <span class="hidden sm:inline-block text-[11px] font-mono text-muted pl-2 border-l border-border/60">
                 @if (activeTab() === 'inbox') { app.bruneitor.com/inbox }
                 @else if (activeTab() === 'ai-config') { app.bruneitor.com/config-ia }
                 @else if (activeTab() === 'calendar') { app.bruneitor.com/agenda }
@@ -873,19 +1136,22 @@
 
             <div class="flex items-center gap-2">
               <span
-                class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-success-bg border border-success/30 text-[10px] font-bold text-success">
-                <span class="w-1.5 h-1.5 rounded-full bg-success animate-pulse"></span>
+                class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-extrabold text-emerald-600 dark:text-emerald-400">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                 Plataforma en Tiempo Real
               </span>
             </div>
           </div>
 
-          <div class="p-4 sm:p-6 lg:p-8">
+          <!-- Contenedor del Tab Activo -->
+          <div class="p-5 sm:p-7 lg:p-9">
 
-            <!-- TAB 1: BANDEJA OMNICANAL -->
+            <!-- =============================================================== -->
+            <!-- TAB 1: BANDEJA OMNICANAL                                       -->
+            <!-- =============================================================== -->
             @if (activeTab() === 'inbox') {
-            <div class="space-y-4">
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border pb-3">
+            <div class="space-y-5 animate-fadeIn">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border pb-4">
                 <div>
                   <h3 class="text-sm sm:text-base font-extrabold text-fg flex items-center gap-2">
                     <span>Bandeja de Entrada Omnicanal & CRM 360°</span>
@@ -893,62 +1159,63 @@
                   <p class="text-xs text-muted">WhatsApp, Instagram y Messenger en un solo lugar con alertas de ventana
                     24h.</p>
                 </div>
-                <span class="text-[11px] font-bold text-success flex items-center gap-1.5 self-start sm:self-auto">
-                  <span class="w-2 h-2 rounded-full bg-success"></span>
+                <span
+                  class="text-[11px] font-extrabold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5 self-start sm:self-auto bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                   Socket Conectado
                 </span>
               </div>
 
-              <!-- VISTA MÓVIL OPTIMIZADA: Solo muestra el chat activo y la ficha CRM compacta (Sin cajas anidadas que saturen) -->
+              <!-- VISTA MÓVIL OPTIMIZADA -->
               <div class="lg:hidden space-y-3 text-xs">
-                <!-- Chat Activo Limpio -->
                 <div class="bg-surface-2/60 rounded-2xl border border-border p-4 space-y-3">
-                  <div class="flex items-center justify-between border-b border-border pb-2">
-                    <div class="flex items-center gap-2">
+                  <div class="flex items-center justify-between border-b border-border pb-2.5">
+                    <div class="flex items-center gap-2.5">
                       <div
-                        class="w-8 h-8 rounded-full bg-primary/20 text-primary font-bold flex items-center justify-center text-xs">
+                        class="w-8 h-8 rounded-full bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 font-extrabold flex items-center justify-center text-xs">
                         CM
                       </div>
                       <div>
-                        <div class="font-bold text-fg">Carlos Morales</div>
+                        <div class="font-extrabold text-fg">Carlos Morales</div>
                         <div class="text-[10px] text-muted">+51 987 654 321 · WhatsApp</div>
                       </div>
                     </div>
-                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-success-bg text-success font-bold">
+                    <span
+                      class="text-[10px] px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-500/20">
                       Ventana Libre 23h 48m
                     </span>
                   </div>
 
-                  <!-- Nota del Asistente IA -->
                   <div
-                    class="p-2.5 rounded-xl bg-note border border-note-border text-note-text text-[11px] space-y-0.5">
-                    <div class="font-bold flex items-center gap-1.5">
-                      <svg class="w-3.5 h-3.5 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    class="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-300 text-[11px] space-y-1">
+                    <div class="font-extrabold flex items-center gap-1.5">
+                      <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                       </svg>
                       <span>Nota Automática de la IA:</span>
                     </div>
-                    <p>Cliente calificado para constitución de empresa. Reunión virtual agendada para mañana 10:00 a. m.
-                    </p>
+                    <p class="font-medium">Cliente calificado para constitución de empresa. Reunión virtual agendada
+                      para mañana 10:00 a. m.</p>
                   </div>
 
-                  <!-- Diálogo Conversacional -->
                   <div class="space-y-2 pt-1 text-[11px]">
-                    <div class="bg-surface p-3 rounded-2xl rounded-tl-xs border border-border text-fg max-w-[85%]">
+                    <div
+                      class="bg-surface p-3 rounded-2xl rounded-tl-none border border-border text-fg max-w-[88%] font-medium">
                       ¿Deseas que reservemos un turno para mañana a las 10:00 a. m. para revisar el diagnóstico?
                     </div>
-                    <div class="bg-primary text-white p-3 rounded-2xl rounded-tr-xs ml-auto max-w-[85%] shadow-xs">
+                    <div
+                      class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white p-3 rounded-2xl rounded-tr-none ml-auto max-w-[88%] shadow-sm font-medium">
                       Sí, confirmado por favor.
                     </div>
                   </div>
 
-                  <!-- Input decorativo -->
                   <div class="pt-2 border-t border-border flex items-center gap-2">
                     <div class="w-full bg-surface border border-border rounded-xl px-3 py-2 text-xs text-muted">
                       Escribe una respuesta o nota interna...
                     </div>
-                    <button type="button" class="px-3.5 py-2 rounded-xl bg-primary text-white font-bold text-xs">
+                    <button type="button"
+                      class="px-3.5 py-2 rounded-xl bg-primary text-white font-extrabold text-xs shrink-0">
                       Enviar
                     </button>
                   </div>
@@ -956,15 +1223,17 @@
 
                 <!-- Ficha CRM Rápida en Móvil -->
                 <div
-                  class="bg-surface rounded-2xl border border-border p-3.5 flex items-center justify-between text-xs">
+                  class="bg-surface rounded-2xl border border-border p-3.5 flex items-center justify-between text-xs shadow-xs">
                   <div>
-                    <div class="text-[10px] font-bold uppercase tracking-wider text-muted">Ficha del Cliente (CRM)</div>
-                    <div class="font-bold text-fg">Constructora del Sur S.A.</div>
-                    <div class="text-[11px] text-primary font-bold">Etapa: Reunión Agendada</div>
+                    <div class="text-[10px] font-extrabold uppercase tracking-wider text-muted">Ficha del Cliente (CRM)
+                    </div>
+                    <div class="font-extrabold text-fg">Constructora del Sur S.A.</div>
+                    <div class="text-[11px] text-cyan-600 dark:text-cyan-400 font-extrabold">Etapa: Reunión Agendada
+                    </div>
                   </div>
                   <div class="text-right">
                     <span
-                      class="text-[10px] px-2.5 py-1 rounded-full bg-surface-2 border border-border font-bold text-fg">
+                      class="text-[10px] px-2.5 py-1 rounded-full bg-surface-2 border border-border font-extrabold text-fg">
                       8 chats · Asesor Senior
                     </span>
                   </div>
@@ -973,82 +1242,87 @@
 
               <!-- VISTA ESCRITORIO (Full 3 Columnas) -->
               <div
-                class="hidden lg:grid grid-cols-12 gap-4 rounded-2xl border border-border bg-surface-2/30 p-3 overflow-hidden text-xs">
+                class="hidden lg:grid grid-cols-12 gap-4 rounded-2xl border border-border bg-surface-2/30 p-3.5 overflow-hidden text-xs">
                 <!-- Lista Lateral de Chats -->
-                <div class="col-span-4 bg-surface rounded-xl border border-border p-3 space-y-2">
-                  <div class="flex items-center justify-between pb-2 border-b border-border">
-                    <span class="font-bold text-fg">Conversaciones (14)</span>
-                    <span class="text-[10px] text-primary font-bold">Todas</span>
+                <div class="col-span-4 bg-surface rounded-xl border border-border p-3.5 space-y-2.5 shadow-xs">
+                  <div class="flex items-center justify-between pb-2.5 border-b border-border">
+                    <span class="font-extrabold text-fg">Conversaciones (14)</span>
+                    <span class="text-[10px] text-cyan-600 dark:text-cyan-400 font-extrabold">Todas</span>
                   </div>
-                  <div class="space-y-1.5">
+                  <div class="space-y-2">
                     <div
-                      class="p-2.5 rounded-lg bg-surface-2 border border-primary/30 flex items-start justify-between">
+                      class="p-3 rounded-xl bg-surface-2 border border-cyan-500/40 flex items-start justify-between shadow-xs">
                       <div>
-                        <div class="font-bold text-fg">Carlos Morales</div>
+                        <div class="font-extrabold text-fg">Carlos Morales</div>
                         <div class="text-[11px] text-muted truncate">Cita agendada para mañana 10am</div>
                       </div>
-                      <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-600 text-white font-bold">WA</span>
+                      <span class="text-[9px] px-2 py-0.5 rounded-md bg-emerald-600 text-white font-extrabold">WA</span>
                     </div>
                     <div
-                      class="p-2.5 rounded-lg bg-surface border border-border flex items-start justify-between opacity-80">
+                      class="p-3 rounded-xl bg-surface border border-border flex items-start justify-between opacity-80">
                       <div>
-                        <div class="font-bold text-fg">Dra. María Elena</div>
+                        <div class="font-extrabold text-fg">Dra. María Elena</div>
                         <div class="text-[11px] text-muted truncate">Consulta de tarifario de auditoría</div>
                       </div>
-                      <span class="text-[9px] px-1.5 py-0.5 rounded bg-purple-600 text-white font-bold">IG</span>
+                      <span class="text-[9px] px-2 py-0.5 rounded-md bg-purple-600 text-white font-extrabold">IG</span>
                     </div>
                     <div
-                      class="p-2.5 rounded-lg bg-surface border border-border flex items-start justify-between opacity-80">
+                      class="p-3 rounded-xl bg-surface border border-border flex items-start justify-between opacity-80">
                       <div>
-                        <div class="font-bold text-fg">Inversiones Andinas</div>
+                        <div class="font-extrabold text-fg">Inversiones Andinas</div>
                         <div class="text-[11px] text-muted truncate">Requiere atención humana urgente</div>
                       </div>
-                      <span class="text-[9px] px-1.5 py-0.5 rounded bg-blue-600 text-white font-bold">FB</span>
+                      <span class="text-[9px] px-2 py-0.5 rounded-md bg-blue-600 text-white font-extrabold">FB</span>
                     </div>
                   </div>
                 </div>
 
                 <!-- Mensajes Centrales -->
                 <div
-                  class="col-span-5 bg-surface rounded-xl border border-border p-3.5 flex flex-col justify-between space-y-3">
-                  <div class="space-y-2.5">
-                    <div class="flex items-center justify-between border-b border-border pb-2">
-                      <span class="font-bold text-fg">Carlos Morales (+51 987 654 321)</span>
-                      <span class="text-[10px] px-2 py-0.5 rounded-full bg-success-bg text-success font-bold">Ventana
-                        Libre 23h 48m</span>
+                  class="col-span-5 bg-surface rounded-xl border border-border p-4 flex flex-col justify-between space-y-3 shadow-xs">
+                  <div class="space-y-3">
+                    <div class="flex items-center justify-between border-b border-border pb-2.5">
+                      <span class="font-extrabold text-fg">Carlos Morales (+51 987 654 321)</span>
+                      <span
+                        class="text-[10px] px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-500/20">
+                        Ventana Libre 23h 48m
+                      </span>
                     </div>
-                    <div class="p-2 rounded-lg bg-note border border-note-border text-note-text text-[11px]">
-                      <strong>Nota Interna del Asistente IA:</strong> El cliente busca constituir una empresa
-                      constructora. Se le agendó reunión virtual para el diagnóstico.
+                    <div
+                      class="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-300 text-[11px] font-medium">
+                      <strong>Nota Interna de IA:</strong> El cliente busca constituir una empresa constructora. Se le
+                      agendó reunión virtual.
                     </div>
-                    <div class="bg-surface-2 p-2.5 rounded-xl text-fg text-[11px]">
+                    <div
+                      class="bg-surface-2 p-3 rounded-2xl rounded-tl-none text-fg text-[11px] font-medium border border-border/60">
                       ¿Deseas que reservemos un turno para mañana a las 10:00 a. m.?
                     </div>
-                    <div class="bg-primary text-white p-2.5 rounded-xl text-[11px] ml-auto max-w-[80%]">
+                    <div
+                      class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white p-3 rounded-2xl rounded-tr-none text-[11px] font-medium ml-auto max-w-[80%] shadow-sm">
                       Sí, confirmado por favor.
                     </div>
                   </div>
-                  <div class="pt-2 border-t border-border flex items-center gap-2">
+                  <div class="pt-3 border-t border-border flex items-center gap-2">
                     <input type="text" readonly value="Escribe una respuesta o nota interna..."
-                      class="w-full bg-surface-2 border border-border rounded-lg px-2.5 py-1.5 text-xs text-muted" />
+                      class="w-full bg-surface-2 border border-border rounded-xl px-3 py-2 text-xs text-muted" />
                     <button type="button"
-                      class="px-3 py-1.5 rounded-lg bg-primary text-white font-bold text-xs">Enviar</button>
+                      class="px-4 py-2 rounded-xl bg-primary text-white font-extrabold text-xs shadow-sm">Enviar</button>
                   </div>
                 </div>
 
                 <!-- Sidebar CRM 360° -->
-                <div class="col-span-3 bg-surface rounded-xl border border-border p-3 space-y-3">
-                  <div class="font-bold text-fg border-b border-border pb-2">Detalles del Contacto / CRM</div>
-                  <div class="space-y-1.5 text-[11px]">
+                <div class="col-span-3 bg-surface rounded-xl border border-border p-4 space-y-3.5 shadow-xs">
+                  <div class="font-extrabold text-fg border-b border-border pb-2.5">Detalles del Contacto / CRM</div>
+                  <div class="space-y-2 text-[11px]">
                     <div><strong class="text-muted">Empresa:</strong> Constructora del Sur S.A.</div>
-                    <div><strong class="text-muted">Etapa CRM:</strong> <span class="text-primary font-bold">Reunión
-                        Agendada</span></div>
+                    <div><strong class="text-muted">Etapa CRM:</strong> <span
+                        class="text-cyan-600 dark:text-cyan-400 font-extrabold">Reunión Agendada</span></div>
                     <div><strong class="text-muted">Mensajes totales:</strong> 8 intercambiados</div>
                     <div><strong class="text-muted">Asignado a:</strong> Asesor Senior</div>
                   </div>
-                  <div class="pt-2 border-t border-border">
+                  <div class="pt-3 border-t border-border">
                     <button type="button"
-                      class="w-full py-1.5 rounded-lg bg-surface-2 border border-border text-primary font-bold text-xs text-center">
+                      class="w-full py-2 rounded-xl bg-surface-2 border border-border text-cyan-600 dark:text-cyan-400 font-extrabold text-xs text-center hover:bg-surface-2/80 transition">
                       Ver Historial Completo
                     </button>
                   </div>
@@ -1057,112 +1331,119 @@
             </div>
             }
 
-            <!-- TAB 2: CONFIGURACIÓN IA SIN CÓDIGO -->
+            <!-- =============================================================== -->
+            <!-- TAB 2: CONFIGURACIÓN IA SIN CÓDIGO                              -->
+            <!-- =============================================================== -->
             @if (activeTab() === 'ai-config') {
-            <div class="space-y-4">
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border pb-3">
+            <div class="space-y-5 animate-fadeIn">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border pb-4">
                 <div>
                   <h3 class="text-sm sm:text-base font-extrabold text-fg flex items-center gap-2">
                     <span>Asistente Guiado Sin Código</span>
-                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary/10 text-primary">Zero-Code</span>
+                    <span
+                      class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20">Zero-Code</span>
                   </h3>
                   <p class="text-xs text-muted">Ajusta identidad, tono de respuesta y catálogo con un solo clic.</p>
                 </div>
-                <span class="text-xs font-bold text-primary">Plantillas Activas</span>
+                <span class="text-xs font-extrabold text-cyan-600 dark:text-cyan-400">Plantillas Activas</span>
               </div>
 
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                <div class="p-4 rounded-2xl border-2 border-primary bg-primary/5 space-y-2 shadow-xs">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="p-5 rounded-2xl border-2 border-cyan-500 bg-cyan-500/5 space-y-2.5 shadow-sm relative">
                   <div class="flex items-center justify-between">
                     <span class="text-xs font-extrabold text-fg">Moderado y Conversacional</span>
                     <span
-                      class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-primary text-white">Recomendado</span>
+                      class="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-cyan-500 text-slate-950">Recomendado</span>
                   </div>
-                  <p class="text-xs text-muted leading-relaxed">Explicaciones de 2 a 4 oraciones con calidez y empatía.
-                    El
-                    balance perfecto para WhatsApp.</p>
+                  <p class="text-xs text-muted leading-relaxed font-medium">Explicaciones de 2 a 4 oraciones con calidez
+                    y empatía. El balance perfecto para WhatsApp.</p>
                 </div>
 
-                <div class="p-4 rounded-2xl border border-border bg-surface-2/40 space-y-2 opacity-85">
-                  <span class="text-xs font-bold text-fg">Breve y al Grano</span>
-                  <p class="text-xs text-muted leading-relaxed">Respuestas directas de 1 a 2 oraciones para mensajería
-                    rápida y confirmaciones.</p>
+                <div class="p-5 rounded-2xl border border-border bg-surface-2/40 space-y-2.5 opacity-85">
+                  <span class="text-xs font-extrabold text-fg">Breve y al Grano</span>
+                  <p class="text-xs text-muted leading-relaxed font-medium">Respuestas directas de 1 a 2 oraciones para
+                    mensajería rápida y confirmaciones.</p>
                 </div>
 
-                <div class="p-4 rounded-2xl border border-border bg-surface-2/40 space-y-2 opacity-85">
-                  <span class="text-xs font-bold text-fg">Detallado y Persuasivo</span>
-                  <p class="text-xs text-muted leading-relaxed">Respuestas enriquecidas con viñetas y beneficios para
-                    asesorías consultivas.</p>
+                <div class="p-5 rounded-2xl border border-border bg-surface-2/40 space-y-2.5 opacity-85">
+                  <span class="text-xs font-extrabold text-fg">Detallado y Persuasivo</span>
+                  <p class="text-xs text-muted leading-relaxed font-medium">Respuestas enriquecidas con viñetas y
+                    beneficios para asesorías consultivas.</p>
                 </div>
               </div>
 
               <div
-                class="p-4 rounded-2xl bg-surface-2 border border-border flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-                <div class="space-y-0.5">
-                  <div class="font-bold text-fg">Control de Conocimiento por Ítem de Catálogo</div>
-                  <div class="text-muted text-[11px]">Puedes activar o pausar cualquier servicio para que la IA solo
-                    recomiende lo disponible.</div>
+                class="p-4 sm:p-5 rounded-2xl bg-surface-2/60 border border-border flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-xs">
+                <div class="space-y-1">
+                  <div class="font-extrabold text-fg">Control de Conocimiento por Ítem de Catálogo</div>
+                  <div class="text-muted text-[11px] font-medium">Puedes activar o pausar cualquier servicio para que la
+                    IA solo recomiende lo disponible.</div>
                 </div>
                 <span
-                  class="px-3 py-1 rounded-full bg-success-bg text-success font-bold text-[11px] self-start sm:self-auto shrink-0">
-                  9 de 9 Ítems Autorizados para IA
+                  class="px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-extrabold text-[11px] border border-emerald-500/20 self-start sm:self-auto shrink-0">
+                  ✓ 9 de 9 Ítems Autorizados para IA
                 </span>
               </div>
             </div>
             }
 
-            <!-- TAB 3: AGENDA Y CITAS -->
+            <!-- =============================================================== -->
+            <!-- TAB 3: AGENDA Y CITAS                                           -->
+            <!-- =============================================================== -->
             @if (activeTab() === 'calendar') {
-            <div class="space-y-4">
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border pb-3">
+            <div class="space-y-5 animate-fadeIn">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border pb-4">
                 <div>
                   <h3 class="text-sm sm:text-base font-extrabold text-fg flex items-center gap-2">
                     <span>Calendario de Citas & Sincronización Automática</span>
-                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-success-bg text-success">Cero
+                    <span
+                      class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">Cero
                       Solapamientos</span>
                   </h3>
                   <p class="text-xs text-muted">Gestión de turnos de 45 min, descansos de 15 min y bloqueo de feriados.
                   </p>
                 </div>
-                <div class="text-xs font-bold text-primary">3 Citas Agendadas Hoy</div>
+                <div
+                  class="text-xs font-extrabold text-cyan-600 dark:text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
+                  3 Citas Agendadas Hoy</div>
               </div>
 
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                <div class="p-4 rounded-2xl bg-surface-2 border border-border space-y-2.5">
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                <div class="p-5 rounded-2xl bg-surface-2/70 border border-border space-y-3 shadow-xs">
                   <div class="flex items-center justify-between">
-                    <span class="font-mono font-bold text-fg text-xs">10:00 - 10:45 AM</span>
+                    <span class="font-mono font-extrabold text-fg text-xs">10:00 - 10:45 AM</span>
                     <span
-                      class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-success-bg text-success">CONFIRMADA</span>
+                      class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">CONFIRMADA</span>
                   </div>
-                  <div class="font-bold text-fg">Carlos Morales · Constructora del Sur</div>
-                  <div class="text-[11px] text-muted flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  <div class="font-extrabold text-fg">Carlos Morales · Constructora del Sur</div>
+                  <div class="text-[11px] text-muted flex items-center gap-2 font-medium">
+                    <span class="w-2 h-2 rounded-full bg-cyan-500"></span>
                     <span>Google Meet (Virtual)</span>
                   </div>
                 </div>
 
-                <div class="p-4 rounded-2xl bg-surface-2 border border-border space-y-2.5">
+                <div class="p-5 rounded-2xl bg-surface-2/70 border border-border space-y-3 shadow-xs">
                   <div class="flex items-center justify-between">
-                    <span class="font-mono font-bold text-fg text-xs">11:30 - 12:15 PM</span>
+                    <span class="font-mono font-extrabold text-fg text-xs">11:30 - 12:15 PM</span>
                     <span
-                      class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-primary/10 text-primary">PROGRAMADA</span>
+                      class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20">PROGRAMADA</span>
                   </div>
-                  <div class="font-bold text-fg">Dra. María Elena · Clínica Dental</div>
-                  <div class="text-[11px] text-muted flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                  <div class="font-extrabold text-fg">Dra. María Elena · Clínica Dental</div>
+                  <div class="text-[11px] text-muted flex items-center gap-2 font-medium">
+                    <span class="w-2 h-2 rounded-full bg-purple-500"></span>
                     <span>Presencial en Oficina</span>
                   </div>
                 </div>
 
-                <div class="p-4 rounded-2xl bg-surface-2 border border-border space-y-2.5">
+                <div class="p-5 rounded-2xl bg-surface-2/70 border border-border space-y-3 shadow-xs">
                   <div class="flex items-center justify-between">
-                    <span class="font-mono font-bold text-fg text-xs">04:00 - 04:45 PM</span>
+                    <span class="font-mono font-extrabold text-fg text-xs">04:00 - 04:45 PM</span>
                     <span
-                      class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-success-bg text-success">CONFIRMADA</span>
+                      class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">CONFIRMADA</span>
                   </div>
-                  <div class="font-bold text-fg">Gerente de Logística · Retail Express</div>
-                  <div class="text-[11px] text-muted flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  <div class="font-extrabold text-fg">Gerente de Logística · Retail Express</div>
+                  <div class="text-[11px] text-muted flex items-center gap-2 font-medium">
+                    <span class="w-2 h-2 rounded-full bg-cyan-500"></span>
                     <span>Zoom (Virtual)</span>
                   </div>
                 </div>
@@ -1170,37 +1451,44 @@
             </div>
             }
 
-            <!-- TAB 4: CAMPAÑAS MASIVAS META -->
+            <!-- =============================================================== -->
+            <!-- TAB 4: CAMPAÑAS MASIVAS META                                    -->
+            <!-- =============================================================== -->
             @if (activeTab() === 'broadcasts') {
-            <div class="space-y-4">
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border pb-3">
+            <div class="space-y-5 animate-fadeIn">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border pb-4">
                 <div>
                   <h3 class="text-sm sm:text-base font-extrabold text-fg flex items-center gap-2">
                     <span>Campañas Masivas con Plantillas Oficiales de Meta</span>
-                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-success-bg text-success">Anti-Spam</span>
+                    <span
+                      class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">Anti-Spam</span>
                   </h3>
                   <p class="text-xs text-muted">Envío masivo seguro filtrado por etapa del CRM con plantillas
                     pre-aprobadas.</p>
                 </div>
-                <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400">100% Entregabilidad</div>
+                <div
+                  class="text-xs font-extrabold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+                  100% Entregabilidad</div>
               </div>
 
               <div
-                class="p-4 sm:p-5 rounded-2xl bg-surface-2 border border-border grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-                <div class="space-y-1">
-                  <span class="text-muted block text-[11px]">Segmentación de Audiencia</span>
-                  <span class="font-bold text-fg text-sm">Etapa: "Propuesta Enviada"</span>
-                  <span class="text-[11px] text-primary block">48 contactos seleccionados</span>
+                class="p-5 sm:p-6 rounded-2xl bg-surface-2/60 border border-border grid grid-cols-1 md:grid-cols-3 gap-5 text-xs shadow-xs">
+                <div class="space-y-1.5">
+                  <span class="text-muted block text-[11px] font-semibold">Segmentación de Audiencia</span>
+                  <span class="font-extrabold text-fg text-sm">Etapa: "Propuesta Enviada"</span>
+                  <span class="text-[11px] text-cyan-600 dark:text-cyan-400 block font-bold">48 contactos
+                    seleccionados</span>
                 </div>
-                <div class="space-y-1">
-                  <span class="text-muted block text-[11px]">Plantilla Oficial de Meta</span>
-                  <span class="font-bold text-fg text-sm">seguimiento_propuesta_mes</span>
-                  <span class="text-[11px] text-success block">Aprobada por Meta for Developers</span>
+                <div class="space-y-1.5">
+                  <span class="text-muted block text-[11px] font-semibold">Plantilla Oficial de Meta</span>
+                  <span class="font-extrabold text-fg text-sm font-mono">seguimiento_propuesta_mes</span>
+                  <span class="text-[11px] text-emerald-600 dark:text-emerald-400 block font-bold">✓ Aprobada por Meta
+                    for Developers</span>
                 </div>
-                <div class="space-y-1">
-                  <span class="text-muted block text-[11px]">Despacho en Segundo Plano</span>
-                  <span class="font-bold text-fg text-sm">Envío progresivo inteligente</span>
-                  <span class="text-[11px] text-muted block">Intervalo de seguridad BullMQ</span>
+                <div class="space-y-1.5">
+                  <span class="text-muted block text-[11px] font-semibold">Despacho en Segundo Plano</span>
+                  <span class="font-extrabold text-fg text-sm">Envío progresivo inteligente</span>
+                  <span class="text-[11px] text-muted block font-medium">Intervalo de seguridad BullMQ</span>
                 </div>
               </div>
             </div>
@@ -1208,48 +1496,66 @@
 
           </div>
         </div>
+
       </div>
     </section>
 
     <!-- ========================================================================= -->
     <!-- 7. PREGUNTAS CLAVE (FAQ ACCORDION)                                        -->
     <!-- ========================================================================= -->
-    <section id="preguntas-frecuentes" class="py-20 border-b border-border bg-surface-2/30">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+    <section id="preguntas-frecuentes" aria-labelledby="faq-heading"
+      class="relative scroll-mt-20 py-20 sm:py-28 border-b border-border bg-surface-2/30 overflow-hidden">
 
-        <div class="text-center space-y-3">
-          <span
-            class="text-[11px] font-extrabold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
-            Respuestas Claras y Transparentes
-          </span>
-          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-fg tracking-tight">
+      <!-- Resplandor ambiental de fondo -->
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[35rem] h-60 bg-gradient-to-tr from-cyan-500/10 via-blue-500/5 to-emerald-500/10 blur-[100px] pointer-events-none">
+      </div>
+
+      <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+
+        <!-- Cabecera Editorial -->
+        <div class="text-center space-y-4 max-w-2xl mx-auto">
+          <div
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 text-[11px] font-extrabold uppercase tracking-wider shadow-xs">
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></span>
+            <span>Respuestas Claras y Transparentes</span>
+          </div>
+
+          <h2 id="faq-heading"
+            class="text-2xl sm:text-4xl lg:text-[2.65rem] font-extrabold text-fg tracking-tight leading-[1.15]">
             Preguntas Frecuentes
           </h2>
-          <p class="text-xs sm:text-sm text-muted">
+
+          <p class="text-xs sm:text-base text-muted leading-relaxed">
             Todo lo que necesitas saber sobre la seguridad oficial de Meta, la integración y el funcionamiento de
             BRUNEITOR.AI.
           </p>
         </div>
 
-        <div class="space-y-3">
+        <!-- Acordeón de FAQs -->
+        <div class="space-y-3.5">
           @for (faq of faqs; track $index) {
-          <div class="border border-border rounded-2xl bg-surface overflow-hidden transition shadow-xs">
-            <button type="button" (click)="toggleFaq($index)"
-              class="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-surface-2/50 transition">
+          <div
+            class="border border-border rounded-2xl bg-surface/90 backdrop-blur-sm overflow-hidden transition-all duration-300 shadow-xs hover:border-cyan-500/30">
+            <button type="button" (click)="toggleFaq($index)" [attr.aria-expanded]="openFaqIndex() === $index"
+              class="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-surface-2/50 transition-colors">
               <span class="text-xs sm:text-sm font-extrabold text-fg">
                 {{ faq.question }}
               </span>
               <div [class.rotate-180]="openFaqIndex() === $index"
-                class="w-7 h-7 rounded-lg bg-surface-2 flex items-center justify-center shrink-0 transition-transform duration-200">
-                <svg class="w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                [ngClass]="{'bg-cyan-500/10': openFaqIndex() === $index}"
+                [class.text-cyan-500]="openFaqIndex() === $index"
+                class="w-8 h-8 rounded-xl bg-surface-2 flex items-center justify-center shrink-0 transition-all duration-300">
+                <svg class="w-4 h-4 text-muted transition-colors" [class.text-cyan-500]="openFaqIndex() === $index"
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
                 </svg>
               </div>
             </button>
 
             @if (openFaqIndex() === $index) {
             <div
-              class="px-4 pb-4 sm:px-5 sm:pb-5 pt-1 text-xs text-muted leading-relaxed border-t border-border/60 bg-surface-2/20">
+              class="px-4 pb-5 sm:px-6 sm:pb-6 pt-1 text-xs sm:text-[13px] text-muted leading-relaxed border-t border-border/60 bg-surface-2/30 animate-fadeIn">
               {{ faq.answer }}
             </div>
             }
@@ -1263,25 +1569,37 @@
     <!-- ========================================================================= -->
     <!-- 8. SECCIÓN FINAL DE CONVERSIÓN & CIERRE                                   -->
     <!-- ========================================================================= -->
-    <section class="py-20 bg-gradient-to-b from-bg to-surface-2 border-b border-border relative overflow-hidden">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+    <section
+      class="relative py-24 sm:py-32 bg-gradient-to-b from-bg via-surface-2/40 to-surface-2 border-b border-border overflow-hidden">
+
+      <!-- Resplandor ambiental cian/azul de fondo -->
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[45rem] h-80 bg-gradient-to-tr from-cyan-500/15 via-blue-500/10 to-emerald-500/15 blur-[140px] pointer-events-none">
+      </div>
+
+      <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
 
         <div
-          class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold">
+          class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 text-xs font-extrabold shadow-xs">
+          <span class="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse"></span>
           <span>Garantía de Satisfacción & Soporte Especializado</span>
         </div>
 
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-fg tracking-tight max-w-3xl mx-auto">
-          Empieza a captar clientes y agendar reuniones hoy mismo con <span class="text-primary">BRUNEITOR.AI</span>
+        <h2
+          class="text-3xl sm:text-4xl lg:text-[3rem] font-extrabold text-fg tracking-tight max-w-3xl mx-auto leading-[1.12]">
+          Empieza a captar clientes y agendar reuniones hoy mismo con
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-500 to-emerald-400">
+            BRUNEITOR.AI
+          </span>
         </h2>
 
-        <p class="text-xs sm:text-sm text-muted max-w-2xl mx-auto leading-relaxed">
+        <p class="text-xs sm:text-base text-muted max-w-2xl mx-auto leading-relaxed">
           Agenda una demostración guiada de 20 minutos con uno de nuestros especialistas. Configuraremos tu cuenta en
-          vivo
-          y verás cómo responde el bot con los datos reales de tu propia empresa.
+          vivo y verás cómo responde el bot con los datos reales de tu propia empresa.
         </p>
 
-        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <!-- Botones de Acción Final -->
+        <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
           <button type="button" (click)="openDemoModal()"
             class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-slate-950 font-extrabold text-xs sm:text-sm tracking-wide uppercase shadow-[0_12px_35px_-8px_rgba(6,182,212,0.65)] hover:shadow-[0_16px_40px_-6px_rgba(6,182,212,0.85)] transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2.5 cursor-pointer">
             <span>Solicitar Demostración Guiada</span>
@@ -1291,7 +1609,7 @@
           </button>
 
           <a [href]="getWhatsAppDirectUrl()" target="_blank" rel="noopener noreferrer"
-            class="w-full sm:w-auto px-8 py-4 rounded-full bg-surface border border-border hover:bg-surface-2 transition text-xs sm:text-sm font-extrabold text-fg flex items-center justify-center gap-2 shadow-xs cursor-pointer">
+            class="w-full sm:w-auto px-8 py-4 rounded-full bg-surface/90 backdrop-blur-sm border border-border hover:bg-surface-2 transition text-xs sm:text-sm font-extrabold text-fg flex items-center justify-center gap-2.5 shadow-xs cursor-pointer hover:border-cyan-500/30">
             <img src="icon_wssp.png" alt="WhatsApp" width="20" height="20" loading="lazy"
               class="w-5 h-5 object-contain" />
             <span>Escribir por WhatsApp</span>
