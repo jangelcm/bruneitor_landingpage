@@ -4,30 +4,30 @@
   <!-- ========================================================================= -->
   <!-- 1. HEADER & BARRA DE NAVEGACIÓN SUPERIOR (MÁXIMO 4 OPCIONES)              -->
   <!-- ========================================================================= -->
-  <header class="sticky top-0 z-40  w-full border-b border-border bg-surface/85 glass-header transition-colors">
-    <div class="max-w-7xl mx-auto  px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+  <header
+    class="fixed top-0 inset-x-0 z-50 w-full border-b border-white/[0.06] bg-gradient-to-b from-[#070B14]/95 via-[#070B14]/75 to-[#070B14]/30 backdrop-blur-md transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
 
-      <!-- Logotipo de Marca -->
+      <!-- Logotipo de Marca (Siempre en versión clara/blanca sobre el Hero oscuro) -->
       <a href="/" aria-label="Ir al inicio de BRUNEITOR.AI"
-        class="flex items-center gap-3 shrink-0 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
-        <img [src]="darkMode() ? '/logo_dark.png' : '/logo.png'" alt="BRUNEITOR.AI" width="160" height="56"
-          fetchpriority="high" decoding="async"
-          class="h-16 md:h-18 w-auto object-contain select-none transition-transform duration-200 hover:scale-105" />
+        class="flex items-center gap-3 shrink-0 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400">
+        <img src="/logo_dark.png" alt="BRUNEITOR.AI" width="150" height="52" fetchpriority="high" decoding="async"
+          class="h-12 sm:h-15 w-auto object-contain select-none transition-transform duration-200 hover:scale-105" />
       </a>
 
-      <!-- Menú Desktop: Exactamente 4 Opciones de Menú -->
-      <nav class="hidden md:flex items-center gap-8 text-xs font-semibold text-muted">
-        <button type="button" (click)="scrollTo('beneficios')" class="hover:text-primary transition cursor-pointer">
+      <!-- Menú Desktop: Exactamente 4 Opciones -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-semibold text-slate-300">
+        <button type="button" (click)="scrollTo('beneficios')" class="hover:text-cyan-300 transition cursor-pointer">
           Beneficios
         </button>
-        <button type="button" (click)="scrollTo('como-funciona')" class="hover:text-primary transition cursor-pointer">
+        <button type="button" (click)="scrollTo('como-funciona')" class="hover:text-cyan-300 transition cursor-pointer">
           Cómo Funciona
         </button>
-        <button type="button" (click)="scrollTo('plataforma')" class="hover:text-primary transition cursor-pointer">
+        <button type="button" (click)="scrollTo('plataforma')" class="hover:text-cyan-300 transition cursor-pointer">
           Plataforma
         </button>
         <button type="button" (click)="scrollTo('preguntas-frecuentes')"
-          class="hover:text-primary transition cursor-pointer">
+          class="hover:text-cyan-300 transition cursor-pointer">
           Preguntas Frecuentes
         </button>
       </nav>
@@ -35,14 +35,14 @@
       <!-- Botones de Acción Derecha -->
       <div class="flex items-center gap-2.5 shrink-0">
 
-        <!-- Enlace Iniciar Sesión hacia app.bruneitor.com -->
+        <!-- Enlace Iniciar Sesión -->
         <a href="https://app.bruneitor.com" target="_blank" rel="noopener noreferrer"
           title="Acceder a la plataforma de gestión"
-          class="hidden sm:inline-flex items-center px-4 py-2 rounded-full text-xs font-bold text-muted hover:text-fg hover:bg-surface-2 transition">
+          class="hidden sm:inline-flex items-center px-4 py-2 rounded-full text-xs font-bold text-slate-300 hover:text-white hover:bg-white/10 transition">
           Iniciar Sesión
         </a>
 
-        <!-- CTA Principal del Header: Solicitar Demo (Oculto en dispositivos pequeños, estética Pill Gradiente) -->
+        <!-- CTA Principal del Header (Oculto en móvil para no competir con el botón del Hero) -->
         <button type="button" (click)="openDemoModal()"
           class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-slate-950 font-extrabold text-xs tracking-wide shadow-[0_8px_25px_-6px_rgba(6,182,212,0.6)] hover:shadow-[0_12px_30px_-4px_rgba(6,182,212,0.85)] transition-all transform hover:-translate-y-0.5 cursor-pointer">
           <span>Solicitar Demo</span>
@@ -51,9 +51,9 @@
           </svg>
         </button>
 
-        <!-- Botón Hamburguesa Móvil -->
-        <button type="button" (click)="mobileMenuOpen.set(!mobileMenuOpen())"
-          class="md:hidden w-9 h-9 rounded-xl flex items-center justify-center text-muted hover:text-fg cursor-pointer">
+        <!-- Botón Hamburguesa Móvil (Con pastilla translúcida elegante) -->
+        <button type="button" (click)="mobileMenuOpen.set(!mobileMenuOpen())" aria-label="Abrir menú de navegación"
+          class="md:hidden w-10 h-10 rounded-full bg-white/[0.06] border border-white/10 flex items-center justify-center text-slate-200 hover:text-white hover:bg-white/10 transition cursor-pointer">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             @if (mobileMenuOpen()) {
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -65,32 +65,31 @@
       </div>
     </div>
 
-    <!-- Menú Desplegable Móvil -->
+    <!-- Menú Desplegable Móvil (Cristal oscuro coherente con el Hero) -->
     @if (mobileMenuOpen()) {
-    <div class="md:hidden border-t border-border bg-surface px-4 py-4 space-y-3 shadow-lg">
-      <button type="button" (click)="scrollTo('beneficios')"
-        class="block w-full text-left py-2 text-xs font-bold text-fg hover:text-primary">
+    <div class="md:hidden border-t border-white/10 bg-[#070B14]/95 backdrop-blur-xl px-4 py-5 space-y-3 shadow-2xl">
+      <button type="button" (click)="scrollTo('beneficios'); mobileMenuOpen.set(false)"
+        class="block w-full text-left py-2 text-xs font-bold text-slate-200 hover:text-cyan-400 transition">
         Beneficios
       </button>
-      <button type="button" (click)="scrollTo('como-funciona')"
-        class="block w-full text-left py-2 text-xs font-bold text-fg hover:text-primary">
+      <button type="button" (click)="scrollTo('como-funciona'); mobileMenuOpen.set(false)"
+        class="block w-full text-left py-2 text-xs font-bold text-slate-200 hover:text-cyan-400 transition">
         Cómo Funciona
       </button>
-      <button type="button" (click)="scrollTo('plataforma')"
-        class="block w-full text-left py-2 text-xs font-bold text-fg hover:text-primary">
+      <button type="button" (click)="scrollTo('plataforma'); mobileMenuOpen.set(false)"
+        class="block w-full text-left py-2 text-xs font-bold text-slate-200 hover:text-cyan-400 transition">
         Plataforma
       </button>
-      <button type="button" (click)="scrollTo('preguntas-frecuentes')"
-        class="block w-full text-left py-2 text-xs font-bold text-fg hover:text-primary">
+      <button type="button" (click)="scrollTo('preguntas-frecuentes'); mobileMenuOpen.set(false)"
+        class="block w-full text-left py-2 text-xs font-bold text-slate-200 hover:text-cyan-400 transition">
         Preguntas Frecuentes
       </button>
 
-      <div class="pt-2 border-t border-border space-y-2">
+      <div class="pt-3 border-t border-white/10">
         <a href="https://app.bruneitor.com" target="_blank" rel="noopener noreferrer"
-          class="block w-full py-2 text-xs font-bold text-muted hover:text-fg">
-          Iniciar Sesión (app.bruneitor.com)
+          class="block w-full py-2 text-xs font-bold text-cyan-400 hover:text-cyan-300">
+          Iniciar Sesión en app.bruneitor.com →
         </a>
-
       </div>
     </div>
     }
@@ -101,249 +100,121 @@
     <!-- 2. HERO EDITORIAL FULL-BLEED + BURBUJAS FLOTANTES ANIMADAS (ESTILO MANYCHAT) -->
     <!-- ========================================================================= -->
     <section aria-labelledby="hero-heading"
-      class="relative min-h-[calc(100svh-4rem)] lg:min-h-[88vh] flex items-center overflow-hidden bg-[#070B14] text-white border-b border-white/10">
-
+      class="relative min-h-[100svh] flex flex-col justify-between lg:justify-center overflow-hidden bg-[#070B14] text-white border-b border-white/10 pt-16 sm:pt-20">
       <!-- Fotografía Editorial Full-Bleed de Fondo (Optimizada para LCP y Responsive) -->
       <div class="absolute inset-0 z-0 select-none pointer-events-none">
         <img src="/hero-executive.jpg"
           alt="Empresario gestionando ventas y citas automáticas con BRUNEITOR.AI mientras su asistente de IA atiende WhatsApp 24/7"
           width="1920" height="1080" fetchpriority="high" decoding="async"
-          class="w-full h-full object-cover object-[74%_center] sm:object-[68%_center] lg:object-center scale-[1.01] transition-transform duration-1000" />
+          class="w-full h-full object-cover object-[68%_center] sm:object-[68%_center] lg:object-center scale-[1.01] transition-transform duration-1000" />
 
-        <!-- Máscara Gradiente Editorial: Protege el contraste del texto a la izquierda y revela la escena a la derecha -->
+        <!-- 1. Fusión Superior con el Header (Elimina la línea dura entre Header y Foto) -->
+        <div class="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-[#070B14] via-[#070B14]/70 to-transparent">
+        </div>
+
+        <!-- 2. Máscara Vertical con Ventana Central Limpia para ver al Ejecutivo -->
         <div
-          class="absolute inset-0 bg-gradient-to-b from-[#070B14]/90 via-[#070B14]/75 to-[#070B14]/95 lg:bg-gradient-to-r lg:from-[#070B14]/95 lg:via-[#070B14]/75 lg:to-[#070B14]/25">
+          class="absolute inset-0 bg-gradient-to-b from-[#070B14]/75 via-transparent to-[#070B14]/95 lg:bg-gradient-to-r lg:from-[#070B14]/95 lg:via-[#070B14]/75 lg:to-[#070B14]/20">
         </div>
 
-        <!-- Resplandor ambiental cian/azul sutil (0 costo de CPU) -->
-        <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-cyan-500/15 blur-3xl pointer-events-none">
-        </div>
-        <div class="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-blue-600/15 blur-3xl pointer-events-none">
+        <!-- 3. Viñeta Lateral Izquierda en Móvil (Protege el texto sin tapar la cara a la derecha) -->
+        <div class="absolute inset-0 bg-gradient-to-r from-[#070B14]/85 via-[#070B14]/35 to-transparent lg:hidden">
         </div>
       </div>
 
       <!-- Contenedor Principal del Hero -->
-      <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 lg:py-20">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+      <div
+        class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 pb-5 sm:py-12 lg:py-20 flex-1 flex flex-col justify-between lg:justify-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center flex-1 lg:flex-initial">
 
-          <!-- COLUMNA IZQUIERDA: Narrativa Editorial + CTAs + Trust Bar Inferior -->
-          <div class="lg:col-span-6 space-y-6 sm:space-y-7 text-center lg:text-left">
+          <!-- COLUMNA IZQUIERDA -->
+          <div
+            class="lg:col-span-7 xl:col-span-6 h-full flex flex-col justify-between lg:justify-center lg:space-y-8 text-left items-start">
 
+            <!-- BLOQUE SUPERIOR: Compacto a la izquierda para no pisar el rostro del empresario -->
+            <div class="space-y-3 sm:space-y-5 max-w-[88%] sm:max-w-xl">
 
+              <h1 id="hero-heading"
+                class="hero-text-shadow text-[1.6rem] sm:text-5xl lg:text-[3.35rem] font-extrabold tracking-tight text-white leading-[1.12]">
+                Cada conversación en WhatsApp,
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-400 to-emerald-300">
+                  convertida en venta o cita
+                </span>
+                sin tocar el teclado.
+              </h1>
 
-            <!-- Titular Editorial de Alto Impacto (H1 SEO) -->
-            <h1 id="hero-heading"
-              class="hero-text-shadow text-3xl sm:text-5xl lg:text-[3.35rem] font-extrabold tracking-tight text-white leading-[1.12]">
-              Cada conversación en WhatsApp, <span
-                class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-sky-400 to-emerald-300">convertida
-                en venta o cita</span> sin tocar el teclado.
-            </h1>
+              <p
+                class="text-[12.5px] sm:text-base lg:text-lg text-slate-200/90 max-w-[19rem] sm:max-w-xl leading-snug sm:leading-relaxed font-medium drop-shadow">
+                BRUNEITOR.AI responde en 2 segundos con tu catálogo real, califica en tu CRM Kanban y agenda citas en
+                automático.
+              </p>
 
-            <!-- Subtítulo Estratégico -->
-            <p
-              class="text-sm sm:text-base lg:text-lg text-slate-200/90 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium">
-              BRUNEITOR.AI responde en menos de 2 segundos con tu catálogo real, califica prospectos en tu CRM Kanban y
-              agenda reuniones automáticamente mientras tú te enfocas en dirigir tu empresa.
-            </p>
+              <!-- Botón Solicitar Demo Guiada -->
+              <div class="pt-1 flex items-center justify-start">
+                <button type="button" (click)="openDemoModal()"
+                  class="group relative inline-flex items-center justify-center gap-2.5 px-5 sm:px-7 py-3 sm:py-4 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 font-extrabold text-xs sm:text-sm shadow-[0_10px_28px_-5px_rgba(6,182,212,0.55)] hover:shadow-[0_15px_35px_-5px_rgba(6,182,212,0.75)] hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer">
+                  <span
+                    class="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-slate-950/15 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-950 fill-current ml-0.5" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"></path>
+                    </svg>
+                  </span>
+                  <span>Solicitar Demo Guiada</span>
+                </button>
+              </div>
 
-            <!-- Botones de Acción Tipo Píldora (Inspirados en conversión SaaS moderna) -->
-            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-1">
-              <button type="button" (click)="openDemoModal()"
-                class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-cyan-400 to-blue-600 hover:from-cyan-300 hover:to-blue-500 text-slate-950 font-extrabold text-xs sm:text-sm tracking-wide uppercase shadow-[0_12px_35px_-8px_rgba(6,182,212,0.65)] hover:shadow-[0_16px_40px_-6px_rgba(6,182,212,0.85)] transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2.5 cursor-pointer">
-                <span>Solicitar Demo Guiada</span>
-                <svg class="w-4 h-4 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                </svg>
-              </button>
-
-              <button type="button" (click)="scrollTo('plataforma')"
-                class="w-full sm:w-auto px-7 py-4 rounded-full bg-white/10 hover:bg-white/15 backdrop-blur-md border border-white/20 text-white font-bold text-xs sm:text-sm transition flex items-center justify-center gap-2 cursor-pointer">
-                <svg class="w-4 h-4 text-cyan-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
-                  </path>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <span>Probar Simulador IA</span>
-              </button>
             </div>
 
-            <!-- Barra de Insignias de Confianza (Estilo Manychat Bottom-Left Trust Strip) -->
+            <!-- Ventana libre central en móvil para lucir la foto -->
+            <div class="min-h-[175px] sm:min-h-[200px] lg:hidden pointer-events-none" aria-hidden="true"></div>
+
+            <!-- BLOQUE INFERIOR: Barra de Insignias de Confianza -->
             <div
-              class="pt-4 sm:pt-6 border-t border-white/15 grid grid-cols-3 gap-3 sm:gap-6 max-w-lg mx-auto lg:mx-0 text-left">
-              <div class="flex items-center gap-2.5">
+              class="w-full max-w-lg mt-auto lg:mt-0 p-3 sm:p-0 sm:pt-6 rounded-2xl sm:rounded-none bg-[#070B14]/75 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none border border-white/10 sm:border-0 sm:border-t sm:border-white/15 grid grid-cols-3 gap-2 sm:gap-6 text-left shadow-2xl sm:shadow-none">
+
+              <div class="flex items-center gap-2 sm:gap-2.5">
                 <div
-                  class="w-9 h-9 rounded-xl bg-cyan-500/20 border border-cyan-400/30 flex items-center justify-center shrink-0 text-cyan-300">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-cyan-500/20 border border-cyan-400/30 flex items-center justify-center shrink-0 text-cyan-300">
+                  <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
                     </path>
                   </svg>
                 </div>
-                <div>
-                  <div class="text-[11px] sm:text-xs font-extrabold text-white leading-tight">Meta Cloud API</div>
-                  <div class="text-[10px] text-slate-300/80">Partner Oficial</div>
+                <div class="min-w-0">
+                  <div class="text-[10px] sm:text-xs font-extrabold text-white leading-tight truncate">Meta Cloud</div>
+                  <div class="text-[9px] sm:text-[10px] text-slate-300/80 truncate">Partner Oficial</div>
                 </div>
               </div>
 
-              <div class="flex items-center gap-2.5">
+              <div class="flex items-center gap-2 sm:gap-2.5">
                 <div
-                  class="w-9 h-9 rounded-xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center shrink-0 text-emerald-300">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center shrink-0 text-emerald-300">
+                  <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                       d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                   </svg>
                 </div>
-                <div>
-                  <div class="text-[11px] sm:text-xs font-extrabold text-white leading-tight">1.2 Segundos</div>
-                  <div class="text-[10px] text-slate-300/80">Respuesta IA 24/7</div>
+                <div class="min-w-0">
+                  <div class="text-[10px] sm:text-xs font-extrabold text-white leading-tight truncate">1.2 Segundos
+                  </div>
+                  <div class="text-[9px] sm:text-[10px] text-slate-300/80 truncate">Respuesta 24/7</div>
                 </div>
               </div>
 
-              <div class="flex items-center gap-2.5">
+              <div class="flex items-center gap-2 sm:gap-2.5">
                 <div
-                  class="w-9 h-9 rounded-xl bg-amber-500/20 border border-amber-400/30 flex items-center justify-center shrink-0 text-amber-300 font-extrabold text-xs">
+                  class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-amber-500/20 border border-amber-400/30 flex items-center justify-center shrink-0 text-amber-300 font-extrabold text-[10px] sm:text-xs">
                   ★ 4.9
                 </div>
-                <div>
-                  <div class="text-[11px] sm:text-xs font-extrabold text-white leading-tight">CRM + Agenda</div>
-                  <div class="text-[10px] text-slate-300/80">Todo en un panel</div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- COLUMNA DERECHA: Escena de Burbujas Flotantes Animadas en Vivo (Estilo Manychat) -->
-          <div class="lg:col-span-6 relative flex flex-col items-center lg:items-end justify-center">
-
-            <!-- Selector Interactivo de Rubro para la Animación en Vivo -->
-            <div
-              class="mb-4 inline-flex flex-wrap items-center justify-center gap-1.5 p-1.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/15 shadow-xl">
-              @for (scenario of heroScenarios; track scenario.id; let idx = $index) {
-              <button type="button" (click)="selectHeroScenario(idx)"
-                [class]="activeScenarioIndex() === idx
-                ? 'px-3.5 py-1.5 rounded-full text-[11px] font-extrabold bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 shadow-sm transition cursor-pointer'
-                : 'px-3.5 py-1.5 rounded-full text-[11px] font-semibold text-slate-300 hover:text-white transition cursor-pointer'">
-                {{ scenario.label }}
-              </button>
-              }
-            </div>
-
-            <!-- Lienzo Flotante de Conversación Animada (GPU-Accelerated) -->
-            @if (currentHeroScenario(); as scene) {
-            <div
-              class="w-full max-w-md space-y-3.5 relative min-h-[390px] sm:min-h-[410px] flex flex-col justify-start">
-
-              <!-- PASO 1: Burbuja Flotante del Cliente (Entra con Pop-In elástico) -->
-              @if (heroChatStep() >= 1) {
-              <div class="animate-bubble-pop flex items-end gap-2.5 self-start max-w-[92%]">
-                <div
-                  class="w-9 h-9 rounded-full bg-gradient-to-br from-rose-500 to-orange-500 text-white font-extrabold text-xs flex items-center justify-center shrink-0 shadow-lg border-2 border-white/80">
-                  {{ scene.customerInitials }}
-                </div>
-                <div
-                  class="rounded-2xl rounded-bl-xs bg-white text-slate-900 p-3.5 shadow-[0_18px_40px_-10px_rgba(0,0,0,0.55)] border border-slate-100 space-y-1">
-                  <div class="flex items-center justify-between gap-3">
-                    <span class="text-[11px] font-extrabold text-slate-900">{{ scene.customerName }} · <span
-                        class="font-medium text-slate-500">{{ scene.customerCompany }}</span></span>
-                    <span
-                      class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 shrink-0">
-                      {{ scene.channel }}
-                    </span>
+                <div class="min-w-0">
+                  <div class="text-[10px] sm:text-xs font-extrabold text-white leading-tight truncate">CRM + Agenda
                   </div>
-                  <p class="text-xs sm:text-[13px] text-slate-700 leading-snug font-medium">
-                    {{ scene.msg1Customer }}
-                  </p>
+                  <div class="text-[9px] sm:text-[10px] text-slate-300/80 truncate">Todo en un panel</div>
                 </div>
               </div>
-              }
-
-              <!-- PASO 2: Indicador "Bruneitor IA está escribiendo..." -->
-              @if (heroChatStep() === 2) {
-              <div
-                class="animate-bubble-pop self-end flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-slate-900/90 backdrop-blur-md border border-cyan-400/40 text-cyan-300 text-xs font-bold shadow-xl">
-                <span class="flex gap-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce"></span>
-                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce [animation-delay:150ms]"></span>
-                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce [animation-delay:300ms]"></span>
-                </span>
-                <span>BRUNEITOR IA consultando catálogo y agenda...</span>
-              </div>
-              }
-
-              <!-- PASO 3: Respuesta Inteligente de BRUNEITOR.AI con Botón CTA Interactivo -->
-              @if (heroChatStep() >= 3) {
-              <div class="animate-bubble-pop self-end max-w-[92%] flex items-end gap-2.5">
-                <div
-                  class="rounded-2xl rounded-br-xs bg-slate-950/90 backdrop-blur-xl text-white p-4 shadow-[0_20px_50px_-12px_rgba(6,182,212,0.45)] border border-cyan-400/40 space-y-2.5">
-                  <div class="flex items-center justify-between gap-2">
-                    <div class="flex items-center gap-1.5">
-                      <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                      <span class="text-[11px] font-extrabold text-cyan-300 tracking-wide">BRUNEITOR IA · Catálogo
-                        Verificado</span>
-                    </div>
-                    <span class="text-[10px] font-mono text-emerald-300 bg-emerald-500/15 px-2 py-0.5 rounded-md">
-                      ⚡ {{ scene.msg2AiPriceTag }}
-                    </span>
-                  </div>
-
-                  <p class="text-xs sm:text-[13px] text-slate-100 leading-relaxed">
-                    {{ scene.msg2AiIntro }}
-                  </p>
-
-                  <!-- Botón Interactivo Simulado de WhatsApp Cloud API -->
-                  <div
-                    class="w-full py-2 px-3 rounded-xl bg-gradient-to-r from-cyan-500/25 to-blue-500/25 border border-cyan-400/50 text-cyan-200 text-center text-xs font-extrabold flex items-center justify-center gap-1.5 shadow-inner">
-                    <span>{{ scene.msg2AiCtaLabel }}</span>
-                  </div>
-                </div>
-
-                <div
-                  class="w-9 h-9 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 text-slate-950 font-black text-xs flex items-center justify-center shrink-0 shadow-lg border-2 border-cyan-200">
-                  IA
-                </div>
-              </div>
-              }
-
-              <!-- PASO 4: Confirmación del Cliente + Tarjeta Flotante de Sincronización CRM & Agenda -->
-              @if (heroChatStep() >= 4) {
-              <div class="animate-bubble-pop flex items-end gap-2.5 self-start max-w-[85%]">
-                <div
-                  class="w-8 h-8 rounded-full bg-gradient-to-br from-rose-500 to-orange-500 text-white font-extrabold text-[11px] flex items-center justify-center shrink-0 shadow-md border border-white/80">
-                  {{ scene.customerInitials }}
-                </div>
-                <div
-                  class="rounded-2xl rounded-bl-xs bg-white text-slate-900 px-3.5 py-2.5 shadow-xl border border-slate-100">
-                  <p class="text-xs font-semibold text-slate-800">{{ scene.msg3CustomerReply }}</p>
-                </div>
-              </div>
-
-              <!-- Notificación Flotante del Sistema (CRM + Calendario en Tiempo Real) -->
-              <div
-                class="animate-bubble-pop animate-float-subtle self-center w-full rounded-2xl bg-gradient-to-r from-emerald-950/95 via-slate-900/95 to-slate-950/95 backdrop-blur-xl border border-emerald-400/50 p-3.5 shadow-[0_20px_50px_-10px_rgba(16,185,129,0.4)] flex items-center justify-between gap-3">
-                <div class="flex items-center gap-3 min-w-0">
-                  <div
-                    class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 flex items-center justify-center shrink-0">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                  </div>
-                  <div class="min-w-0">
-                    <div class="text-xs font-extrabold text-white truncate">Sincronización Automática Completada</div>
-                    <div class="text-[11px] text-emerald-300 font-medium truncate">{{ scene.msg4SystemToast }}</div>
-                  </div>
-                </div>
-                <span
-                  class="shrink-0 text-[10px] font-mono font-extrabold uppercase px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
-                  En Vivo
-                </span>
-              </div>
-              }
 
             </div>
-            }
 
           </div>
 
@@ -351,75 +222,6 @@
       </div>
     </section>
 
-    <!-- ========================================================================= -->
-    <!-- 3. FRANJA DE MÉTRICAS Y CONFIANZA CORPORATIVA                             -->
-    <!-- ========================================================================= -->
-    <section aria-label="Indicadores de rendimiento y seguridad" class="border-b border-border bg-surface-2/50 py-8">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-
-          <div class="flex items-center gap-3.5">
-            <div
-              class="w-11 h-11 rounded-2xl bg-primary/10 text-primary flex items-center justify-center shrink-0 border border-primary/20">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
-                </path>
-              </svg>
-            </div>
-            <div>
-              <div class="text-xs sm:text-sm font-extrabold text-fg">API Oficial de Meta</div>
-              <div class="text-[11px] text-muted">Cero bloqueos por QR piratas</div>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-3.5">
-            <div
-              class="w-11 h-11 rounded-2xl bg-success-bg text-success flex items-center justify-center shrink-0 border border-success/20">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-            </div>
-            <div>
-              <div class="text-xs sm:text-sm font-extrabold text-fg">Atención 24/7 en &lt; 2s</div>
-              <div class="text-[11px] text-muted">Catálogo e IA sincronizados</div>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-3.5">
-            <div
-              class="w-11 h-11 rounded-2xl bg-primary/10 text-primary flex items-center justify-center shrink-0 border border-primary/20">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
-                </path>
-              </svg>
-            </div>
-            <div>
-              <div class="text-xs sm:text-sm font-extrabold text-fg">CRM + Equipo Humano</div>
-              <div class="text-[11px] text-muted">Operadores y embudos en vivo</div>
-            </div>
-          </div>
-
-          <div class="flex items-center gap-3.5">
-            <div
-              class="w-11 h-11 rounded-2xl bg-success-bg text-success flex items-center justify-center shrink-0 border border-success/20">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
-                </path>
-              </svg>
-            </div>
-            <div>
-              <div class="text-xs sm:text-sm font-extrabold text-fg">Cifrado HMAC-SHA256</div>
-              <div class="text-[11px] text-muted">Entorno aislado por empresa</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
 
     <!-- ========================================================================= -->
     <!-- 4. ARQUITECTURA BENTO DE BENEFICIOS CLAVE                                 -->
@@ -441,158 +243,403 @@
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 xl:gap-12 items-start">
 
-          <!-- Beneficio 1: Cero Bloqueos -->
-          <article
-            class="group relative p-6 rounded-3xl bg-surface border border-border hover:border-primary/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl space-y-3.5 overflow-hidden">
-            <div class="flex items-center justify-between">
-              <div
-                class="w-11 h-11 rounded-2xl bg-success-bg text-success flex items-center justify-center font-bold border border-success/20">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
-                  </path>
-                </svg>
-              </div>
-              <span
-                class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-success-bg text-success border border-success/20">
-                Meta Cloud API
-              </span>
-            </div>
-            <h3 class="text-base font-extrabold text-fg group-hover:text-primary transition-colors">100% Libre de
-              Bloqueos</h3>
-            <p class="text-xs text-muted leading-relaxed">
-              Nunca más perderás el número de tu negocio. Conexión formal mediante Embedded Signup oficial de Meta, sin
-              emuladores QR ni scripts invasivos.
-            </p>
-          </article>
+          <!-- ================================================================= -->
+          <!-- COLUMNA IZQUIERDA: BENTO GRID DE BENEFICIOS (7 Columnas en LG)    -->
+          <!-- ================================================================= -->
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
 
-          <!-- Beneficio 2: Catálogo Híbrido sin Alucinaciones -->
-          <article
-            class="group relative p-6 rounded-3xl bg-surface border border-border hover:border-primary/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl space-y-3.5 overflow-hidden">
-            <div class="flex items-center justify-between">
+            <!-- Beneficio 1: Cero Bloqueos -->
+            <article
+              class="group relative flex flex-col justify-between p-6 rounded-3xl bg-surface/80 backdrop-blur-sm border border-border hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_rgba(16,185,129,0.15)] overflow-hidden">
               <div
-                class="w-11 h-11 rounded-2xl bg-primary/10 text-primary flex items-center justify-center font-bold border border-primary/20">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
-                  </path>
-                </svg>
+                class="absolute -right-10 -top-10 w-32 h-32 bg-emerald-500/5 rounded-full blur-2xl group-hover:bg-emerald-500/15 transition-all duration-500 pointer-events-none">
               </div>
-              <span
-                class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
-                Cero Alucinaciones
-              </span>
-            </div>
-            <h3 class="text-base font-extrabold text-fg group-hover:text-primary transition-colors">Catálogo Híbrido
-              Oficial</h3>
-            <p class="text-xs text-muted leading-relaxed">
-              Carga tus productos y servicios con precios, stock, SKU y preguntas frecuentes. La IA responde
-              estrictamente
-              sobre los ítems habilitados en tu panel.
-            </p>
-          </article>
 
-          <!-- Beneficio 3: Agenda de Citas en Tiempo Real -->
-          <article
-            class="group relative p-6 rounded-3xl bg-surface border border-border hover:border-primary/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl space-y-3.5 overflow-hidden">
-            <div class="flex items-center justify-between">
-              <div
-                class="w-11 h-11 rounded-2xl bg-primary/10 text-primary flex items-center justify-center font-bold border border-primary/20">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                </svg>
-              </div>
-              <span
-                class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
-                Agenda Transaccional
-              </span>
-            </div>
-            <h3 class="text-base font-extrabold text-fg group-hover:text-primary transition-colors">Agendamiento
-              Automático</h3>
-            <p class="text-xs text-muted leading-relaxed">
-              El asistente consulta disponibilidad real, respeta descansos entre citas y feriados bloqueados, reservando
-              reuniones y moviendo el lead en el Kanban al instante.
-            </p>
-          </article>
+              <div class="space-y-4 relative z-10">
+                <div class="flex items-center justify-between gap-2">
+                  <div
+                    class="w-11 h-11 rounded-2xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center border border-emerald-500/20 group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                      </path>
+                    </svg>
+                  </div>
+                  <span
+                    class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+                    Meta Cloud API
+                  </span>
+                </div>
 
-          <!-- Beneficio 4: Control de Ventana 24h & Ahorro -->
-          <article
-            class="group relative p-6 rounded-3xl bg-surface border border-border hover:border-primary/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl space-y-3.5 overflow-hidden">
-            <div class="flex items-center justify-between">
-              <div
-                class="w-11 h-11 rounded-2xl bg-warning-bg text-warning flex items-center justify-center font-bold border border-warning/20">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                  </path>
-                </svg>
+                <div class="space-y-2">
+                  <h3 class="text-base font-extrabold text-fg group-hover:text-emerald-500 transition-colors">
+                    100% Libre de Bloqueos
+                  </h3>
+                  <p class="text-xs sm:text-[13px] text-muted leading-relaxed">
+                    Nunca más perderás el número de tu negocio. Conexión formal mediante Embedded Signup oficial de
+                    Meta, sin emuladores QR ni scripts invasivos.
+                  </p>
+                </div>
               </div>
-              <span
-                class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-warning-bg text-warning border border-warning/20">
-                Control de Costos
-              </span>
-            </div>
-            <h3 class="text-base font-extrabold text-fg group-hover:text-primary transition-colors">Ahorro en Costos de
-              Meta</h3>
-            <p class="text-xs text-muted leading-relaxed">
-              Monitoreo en tiempo real de la ventana gratuita de 24 horas de Meta. Notifica a tus operadores antes de
-              que
-              expire la sesión para optimizar tu presupuesto.
-            </p>
-          </article>
+            </article>
 
-          <!-- Beneficio 5: Transferencia Fluida a Humanos -->
-          <article
-            class="group relative p-6 rounded-3xl bg-surface border border-border hover:border-primary/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl space-y-3.5 overflow-hidden">
-            <div class="flex items-center justify-between">
+            <!-- Beneficio 2: Catálogo Híbrido sin Alucinaciones -->
+            <article
+              class="group relative flex flex-col justify-between p-6 rounded-3xl bg-surface/80 backdrop-blur-sm border border-border hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_rgba(6,182,212,0.15)] overflow-hidden">
               <div
-                class="w-11 h-11 rounded-2xl bg-primary/10 text-primary flex items-center justify-center font-bold border border-primary/20">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
-                  </path>
-                </svg>
+                class="absolute -right-10 -top-10 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl group-hover:bg-cyan-500/15 transition-all duration-500 pointer-events-none">
               </div>
-              <span
-                class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
-                Switch IA / Humano
-              </span>
-            </div>
-            <h3 class="text-base font-extrabold text-fg group-hover:text-primary transition-colors">Derivación con
-              Resumen</h3>
-            <p class="text-xs text-muted leading-relaxed">
-              Cuando un operador humano toma el chat o desactiva el switch IA, el bot se pausa al instante y entrega una
-              ficha 360° con el contexto completo del cliente.
-            </p>
-          </article>
 
-          <!-- Beneficio 6: Campañas Masivas con Plantillas Meta -->
-          <article
-            class="group relative p-6 rounded-3xl bg-surface border border-border hover:border-primary/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl space-y-3.5 overflow-hidden">
-            <div class="flex items-center justify-between">
-              <div
-                class="w-11 h-11 rounded-2xl bg-primary/10 text-primary flex items-center justify-center font-bold border border-primary/20">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z">
-                  </path>
-                </svg>
+              <div class="space-y-4 relative z-10">
+                <div class="flex items-center justify-between gap-2">
+                  <div
+                    class="w-11 h-11 rounded-2xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center border border-cyan-500/20 group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                      </path>
+                    </svg>
+                  </div>
+                  <span
+                    class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-500 border border-cyan-500/20">
+                    Cero Alucinaciones
+                  </span>
+                </div>
+
+                <div class="space-y-2">
+                  <h3 class="text-base font-extrabold text-fg group-hover:text-cyan-500 transition-colors">
+                    Catálogo Híbrido Oficial
+                  </h3>
+                  <p class="text-xs sm:text-[13px] text-muted leading-relaxed">
+                    Carga tus productos y servicios con precios, stock, SKU y preguntas frecuentes. La IA responde
+                    estrictamente sobre los ítems habilitados en tu panel.
+                  </p>
+                </div>
               </div>
-              <span
-                class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
-                Colas BullMQ
-              </span>
+            </article>
+
+            <!-- Beneficio 3: Agenda de Citas en Tiempo Real -->
+            <article
+              class="group relative flex flex-col justify-between p-6 rounded-3xl bg-surface/80 backdrop-blur-sm border border-border hover:border-violet-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_rgba(139,92,246,0.15)] overflow-hidden">
+              <div
+                class="absolute -right-10 -top-10 w-32 h-32 bg-violet-500/5 rounded-full blur-2xl group-hover:bg-violet-500/15 transition-all duration-500 pointer-events-none">
+              </div>
+
+              <div class="space-y-4 relative z-10">
+                <div class="flex items-center justify-between gap-2">
+                  <div
+                    class="w-11 h-11 rounded-2xl bg-violet-500/10 text-violet-500 flex items-center justify-center border border-violet-500/20 group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                      </path>
+                    </svg>
+                  </div>
+                  <span
+                    class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-violet-500/10 text-violet-500 border border-violet-500/20">
+                    Agenda Transaccional
+                  </span>
+                </div>
+
+                <div class="space-y-2">
+                  <h3 class="text-base font-extrabold text-fg group-hover:text-violet-500 transition-colors">
+                    Agendamiento Automático
+                  </h3>
+                  <p class="text-xs sm:text-[13px] text-muted leading-relaxed">
+                    El asistente consulta disponibilidad real, respeta descansos entre citas y feriados bloqueados,
+                    reservando reuniones y moviendo el lead en el Kanban al instante.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Beneficio 4: Control de Ventana 24h & Ahorro -->
+            <article
+              class="group relative flex flex-col justify-between p-6 rounded-3xl bg-surface/80 backdrop-blur-sm border border-border hover:border-amber-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_rgba(245,158,11,0.15)] overflow-hidden">
+              <div
+                class="absolute -right-10 -top-10 w-32 h-32 bg-amber-500/5 rounded-full blur-2xl group-hover:bg-amber-500/15 transition-all duration-500 pointer-events-none">
+              </div>
+
+              <div class="space-y-4 relative z-10">
+                <div class="flex items-center justify-between gap-2">
+                  <div
+                    class="w-11 h-11 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center border border-amber-500/20 group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                      </path>
+                    </svg>
+                  </div>
+                  <span
+                    class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-500 border border-amber-500/20">
+                    Control de Costos
+                  </span>
+                </div>
+
+                <div class="space-y-2">
+                  <h3 class="text-base font-extrabold text-fg group-hover:text-amber-500 transition-colors">
+                    Ahorro en Costos de Meta
+                  </h3>
+                  <p class="text-xs sm:text-[13px] text-muted leading-relaxed">
+                    Monitoreo en tiempo real de la ventana gratuita de 24 horas de Meta. Notifica a tus operadores antes
+                    de que expire la sesión para optimizar tu presupuesto.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Beneficio 5: Transferencia Fluida a Humanos -->
+            <article
+              class="group relative flex flex-col justify-between p-6 rounded-3xl bg-surface/80 backdrop-blur-sm border border-border hover:border-blue-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_rgba(59,130,246,0.15)] overflow-hidden">
+              <div
+                class="absolute -right-10 -top-10 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl group-hover:bg-blue-500/15 transition-all duration-500 pointer-events-none">
+              </div>
+
+              <div class="space-y-4 relative z-10">
+                <div class="flex items-center justify-between gap-2">
+                  <div
+                    class="w-11 h-11 rounded-2xl bg-blue-500/10 text-blue-500 flex items-center justify-center border border-blue-500/20 group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+                      </path>
+                    </svg>
+                  </div>
+                  <span
+                    class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-500 border border-blue-500/20">
+                    Switch IA / Humano
+                  </span>
+                </div>
+
+                <div class="space-y-2">
+                  <h3 class="text-base font-extrabold text-fg group-hover:text-blue-500 transition-colors">
+                    Derivación con Resumen
+                  </h3>
+                  <p class="text-xs sm:text-[13px] text-muted leading-relaxed">
+                    Cuando un operador humano toma el chat o desactiva el switch IA, el bot se pausa al instante y
+                    entrega una ficha 360° con el contexto completo del cliente.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Beneficio 6: Campañas Masivas con Plantillas Meta -->
+            <article
+              class="group relative flex flex-col justify-between p-6 rounded-3xl bg-surface/80 backdrop-blur-sm border border-border hover:border-indigo-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-15px_rgba(99,102,241,0.15)] overflow-hidden">
+              <div
+                class="absolute -right-10 -top-10 w-32 h-32 bg-indigo-500/5 rounded-full blur-2xl group-hover:bg-indigo-500/15 transition-all duration-500 pointer-events-none">
+              </div>
+
+              <div class="space-y-4 relative z-10">
+                <div class="flex items-center justify-between gap-2">
+                  <div
+                    class="w-11 h-11 rounded-2xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center border border-indigo-500/20 group-hover:scale-110 transition-transform duration-300">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z">
+                      </path>
+                    </svg>
+                  </div>
+                  <span
+                    class="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-indigo-500/10 text-indigo-500 border border-indigo-500/20">
+                    Colas BullMQ
+                  </span>
+                </div>
+
+                <div class="space-y-2">
+                  <h3 class="text-base font-extrabold text-fg group-hover:text-indigo-500 transition-colors">
+                    Broadcasts Oficiales
+                  </h3>
+                  <p class="text-xs sm:text-[13px] text-muted leading-relaxed">
+                    Envía campañas aprobadas por Meta a prospectos segmentados por su etapa en el CRM, procesadas en
+                    segundo plano sin saturar tu servidor.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+          </div>
+
+          <!-- ================================================================= -->
+          <!-- COLUMNA DERECHA: SIMULADOR INTERACTIVO (5 Columnas + Sticky)      -->
+          <!-- ================================================================= -->
+          <div class="lg:col-span-5 lg:sticky lg:top-24 relative flex flex-col items-center w-full">
+
+            <!-- Glow Ambiental de Fondo -->
+            <div
+              class="absolute -inset-4 bg-gradient-to-tr from-cyan-500/15 via-blue-500/10 to-emerald-500/15 rounded-[2.5rem] blur-2xl pointer-events-none -z-10">
             </div>
-            <h3 class="text-base font-extrabold text-fg group-hover:text-primary transition-colors">Broadcasts Oficiales
-            </h3>
-            <p class="text-xs text-muted leading-relaxed">
-              Envía campañas aprobadas por Meta a prospectos segmentados por su etapa en el CRM procesadas en segundo
-              plano sin saturar tu servidor.
-            </p>
-          </article>
+
+            <!-- Selector Interactivo de Rubro (Segmented Pill) -->
+            <div role="tablist" aria-label="Seleccionar escenario de demostración"
+              class="mb-4 inline-flex flex-wrap items-center justify-center gap-1.5 p-1.5 rounded-full bg-slate-950/90 backdrop-blur-md border border-white/10 shadow-xl">
+              @for (scenario of heroScenarios; track scenario.id; let idx = $index) {
+              <button type="button" role="tab" [attr.aria-selected]="activeScenarioIndex() === idx"
+                (click)="selectHeroScenario(idx)"
+                [class]="activeScenarioIndex() === idx
+            ? 'px-3.5 py-1.5 rounded-full text-[11px] font-extrabold bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 shadow-md shadow-cyan-500/25 transition-all cursor-pointer'
+            : 'px-3.5 py-1.5 rounded-full text-[11px] font-semibold text-slate-400 hover:text-white hover:bg-white/5 transition-all cursor-pointer'">
+                {{ scenario.label }}
+              </button>
+              }
+            </div>
+
+            <!-- Marco del Simulador (Mockup de Consola WhatsApp Cloud) -->
+            @if (currentHeroScenario(); as scene) {
+            <div
+              class="w-full max-w-md rounded-3xl bg-slate-950/95 backdrop-blur-xl border border-white/10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] overflow-hidden flex flex-col">
+
+              <!-- Cabecera de la Ventana del Simulador -->
+              <div class="px-4 py-3 bg-slate-900/90 border-b border-white/10 flex items-center justify-between gap-2">
+                <div class="flex items-center gap-2.5">
+                  <div
+                    class="relative flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 text-slate-950 font-black text-xs shadow-sm">
+                    IA
+                    <span
+                      class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-slate-900"></span>
+                  </div>
+                  <div>
+                    <div class="flex items-center gap-1.5">
+                      <span class="text-xs font-extrabold text-white tracking-tight">BRUNEITOR.AI</span>
+                      <svg class="w-3.5 h-3.5 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                    </div>
+                    <p class="text-[10px] text-slate-400 font-medium">Meta Cloud API · Ventana 24h activa</p>
+                  </div>
+                </div>
+
+                <span
+                  class="inline-flex items-center gap-1.5 text-[10px] font-bold px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  IA Activa
+                </span>
+              </div>
+
+              <!-- Lienzo de Conversación Animada -->
+              <div
+                class="p-4 sm:p-5 space-y-4 min-h-[400px] sm:min-h-[420px] flex flex-col justify-start bg-[radial-gradient(#ffffff08_1px,transparent_1px)] [background-size:16px_16px]">
+
+                <!-- PASO 1: Burbuja del Cliente -->
+                @if (heroChatStep() >= 1) {
+                <div class="animate-bubble-pop flex items-end gap-2.5 self-start max-w-[92%]">
+                  <div
+                    class="w-8 h-8 rounded-full bg-gradient-to-br from-rose-500 to-orange-500 text-white font-extrabold text-[11px] flex items-center justify-center shrink-0 shadow-md border border-white/20">
+                    {{ scene.customerInitials }}
+                  </div>
+                  <div class="rounded-2xl rounded-bl-none bg-white text-slate-900 p-3.5 shadow-lg space-y-1.5">
+                    <div class="flex items-center justify-between gap-2">
+                      <span class="text-[11px] font-extrabold text-slate-900 truncate">
+                        {{ scene.customerName }}
+                        <span class="font-medium text-slate-500">· {{ scene.customerCompany }}</span>
+                      </span>
+                      <span
+                        class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 shrink-0">
+                        {{ scene.channel }}
+                      </span>
+                    </div>
+                    <p class="text-xs sm:text-[13px] text-slate-700 leading-snug font-medium">
+                      {{ scene.msg1Customer }}
+                    </p>
+                  </div>
+                </div>
+                }
+
+                <!-- PASO 2: Indicador "Escribiendo..." -->
+                @if (heroChatStep() === 2) {
+                <div
+                  class="animate-bubble-pop self-end flex items-center gap-2.5 px-4 py-2.5 rounded-2xl rounded-br-none bg-slate-900/95 border border-cyan-500/30 text-cyan-300 text-xs font-semibold shadow-lg">
+                  <span class="flex gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce [animation-delay:150ms]"></span>
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-bounce [animation-delay:300ms]"></span>
+                  </span>
+                  <span class="text-[11px]">Consultando catálogo y agenda...</span>
+                </div>
+                }
+
+                <!-- PASO 3: Respuesta Inteligente de BRUNEITOR.AI -->
+                @if (heroChatStep() >= 3) {
+                <div class="animate-bubble-pop self-end max-w-[92%] flex items-end gap-2">
+                  <div
+                    class="rounded-2xl rounded-br-none bg-slate-900/95 text-white p-3.5 shadow-[0_12px_35px_-10px_rgba(6,182,212,0.35)] border border-cyan-400/35 space-y-2.5">
+                    <div class="flex items-center justify-between gap-2 pb-1 border-b border-white/10">
+                      <div class="flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                        <span class="text-[10px] font-extrabold text-cyan-300 uppercase tracking-wider">
+                          Catálogo Verificado
+                        </span>
+                      </div>
+                      <span
+                        class="text-[10px] font-mono font-bold text-emerald-300 bg-emerald-500/15 border border-emerald-500/20 px-2 py-0.5 rounded-md">
+                        ⚡ {{ scene.msg2AiPriceTag }}
+                      </span>
+                    </div>
+
+                    <p class="text-xs sm:text-[13px] text-slate-200 leading-relaxed">
+                      {{ scene.msg2AiIntro }}
+                    </p>
+
+                    <!-- Botón Interactivo Simulado de WhatsApp Cloud API -->
+                    <div
+                      class="w-full py-2 px-3 rounded-xl bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-400/40 text-cyan-200 text-center text-xs font-extrabold flex items-center justify-center gap-1.5 shadow-inner">
+                      <svg class="w-3.5 h-3.5 text-cyan-300 shrink-0" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                      </svg>
+                      <span>{{ scene.msg2AiCtaLabel }}</span>
+                    </div>
+                  </div>
+                </div>
+                }
+
+                <!-- PASO 4: Confirmación del Cliente + Toast de Sincronización CRM -->
+                @if (heroChatStep() >= 4) {
+                <div class="animate-bubble-pop flex items-end gap-2.5 self-start max-w-[85%]">
+                  <div
+                    class="w-7 h-7 rounded-full bg-gradient-to-br from-rose-500 to-orange-500 text-white font-extrabold text-[10px] flex items-center justify-center shrink-0 shadow-md border border-white/20">
+                    {{ scene.customerInitials }}
+                  </div>
+                  <div class="rounded-2xl rounded-bl-none bg-white text-slate-900 px-3.5 py-2 shadow-md">
+                    <p class="text-xs font-semibold text-slate-800">{{ scene.msg3CustomerReply }}</p>
+                  </div>
+                </div>
+
+                <!-- Notificación del Sistema (CRM + Calendario) -->
+                <div class="animate-bubble-pop mt-auto pt-2 self-center w-full">
+                  <div
+                    class="rounded-2xl bg-gradient-to-r from-emerald-950/90 via-slate-900/95 to-slate-900/95 border border-emerald-400/40 p-3 shadow-[0_10px_30px_-10px_rgba(16,185,129,0.4)] flex items-center justify-between gap-2.5">
+                    <div class="flex items-center gap-2.5 min-w-0">
+                      <div
+                        class="w-9 h-9 rounded-xl bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 flex items-center justify-center shrink-0">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7">
+                          </path>
+                        </svg>
+                      </div>
+                      <div class="min-w-0">
+                        <div class="text-[11px] font-extrabold text-white truncate">Sincronización CRM Completada</div>
+                        <div class="text-[11px] text-emerald-300 font-medium truncate">{{ scene.msg4SystemToast }}</div>
+                      </div>
+                    </div>
+                    <span
+                      class="shrink-0 text-[9px] font-mono font-extrabold uppercase px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
+                      En Vivo
+                    </span>
+                  </div>
+                </div>
+                }
+
+              </div>
+            </div>
+            }
+
+          </div>
 
         </div>
 
