@@ -1,8 +1,5 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
-import { PrivacyComponent } from './pages/privacy/privacy.component';
-import { TermsComponent } from './pages/terms/terms.component';
-import { DataDeletionComponent } from './pages/data-deletion/data-deletion.component';
 
 export const routes: Routes = [
   {
@@ -12,7 +9,7 @@ export const routes: Routes = [
   },
   {
     path: 'privacidad',
-    component: PrivacyComponent,
+    loadComponent: () => import('./pages/privacy/privacy.component').then((m) => m.PrivacyComponent),
     title: 'Políticas de Privacidad - BRUNEITOR.AI (RUC: 10743714330)',
   },
   {
@@ -32,7 +29,7 @@ export const routes: Routes = [
   },
   {
     path: 'terminos',
-    component: TermsComponent,
+    loadComponent: () => import('./pages/terms/terms.component').then((m) => m.TermsComponent),
     title: 'Términos y Condiciones del Servicio - BRUNEITOR.AI',
   },
   {
@@ -47,7 +44,7 @@ export const routes: Routes = [
   },
   {
     path: 'eliminacion-datos',
-    component: DataDeletionComponent,
+    loadComponent: () => import('./pages/data-deletion/data-deletion.component').then((m) => m.DataDeletionComponent),
     title: 'Instrucciones de Eliminación de Datos de Usuario - BRUNEITOR.AI',
   },
   {
