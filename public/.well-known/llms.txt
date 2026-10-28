@@ -1,0 +1,32 @@
+# BRUNEITOR.AI
+
+> Asistente de Inteligencia Artificial para WhatsApp Business y ventas 24/7 con API Oficial de Meta Cloud. Cero riesgo de bloqueos de línea, catálogo interactivo, agendamiento de citas y CRM omnicanal integrado.
+
+BRUNEITOR.AI es una solución multi-tenant diseñada para empresas y negocios que buscan automatizar la atención al cliente y los procesos de conversión en WhatsApp, Instagram y Messenger. Funciona sobre la API Oficial de Meta Cloud (WhatsApp Business Platform), garantizando alta entregabilidad y cumplimiento de políticas sin suspensiones de cuentas.
+
+## Enlaces Principales
+
+- [Página Principal](https://bruneitor.com/): Información general, características destacadas y propuesta de valor.
+- [Características y Ventajas](https://bruneitor.com/#caracteristicas): API Oficial de Meta Cloud, cero bloqueos, catálogo interactivo y multi-agente.
+- [Bandeja Omnicanal y CRM](https://bruneitor.com/#crm): Gestión unificada de prospectos, notas internas de IA y sincronización de equipo.
+- [Planes y Tarifas](https://bruneitor.com/#planes): Esquemas de suscripción mensual o anual para empresas.
+- [Preguntas Frecuentes](https://bruneitor.com/#faq): Respuestas técnicas, operativas y de seguridad sobre WhatsApp Business API.
+- [Solicitar Demostración](https://bruneitor.com/#contacto): Formulario para agendar una demostración en vivo guiada.
+- [Versión Extendida para LLMs](https://bruneitor.com/llms-full.txt): Información detallada y documentación completa para modelos de lenguaje.
+
+## Capacidades y Servicios
+
+- **API Oficial de Meta Cloud:** Operación 100% legal y autorizada para WhatsApp Business sin riesgo de baneo de número.
+- **Asistente IA 24/7:** Respuestas inmediatas en lenguaje natural, calificación y cierre de ventas en menos de 2 segundos.
+- **Catálogo Interactivo:** Envío de productos, servicios y cotizaciones personalizadas directamente en el chat.
+- **Agendamiento Automatizado:** Sincronización en tiempo real para reservar reuniones o turnos sin intervención manual.
+- **Transferencia a Asesores Humanos:** Derivación inteligente con resumen ejecutivo y notas internas cuando el cliente lo requiere.
+- **Bandeja Omnicanal:** Gestión compartida entre agentes humanos e IA para WhatsApp, Instagram Direct y Facebook Messenger.
+
+## Información de la Organización
+
+- **Nombre:** BRUNEITOR.AI
+- **Identificador Fiscal:** RUC 10743714330
+- **Ubicación:** Lima, Perú
+- **Contacto:** contacto@bruneitor.com
+- **WhatsApp Oficial:** +51 923 637 205

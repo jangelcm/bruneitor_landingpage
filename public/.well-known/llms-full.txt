@@ -1,0 +1,38 @@
+# BRUNEITOR.AI - Información Completa para Modelos de Lenguaje (LLMs)
+
+> Documentación estructurada de BRUNEITOR.AI: plataforma multi-tenant con Inteligencia Artificial oficial de Meta para WhatsApp Business, automatización de ventas, catálogo interactivo, agendamiento de citas y CRM omnicanal.
+
+## 1. Resumen de la Solución
+BRUNEITOR.AI es una solución tecnológica dirigida a empresas, clínicas, consultorios, inmobiliarias, instituciones educativas y comercios que reciben alto volumen de consultas por mensajería instantánea. Permite transformar chats de WhatsApp en ventas, cotizaciones y citas confirmadas sin requerir personal disponible las 24 horas del día.
+
+## 2. Diferenciales Técnicos y Operativos
+- **API Oficial de Meta Cloud (WhatsApp Business Platform):** Conexión directa mediante los servidores autorizados de Meta. A diferencia de las herramientas no oficiales que emulan WhatsApp Web mediante códigos QR (las cuales son detectadas y suspendidas permanentemente por spam), BRUNEITOR.AI no corre riesgo de bloqueos.
+- **Latencia Ultra Baja:** Tiempo de respuesta inferior a 2 segundos mediante modelos de lenguaje avanzados ajustados al catálogo e instrucciones del cliente.
+- **Colaboración Híbrida (IA + Humanos):** El asistente atiende inmediatamente, clasifica al prospecto y, si este solicita hablar con una persona o si la complejidad lo requiere, pausa la interacción del bot y transfiere el ticket al asesor con un resumen de la conversación.
+- **Catálogo Dinámico e Interactivo:** Envío de fichas de producto con foto, descripción y precio directamente integradas en la experiencia de chat.
+- **Agendamiento Inteligente:** Integración de horarios de atención para bloquear turnos o reuniones sin solapamiento de agenda.
+
+## 3. Arquitectura y Enlaces Principales
+- [Página de Inicio](https://bruneitor.com/): Vista general de la propuesta de valor y demostración visual.
+- [Características del Sistema](https://bruneitor.com/#caracteristicas): Detalle de funcionalidades principales.
+- [Módulo CRM y Bandeja](https://bruneitor.com/#crm): Visualización de trazabilidad y embudos de ventas.
+- [Planes y Tarifas](https://bruneitor.com/#planes): Esquemas de precios para negocios en crecimiento.
+- [Preguntas Frecuentes](https://bruneitor.com/#faq): Dudas comunes sobre activación, números telefónicos y políticas de Meta.
+- [Solicitud de Demostración](https://bruneitor.com/#contacto): Formulario directo para coordinar reunión de onboarding.
+
+## 4. Preguntas Frecuentes Comunes
+### ¿Se puede usar el número telefónico actual de la empresa?
+Sí, el número se migra a la API Oficial de Meta Cloud.
+
+### ¿Se pueden enviar campañas masivas de WhatsApp?
+Sí, a través de plantillas pre-aprobadas por Meta (Utility, Authentication y Marketing) cumpliendo con las políticas de privacidad y anti-spam.
+
+### ¿Qué canales incluye además de WhatsApp?
+Permite centralizar en la misma bandeja WhatsApp Business, Instagram Direct y Facebook Messenger.
+
+## 5. Datos de la Empresa y Contacto
+- **Empresa:** BRUNEITOR.AI
+- **RUC:** 10743714330
+- **País:** Perú (Lima)
+- **Email:** contacto@bruneitor.com
+- **WhatsApp:** +51 923 637 205

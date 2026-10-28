@@ -1,0 +1,30 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "BRUNEITOR.AI",
+    "identifier": "did:web:bruneitor.com",
+    "documentationUrl": "https://bruneitor.com/",
+    "logoUrl": "https://bruneitor.com/logo.png"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:bruneitor.com:agent:whatsapp-assistant",
+      "displayName": "BRUNEITOR.AI WhatsApp Assistant",
+      "type": "application/vnd.agent-card+json",
+      "url": "https://bruneitor.com/",
+      "description": "Asistente con Inteligencia Artificial oficial de Meta para WhatsApp Business, automatización de atención 24/7, catálogo interactivo, citas y CRM omnicanal.",
+      "tags": [
+        "whatsapp",
+        "ai-assistant",
+        "sales-bot",
+        "crm",
+        "meta-cloud-api"
+      ],
+      "representativeQueries": [
+        "¿Cómo integrar BRUNEITOR.AI con la API oficial de WhatsApp?",
+        "Agendar una demostración guiada de BRUNEITOR.AI para ventas",
+        "Automatizar catálogo de productos y citas médicas por WhatsApp"
+      ]
+    }
+  ]
+}
